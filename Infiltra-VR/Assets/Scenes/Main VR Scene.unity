@@ -421,8 +421,32 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8135023674665499069, guid: 58d0a4ac86f2348deb02f3880c71378e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 556184700}
   m_SourcePrefab: {fileID: 100100000, guid: 58d0a4ac86f2348deb02f3880c71378e, type: 3}
+--- !u!1 &556184699 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8135023674665499069, guid: 58d0a4ac86f2348deb02f3880c71378e, type: 3}
+  m_PrefabInstance: {fileID: 556184698}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &556184700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 556184699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5863825fe0b143145a395cb81da8ce72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VRLocomotionManager
+  currentMode: 0
+  continuousMoveProvider: {fileID: 0}
+  teleportRayInteractor: {fileID: 0}
+  teleportationProvider: {fileID: 0}
 --- !u!1 &931382800
 GameObject:
   m_ObjectHideFlags: 0
