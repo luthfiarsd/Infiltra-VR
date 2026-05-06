@@ -11,6 +11,28 @@ public class InventoryUI : MonoBehaviour
     [Header("Referensi Lain (Opsional)")]
     public ChestUI chestUI; // Agar tas tau jika layar peti sedang terbuka
 
+    private RectTransform myRect;
+
+    private void Awake()
+    {
+        myRect = GetComponent<RectTransform>();
+    }
+
+    private void Update()
+    {
+        if (myRect == null) return;
+
+        // Jika peti sedang terbuka, geser tas ke kiri (-250), jika tidak, letakkan di tengah (0)
+        if (chestUI != null && chestUI.gameObject.activeInHierarchy)
+        {
+            myRect.anchoredPosition = new Vector2(-300f, myRect.anchoredPosition.y);
+        }
+        else
+        {
+            myRect.anchoredPosition = new Vector2(0f, myRect.anchoredPosition.y);
+        }
+    }
+
     // Fungsi ini dipanggil untuk memperbarui tampilan UI
     public void RefreshUI()
     {

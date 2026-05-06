@@ -14,6 +14,9 @@ public class PlayerInventory : MonoBehaviour
     // Daftar barang yang dimiliki pemain
     public List<InventorySlot> items = new List<InventorySlot>();
 
+    // --- TAMBAHAN BARU: Referensi ke Peti terdekat ---
+    [HideInInspector] public ChestInteract nearbyChest;
+
     // --- TAMBAHAN BARU: Sistem Uang ---
     public int uang = 100; // Uang modal awal pemain
 

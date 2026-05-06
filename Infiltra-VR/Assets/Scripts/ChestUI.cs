@@ -11,6 +11,21 @@ public class ChestUI : MonoBehaviour
     public Transform itemGrid; // Tempat spawn ikon item
     public GameObject slotPrefab; // Objek cetakan item
 
+    private RectTransform myRect;
+
+    private void Awake()
+    {
+        myRect = GetComponent<RectTransform>();
+    }
+
+    private void Update()
+    {
+        if (myRect == null) return;
+        
+        // Peti selalu di sebelah kanan layar (geser sejauh 300 unit ke kanan)
+        myRect.anchoredPosition = new Vector2(300f, myRect.anchoredPosition.y);
+    }
+
     // Fungsi untuk memuat ulang tampilan item di dalam chest
     public void RefreshUI()
     {
@@ -68,6 +83,16 @@ public class ChestUI : MonoBehaviour
 
             // 4. Perbarui layar peti agar angkanya berkurang secara visual
             RefreshUI();
+
+            // 5. Perbarui layar tas agar barang barunya langsung muncul
+            if (playerInventoryPanel != null)
+            {
+                InventoryUI invUI = playerInventoryPanel.GetComponent<InventoryUI>();
+                if (invUI != null)
+                {
+                    invUI.RefreshUI();
+                }
+            }
         }
     }
 
@@ -86,10 +111,7 @@ public class ChestUI : MonoBehaviour
     // Terpanggil saat panel ini dimatikan (ditutup)
     private void OnDisable()
     {
-        // Otomatis menutup layar tas pemain
-        if (playerInventoryPanel != null)
-        {
-            playerInventoryPanel.SetActive(false);
-        }
+        // Sengaja dibiarkan kosong
+        // Kini layar peti mati TIDAK akan memaksa layar tas tertutup
     }
 }
