@@ -716,7 +716,7 @@ GameObject:
   - component: {fileID: 1220657101}
   - component: {fileID: 1220657100}
   m_Layer: 0
-  m_Name: Cylinder
+  m_Name: Cangkul
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1035,7 +1035,7 @@ GameObject:
   - component: {fileID: 1843760674}
   - component: {fileID: 1843760673}
   m_Layer: 0
-  m_Name: Capsule
+  m_Name: Pupuk
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1675,7 +1675,7 @@ GameObject:
   - component: {fileID: 2079004323}
   - component: {fileID: 2079004322}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: Bibit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

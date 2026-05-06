@@ -1797,6 +1797,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ChestUI
   currentChest: {fileID: 1007626149}
   playerInventory: {fileID: 882092875}
+  playerInventoryPanel: {fileID: 821104629}
   itemGrid: {fileID: 1284828738}
   slotPrefab: {fileID: 2219244554424043350, guid: 9f2c03080ece1ad429dae280c6d1b9e9, type: 3}
 --- !u!114 &890293975
