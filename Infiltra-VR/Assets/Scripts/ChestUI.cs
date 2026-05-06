@@ -7,6 +7,7 @@ public class ChestUI : MonoBehaviour
     [Header("Referensi")]
     public ChestInventory currentChest; // Peti mana yang sedang terbuka
     public PlayerInventory playerInventory; // Referensi ke tas pemain untuk mentransfer barang
+    public GameObject playerInventoryPanel; // Panel tas pemain agar otomatis terbuka
     public Transform itemGrid; // Tempat spawn ikon item
     public GameObject slotPrefab; // Objek cetakan item
 
@@ -74,5 +75,21 @@ public class ChestUI : MonoBehaviour
     private void OnEnable()
     {
         RefreshUI();
+        
+        // Otomatis membuka layar tas pemain (seperti Minecraft)
+        if (playerInventoryPanel != null)
+        {
+            playerInventoryPanel.SetActive(true);
+        }
+    }
+
+    // Terpanggil saat panel ini dimatikan (ditutup)
+    private void OnDisable()
+    {
+        // Otomatis menutup layar tas pemain
+        if (playerInventoryPanel != null)
+        {
+            playerInventoryPanel.SetActive(false);
+        }
     }
 }

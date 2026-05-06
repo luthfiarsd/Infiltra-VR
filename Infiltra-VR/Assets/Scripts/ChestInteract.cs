@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(ChestInventory))]
 public class ChestInteract : MonoBehaviour
@@ -24,8 +25,8 @@ public class ChestInteract : MonoBehaviour
     // Fungsi sementara untuk mempermudah pengetesan tanpa kacamata VR
     private void Update()
     {
-        // Jika kita menekan tombol 'F' di keyboard (Karna E dipakai untuk naik/turun kamera)
-        if (Input.GetKeyDown(KeyCode.F))
+        // Jika kita menekan tombol 'F' di keyboard menggunakan Input System baru
+        if (Keyboard.current != null && Keyboard.current.fKey.wasPressedThisFrame)
         {
             OpenChest();
         }

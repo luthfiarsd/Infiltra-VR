@@ -32,4 +32,23 @@ public class PlayerInventory : MonoBehaviour
         // Jika belum ada, buat slot baru
         items.Add(new InventorySlot { item = newItem, amount = amountToAdd });
     }
+
+    // Fungsi untuk mengurangi item (untuk dipindah ke peti / dipakai)
+    public void RemoveItem(ItemData itemToRemove, int amountToRemove)
+    {
+        for (int i = 0; i < items.Count; i++)
+        {
+            if (items[i].item == itemToRemove)
+            {
+                items[i].amount -= amountToRemove;
+                
+                // Jika barang habis, hapus dari list
+                if (items[i].amount <= 0)
+                {
+                    items.RemoveAt(i);
+                }
+                return;
+            }
+        }
+    }
 }

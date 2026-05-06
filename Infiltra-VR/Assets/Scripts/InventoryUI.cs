@@ -8,6 +8,9 @@ public class InventoryUI : MonoBehaviour
     public Transform itemGrid; // Tempat slot akan di-spawn
     public GameObject slotPrefab; // Objek cetakan slot item
 
+    [Header("Referensi Lain (Opsional)")]
+    public ChestUI chestUI; // Agar tas tau jika layar peti sedang terbuka
+
     // Fungsi ini dipanggil untuk memperbarui tampilan UI
     public void RefreshUI()
     {
@@ -38,6 +41,14 @@ public class InventoryUI : MonoBehaviour
                 TextMeshProUGUI amountText = textTransform.GetComponent<TextMeshProUGUI>();
                 amountText.text = slotData.amount.ToString();
             }
+
+            // --- TAMBAHAN BARU: Membuat tombol bisa diklik untuk memindah barang ---
+            Button slotButton = newSlot.GetComponent<Button>();
+            if (slotButton != null)
+            {
+                // Saat tombol diklik, panggil fungsi transfer barang
+                slotButton.onClick.AddListener(() => TransferItemToChest(slotData));
+            }
         }
     }
 
@@ -47,6 +58,31 @@ public class InventoryUI : MonoBehaviour
         if (playerInventory != null && itemGrid != null && slotPrefab != null)
         {
             RefreshUI();
+        }
+    }
+
+    // Fungsi untuk memindah barang dari Tas ke Peti (jika peti sedang terbuka)
+    public void TransferItemToChest(PlayerInventory.InventorySlot slotData)
+    {
+        // Pastikan UI peti ada, sedang aktif/nyala di layar, dan ada peti yang dipilih
+        if (chestUI != null && chestUI.gameObject.activeInHierarchy && chestUI.currentChest != null)
+        {
+            if (slotData.amount > 0)
+            {
+                // 1. Tambahkan 1 barang ke dalam Peti
+                chestUI.currentChest.AddItem(slotData.item, 1);
+                
+                // 2. Kurangi 1 barang dari Tas Pemain
+                playerInventory.RemoveItem(slotData.item, 1);
+                
+                // 3. Perbarui kedua layar UI (Tas dan Peti)
+                RefreshUI();
+                chestUI.RefreshUI();
+            }
+        }
+        else
+        {
+            Debug.Log("Kamu mengklik item: " + slotData.item.itemName + " di Inventory");
         }
     }
 }
