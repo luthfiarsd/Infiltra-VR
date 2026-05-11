@@ -7,6 +7,7 @@ public class WaveManager : MonoBehaviour
 
     [Header("Wave State")]
     public int currentWave = 1;
+    public int maxWaves = 3; // Menang setelah melewati wave ini
     public int waveWaterThreshold = 50;  // Batas ancaman air dari bencana untuk wave ini
 
     [Header("UI Visuals")]
@@ -67,11 +68,24 @@ public class WaveManager : MonoBehaviour
                 GameManager.Instance.playerInventory.uang += 100;
                 Debug.Log($"Dapat hadiah 100 koin! Total uang: {GameManager.Instance.playerInventory.uang}");
             }
+
+            // Jika ini wave terakhir, player Menang
+            if (currentWave >= maxWaves)
+            {
+                GameManager.Instance.ChangeState(GameState.GameWon);
+            }
+            else
+            {
+                // Jika bukan wave terakhir, panggil layar antar-wave
+                GameManager.Instance.ChangeState(GameState.WaveWon);
+            }
         }
         else
         {
             Debug.Log($"[WaveManager] GAGAL! Serapan air ({playerAbsorption}) kurang dari ancaman wave ({waveWaterThreshold}). Banjir terjadi!");
-            // Logika kekalahan di sini
+            
+            // Panggil layar Lose/Kalah dari GameManager
+            GameManager.Instance.ChangeState(GameState.GameOver);
         }
     }
 
