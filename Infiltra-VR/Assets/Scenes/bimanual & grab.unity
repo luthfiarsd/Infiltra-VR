@@ -716,7 +716,7 @@ GameObject:
   - component: {fileID: 1220657101}
   - component: {fileID: 1220657100}
   m_Layer: 0
-  m_Name: Cylinder
+  m_Name: Cangkul
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1017,7 +1017,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae1ae302862c18a4cb241eec3056a5da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WateringSystem
-  waterParticles: {fileID: 0}
+  waterParticles: {fileID: 2104790886}
   tiltThreshold: 40
 --- !u!1 &1843760672
 GameObject:
@@ -1035,7 +1035,7 @@ GameObject:
   - component: {fileID: 1843760674}
   - component: {fileID: 1843760673}
   m_Layer: 0
-  m_Name: Capsule
+  m_Name: Pupuk
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1675,7 +1675,7 @@ GameObject:
   - component: {fileID: 2079004323}
   - component: {fileID: 2079004322}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: Bibit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6784,7 +6784,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2055883711}
