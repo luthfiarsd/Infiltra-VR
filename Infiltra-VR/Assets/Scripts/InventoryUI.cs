@@ -16,6 +16,12 @@ public class InventoryUI : MonoBehaviour
     private void Awake()
     {
         myRect = GetComponent<RectTransform>();
+        
+        // Coba cari otomatis jika belum dimasukkan di Inspector
+        if (chestUI == null)
+        {
+            chestUI = FindAnyObjectByType<ChestUI>(FindObjectsInactive.Include);
+        }
     }
 
     private void Update()
