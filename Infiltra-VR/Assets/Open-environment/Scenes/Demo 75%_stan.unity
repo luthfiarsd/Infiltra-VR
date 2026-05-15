@@ -1628,6 +1628,119 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 255570158}
   m_CullTransparentMesh: 1
+--- !u!1 &265363788
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 265363792}
+  - component: {fileID: 265363791}
+  - component: {fileID: 265363790}
+  - component: {fileID: 265363789}
+  m_Layer: 0
+  m_Name: Quad2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!64 &265363789
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 265363788}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &265363790
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 265363788}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: dc19dea219ff6af40bd0bc4aaee49329, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &265363791
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 265363788}
+  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &265363792
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 265363788}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: -0.488, z: -0.592}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1401877736}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1 &323420404
 GameObject:
   m_ObjectHideFlags: 0
@@ -2067,7 +2180,7 @@ GameObject:
   - component: {fileID: 421559452}
   m_Layer: 0
   m_Name: WateringSystem
-  m_TagString: Untagged
+  m_TagString: watering
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2101,6 +2214,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WateringSystem
   waterParticles: {fileID: 1041754942}
   tiltThreshold: 40
+  jarakSiram: 3
 --- !u!4 &484758401 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d67d258f913d61542ab7859a8ae7a086, type: 3}
@@ -3332,6 +3446,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WateringSystem
   waterParticles: {fileID: 1041754942}
   tiltThreshold: 40
+  jarakSiram: 3
 --- !u!54 &923191666
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3552,7 +3667,7 @@ GameObject:
   - component: {fileID: 1041754943}
   m_Layer: 0
   m_Name: Particle System
-  m_TagString: Untagged
+  m_TagString: watering
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7320,7 +7435,7 @@ ParticleSystem:
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
-    collisionMessages: 0
+    collisionMessages: 1
     collidesWithDynamic: 1
     interiorCollisions: 0
   TriggerModule:
@@ -8993,8 +9108,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 0.03284335, z: 0.9987984}
-  m_Center: {x: 0, y: -0.48357832, z: -0.59830284}
+  m_Size: {x: 1, y: 0.039547525, z: 0.9987984}
+  m_Center: {x: 0, y: -0.48022634, z: -0.59830284}
 --- !u!4 &1401877736
 Transform:
   m_ObjectHideFlags: 0
@@ -9004,11 +9119,12 @@ Transform:
   m_GameObject: {fileID: 1401877734}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 22.81531, y: 0.897, z: 56.248}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 22.81531, y: 1.153, z: 56.248}
+  m_LocalScale: {x: 1, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 575126053}
+  - {fileID: 265363792}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1401877737
@@ -9026,7 +9142,7 @@ MonoBehaviour:
   statusTanah: 0
   modelTanahBerlubang: {fileID: 575126052}
   modelBibit: {fileID: 1702790047}
-  modelTanahTertutup: {fileID: 0}
+  modelTanahTertutup: {fileID: 265363788}
   modelTunas: {fileID: 173957474}
 --- !u!1 &1410921473
 GameObject:
@@ -10908,6 +11024,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 6cadff5a4c46d0d4087fa0198104e558, type: 3}
       propertyPath: m_Name
       value: Watering_can
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6cadff5a4c46d0d4087fa0198104e558, type: 3}
+      propertyPath: m_TagString
+      value: watering
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
