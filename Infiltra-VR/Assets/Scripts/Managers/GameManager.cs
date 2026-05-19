@@ -1,3 +1,4 @@
+/*
 using System;
 using UnityEngine;
 using TMPro; // Untuk mengakses UI Text
@@ -113,4 +114,170 @@ public class GameManager : MonoBehaviour
     }
 
     
+}
+*/
+
+using System;
+using UnityEngine;
+using TMPro; 
+using UnityEngine.UI; 
+
+public enum GameState
+{
+    MainMenu,
+    Playing,
+    Paused,
+    GameOver,
+    GameWon,
+    WaveWon 
+}
+
+public class GameManager : MonoBehaviour
+{
+    public static GameManager Instance { get; private set; }
+
+    [Header("Game State")]
+    public GameState CurrentState { get; private set; }
+    
+    public static event Action<GameState> OnGameStateChanged;
+
+    [Header("Referensi Sistem")]
+    [Tooltip("Tarik GameObject yang memiliki script PlayerInventory ke sini")]
+    public PlayerInventory playerInventory;
+
+    [Header("Environment State")]
+    public int totalWaterAbsorption = 0; 
+    public int currentWave = 1; 
+    public int baseThreshold = 50; 
+
+    [Header("UI Visuals Baru")]
+    [Tooltip("Tarik objek Wave_Text (TMP) ke sini")]
+    public TextMeshProUGUI waveTextUI;
+    
+    [Tooltip("Tarik objek Progress_Text (TMP) ke sini")]
+    public TextMeshProUGUI progressTextUI;
+
+    [Tooltip("Tarik objek Slider Progres ke sini")]
+    public Slider progressSlider;
+
+    [Header("Efek Visual Target Tercapai")]
+    [Tooltip("Tarik objek 'Fill' (yang ada di dalam Slider) ke sini")]
+    public Image sliderFillImage; // Menambahkan akses ke komponen gambar untuk mengubah warna
+    public Color warnaNormal = Color.green; // Warna saat belum tercapai
+    public Color warnaTargetTercapai = new Color(0.2f, 0.8f, 1f); // Warna biru muda saat target tercapai
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    private void Start()
+    {
+        ChangeState(GameState.MainMenu);
+        UpdateUI();
+    }
+
+    public void ChangeState(GameState newState)
+    {
+        CurrentState = newState;
+
+        switch (newState)
+        {
+            case GameState.MainMenu:
+                Time.timeScale = 1f; 
+                break;
+            case GameState.Playing:
+                Time.timeScale = 1f; 
+                break;
+            case GameState.Paused:
+                Time.timeScale = 0f; 
+                break;
+            case GameState.GameOver:
+                Time.timeScale = 0f; 
+                break;
+            case GameState.GameWon:
+                Time.timeScale = 0f; 
+                break;
+            case GameState.WaveWon:
+                Time.timeScale = 0f; 
+                break;
+        }
+
+        Debug.Log($"[GameManager] Game State berubah menjadi: {newState}");
+        OnGameStateChanged?.Invoke(newState);
+    }
+
+    public void AddPlantedTreeAbsorption(int absorptionValue)
+    {
+        totalWaterAbsorption += absorptionValue;
+        Debug.Log($"[GameManager] Pohon ditanam! Serapan bertambah {absorptionValue}. Total Serapan: {totalWaterAbsorption}");
+        
+        UpdateUI();
+        CheckWaveCondition();
+    }
+
+    private void CheckWaveCondition()
+    {
+        int currentThreshold = currentWave * baseThreshold;
+        
+        if (totalWaterAbsorption >= currentThreshold)
+        {
+            // KITA MATIKAN PERGANTIAN STATE OTOMATISNYA
+            // ChangeState(GameState.WaveWon); 
+
+            Debug.Log($"[GameManager] Target Wave {currentWave} tercapai! Menunggu simulasi dimulai...");
+        }
+    }
+
+    private void UpdateUI()
+    {
+        int currentThreshold = currentWave * baseThreshold;
+        
+        // Mengecek apakah target sudah tercapai atau belum
+        bool isTargetTercapai = totalWaterAbsorption >= currentThreshold;
+
+        if (waveTextUI != null)
+        {
+            waveTextUI.text = "Wave: " + currentWave;
+        }
+
+        if (progressTextUI != null)
+        {
+            // Logika perubahan teks
+            if (isTargetTercapai)
+            {
+                progressTextUI.text = "Target Aman: " + totalWaterAbsorption + " / " + currentThreshold + " L";
+            }
+            else
+            {
+                progressTextUI.text = "Penyerapan: " + totalWaterAbsorption + " / " + currentThreshold + " L";
+            }
+        }
+
+        if (progressSlider != null)
+        {
+            progressSlider.maxValue = currentThreshold;
+            progressSlider.value = totalWaterAbsorption;
+        }
+
+        // Logika perubahan warna bar
+        if (sliderFillImage != null)
+        {
+            sliderFillImage.color = isTargetTercapai ? warnaTargetTercapai : warnaNormal;
+        }
+    }
+
+    [ContextMenu("Test: Tanam Pohon (+15 Serapan)")]
+    public void TestPlantTree()
+    {
+        AddPlantedTreeAbsorption(15);
+    }
 }
