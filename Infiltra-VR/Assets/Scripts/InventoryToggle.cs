@@ -14,6 +14,29 @@ public class InventoryToggle : MonoBehaviour
     [Tooltip("Pilih tombol dari VR Controller, misalnya: XRI LeftHand/Primary Button")]
     public InputActionReference toggleButton;
 
+    private void Awake()
+    {
+        // Cari otomatis panel inventory jika kosong
+        if (inventoryPanel == null)
+        {
+            RectTransform[] allPanels = FindObjectsByType<RectTransform>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+            foreach (RectTransform rt in allPanels)
+            {
+                if (rt.name == "PlayerInventoryPanel")
+                {
+                    inventoryPanel = rt.gameObject;
+                    break;
+                }
+            }
+        }
+        
+        // Cari otomatis player inventory jika kosong
+        if (playerInventory == null)
+        {
+            playerInventory = FindAnyObjectByType<PlayerInventory>();
+        }
+    }
+
     private void OnEnable()
     {
         // Mengaktifkan action dan mendaftarkan event saat tombol mulai ditekan

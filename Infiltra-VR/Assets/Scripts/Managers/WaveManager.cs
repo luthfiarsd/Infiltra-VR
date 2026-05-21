@@ -44,6 +44,12 @@ public class WaveManager : MonoBehaviour
         Debug.Log($"[WaveManager] Wave {currentWave} dimulai! Ancaman air naik menjadi {waveWaterThreshold}.");
         
         UpdateUI();
+        
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.currentWave = this.currentWave;
+            GameManager.Instance.UpdateUI();
+        }
     }
 
     // Fungsi untuk mengecek apakah serapan pemain cukup untuk menahan wave

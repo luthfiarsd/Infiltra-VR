@@ -55,6 +55,19 @@ public class GameUIManager : MonoBehaviour
 
     private void Start()
     {
+        // Cari otomatis panel-panel utama jika kosong (untuk mencegah bug kalau lupa ditarik)
+        if (gameplayHUDPanel == null || mainMenuPanel == null)
+        {
+            RectTransform[] allPanels = FindObjectsByType<RectTransform>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+            foreach (RectTransform rt in allPanels)
+            {
+                if (gameplayHUDPanel == null && rt.name == "GameplayHUD_Panel") 
+                    gameplayHUDPanel = rt.gameObject;
+                if (mainMenuPanel == null && rt.name == "MainMenu_Panel") 
+                    mainMenuPanel = rt.gameObject;
+            }
+        }
+
         // Saat game mulai, pastikan panel sesuai state awal GameManager
         if (GameManager.Instance != null)
         {
@@ -122,7 +135,11 @@ public class GameUIManager : MonoBehaviour
 
     public void Button_BackToMainMenu()
     {
-        GameManager.Instance.ChangeState(GameState.MainMenu);
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.ResetGame();
+            GameManager.Instance.ChangeState(GameState.MainMenu);
+        }
     }
 
     public void Button_QuitGame()

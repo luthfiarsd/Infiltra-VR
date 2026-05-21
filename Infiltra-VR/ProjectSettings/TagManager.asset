@@ -7,6 +7,7 @@ TagManager:
   - watering
   - cangkul
   - bibit
+  - pupuk
   layers:
   - Default
   - TransparentFX

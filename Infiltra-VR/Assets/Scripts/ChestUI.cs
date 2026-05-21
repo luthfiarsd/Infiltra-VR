@@ -18,14 +18,6 @@ public class ChestUI : MonoBehaviour
         myRect = GetComponent<RectTransform>();
     }
 
-    private void Update()
-    {
-        if (myRect == null) return;
-        
-        // Peti selalu di sebelah kanan layar (geser sejauh 300 unit ke kanan)
-        myRect.anchoredPosition = new Vector2(300f, myRect.anchoredPosition.y);
-    }
-
     // Fungsi untuk memuat ulang tampilan item di dalam chest
     public void RefreshUI()
     {
