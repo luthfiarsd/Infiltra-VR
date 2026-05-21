@@ -7,4 +7,5 @@ public class ItemData : ScriptableObject
     public Sprite itemIcon;
     public int buyPrice; // Harga beli di Shop
     public int sellPrice; // Harga jual
+    public int waterAbsorption; // tambahan nada
 }
