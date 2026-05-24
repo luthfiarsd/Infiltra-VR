@@ -26,11 +26,11 @@ public class WateringSystem : MonoBehaviour
             // --- 2. KELUARKAN AIR VISUAL ---
             if (!waterParticles.isEmitting) waterParticles.Play();
 
-            // --- 3. FITUR RADAR PRO (RAYCAST) ---
-            // Nembak laser matematika dari teko lurus ke bawah tanah
+            // --- 3. FITUR RADAR PRO (SPHERECAST) ---
+            // Menembakkan radar tebal (radius 0.5) ke arah depan semprotan air, bukan lurus ke bawah
             RaycastHit infoTabrakan;
             
-            if (Physics.Raycast(waterParticles.transform.position, Vector3.down, out infoTabrakan, jarakSiram, Physics.AllLayers, QueryTriggerInteraction.Collide))
+            if (Physics.SphereCast(waterParticles.transform.position, 0.5f, waterParticles.transform.forward, out infoTabrakan, jarakSiram, Physics.AllLayers, QueryTriggerInteraction.Collide))
             {
                 // Ngecek: Apakah benda yang kena radar ini punya script TanahBerkebun?
                 TanahBerkebun tanah = infoTabrakan.collider.GetComponent<TanahBerkebun>();

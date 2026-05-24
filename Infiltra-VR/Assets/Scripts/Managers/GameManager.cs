@@ -215,6 +215,21 @@ public class GameManager : MonoBehaviour
         OnGameStateChanged?.Invoke(newState);
     }
 
+    public void ResetGame()
+    {
+        totalWaterAbsorption = 0;
+        currentWave = 1;
+        
+        if (WaveManager.Instance != null)
+        {
+            WaveManager.Instance.currentWave = 1;
+            WaveManager.Instance.waveWaterThreshold = 50;
+        }
+        
+        UpdateUI();
+        Debug.Log("[GameManager] Game di-reset ke awal.");
+    }
+
     public void AddPlantedTreeAbsorption(int absorptionValue)
     {
         totalWaterAbsorption += absorptionValue;
@@ -237,8 +252,38 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void UpdateUI()
+    public void UpdateUI()
     {
+        // 1. Cari referensi otomatis jika belum disetup di Inspector
+        if (waveTextUI == null || progressTextUI == null)
+        {
+            TextMeshProUGUI[] allTexts = FindObjectsByType<TextMeshProUGUI>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+            foreach (var t in allTexts)
+            {
+                if (waveTextUI == null && t.name == "Wave_Text") waveTextUI = t;
+                if (progressTextUI == null && t.name == "Progress_Text") progressTextUI = t;
+            }
+        }
+
+        if (progressSlider == null || sliderFillImage == null)
+        {
+            RectTransform[] allTransforms = FindObjectsByType<RectTransform>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+            foreach (var rt in allTransforms)
+            {
+                if (rt.name == "GameplayHUD_Panel")
+                {
+                    progressSlider = rt.GetComponentInChildren<Slider>(true);
+                    if (progressSlider != null)
+                    {
+                        Transform fillTransform = progressSlider.transform.Find("Fill Area/Fill");
+                        if (fillTransform != null) sliderFillImage = fillTransform.GetComponent<Image>();
+                    }
+                    break;
+                }
+            }
+        }
+
+        // 2. Logika Update Text & Slider
         int currentThreshold = currentWave * baseThreshold;
         
         // Mengecek apakah target sudah tercapai atau belum

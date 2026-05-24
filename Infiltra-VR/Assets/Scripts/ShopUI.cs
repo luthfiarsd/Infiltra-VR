@@ -108,6 +108,23 @@ public class ShopUI : MonoBehaviour
     private ItemData selectedItem;
     private int currentQty = 1;
 
+    private void Awake()
+    {
+        // Cari otomatis PlayerInventory jika lupa dimasukkan di Inspector
+        if (playerInventory == null)
+        {
+            playerInventory = FindAnyObjectByType<PlayerInventory>();
+        }
+
+        // Pasang event klik tombol beli secara otomatis via script
+        if (btnBeli != null)
+        {
+            // Hapus listener lama untuk mencegah double-click bug
+            btnBeli.onClick.RemoveAllListeners();
+            btnBeli.onClick.AddListener(BuyItemFromPanel);
+        }
+    }
+
     private void Start()
     {
         ClearDetailPanel();
@@ -233,7 +250,7 @@ public class ShopUI : MonoBehaviour
 
             Debug.Log($"Berhasil membeli: {currentQty} {selectedItem.itemName} | Sisa Uang: Rp {playerInventory.uang}");
             
-            InventoryUI inventoryUI = playerInventory.GetComponentInChildren<InventoryUI>();
+            InventoryUI inventoryUI = FindAnyObjectByType<InventoryUI>(FindObjectsInactive.Include);
             if (inventoryUI != null) inventoryUI.RefreshUI();
 
             ClearDetailPanel();

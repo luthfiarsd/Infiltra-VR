@@ -10,11 +10,15 @@ public class TanahBerkebun : MonoBehaviour
     public GameObject modelBibit;          
     public GameObject modelTanahTertutup;  
     public GameObject modelTunas;          
+    public GameObject modelPohonDewasa; // Model pohon saat sudah disiram pupuk
+
+    [Header("Pengaturan Gameplay")]
+    public int waterAbsorption = 15; // Jumlah air yang diserap pohon ini saat dewasa
 
     void OnTriggerEnter(Collider bendaYangNyentuh)
     {
-        // Kunci Negara
-        if (statusTanah == 4) return;
+        // Kunci Negara - Sekarang dikunci setelah step 5 (dewasa)
+        if (statusTanah == 5) return;
 
         // STEP 1: MENCANGKUL TANAH
         if (statusTanah == 0 && bendaYangNyentuh.CompareTag("cangkul")) 
@@ -44,6 +48,29 @@ public class TanahBerkebun : MonoBehaviour
             if(modelTanahBerlubang != null) modelTanahBerlubang.SetActive(false);
             if(modelBibit != null) modelBibit.SetActive(true);
             if(modelTanahTertutup != null) modelTanahTertutup.SetActive(true);
+        }
+
+        // STEP 5: DIBERI PUPUK (Tumbuh Dewasa & Masuk ke GameManager)
+        else if (statusTanah == 4 && bendaYangNyentuh.CompareTag("pupuk"))
+        {
+            statusTanah = 5;
+            Debug.Log("Diberi Pupuk! Pohon tumbuh dewasa dan menyerap air!");
+            
+            if(modelTunas != null) modelTunas.SetActive(false);
+            if(modelPohonDewasa != null) 
+            {
+                modelPohonDewasa.SetActive(true);
+                BekukanFisika(modelPohonDewasa);
+            }
+
+            // Menyambungkan ke GameManager dan WaveManager
+            if (GameManager.Instance != null)
+            {
+                GameManager.Instance.AddPlantedTreeAbsorption(waterAbsorption);
+            }
+            
+            // Opsional: Hancurkan item pupuk setelah dipakai
+            Destroy(bendaYangNyentuh.gameObject);
         }
     }
 
