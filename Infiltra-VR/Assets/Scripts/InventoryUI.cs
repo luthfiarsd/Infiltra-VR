@@ -11,6 +11,12 @@ public class InventoryUI : MonoBehaviour
     [Header("Referensi Lain (Opsional)")]
     public ChestUI chestUI; // Agar tas tau jika layar peti sedang terbuka
 
+    [Header("Spawn Settings")]
+    public float spawnDistance = 0.5f; // Jarak spawn di depan kamera
+    public AudioClip spawnSound; // Suara saat barang dikeluarkan
+    public GameObject spawnEffectPrefab; // Efek visual saat barang dikeluarkan
+    private AudioSource audioSource;
+
     private RectTransform myRect;
 
     private void Awake()
@@ -21,6 +27,14 @@ public class InventoryUI : MonoBehaviour
         if (chestUI == null)
         {
             chestUI = FindAnyObjectByType<ChestUI>(FindObjectsInactive.Include);
+        }
+
+        // Siapkan AudioSource
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+            audioSource.playOnAwake = false;
         }
     }
 
@@ -96,6 +110,37 @@ public class InventoryUI : MonoBehaviour
         else
         {
             Debug.Log("Kamu mengklik item: " + slotData.item.itemName + " di Inventory");
+
+            // Jika barang memiliki prefab 3D
+            if (slotData.item.itemPrefab != null)
+            {
+                // Tentukan posisi (sedikit di depan kepala/kamera pemain)
+                Transform camTransform = Camera.main.transform;
+                Vector3 spawnPos = camTransform.position + camTransform.forward * spawnDistance;
+
+                // Memunculkan barang ke dunia nyata
+                Instantiate(slotData.item.itemPrefab, spawnPos, Quaternion.identity);
+
+                // Mainkan suara jika ada
+                if (spawnSound != null && audioSource != null)
+                {
+                    audioSource.PlayOneShot(spawnSound);
+                }
+
+                // Munculkan efek partikel jika ada
+                if (spawnEffectPrefab != null)
+                {
+                    Instantiate(spawnEffectPrefab, spawnPos, Quaternion.identity);
+                }
+
+                // Kurangi barang dari tas dan perbarui UI
+                playerInventory.RemoveItem(slotData.item, 1);
+                RefreshUI();
+            }
+            else
+            {
+                Debug.LogWarning("Item " + slotData.item.itemName + " belum memiliki referensi itemPrefab!");
+            }
         }
     }
 }
