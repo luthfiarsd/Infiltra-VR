@@ -16,3 +16,5 @@ MonoBehaviour:
   itemIcon: {fileID: 21300000, guid: 310ef0f38fe364cc986d05acdbdf1183, type: 3}
   buyPrice: 100
   sellPrice: 90
+  waterAbsorption: 0
+  itemPrefab: {fileID: 3210807277054456607, guid: 6aa950534440d7e4abc99b06b320a0a7, type: 3}
