@@ -17,3 +17,4 @@ MonoBehaviour:
   buyPrice: 0
   sellPrice: 0
   waterAbsorption: 0
+  itemPrefab: {fileID: 9130684049475909664, guid: ca895abe29d15374ca34ecc963f92100, type: 3}
