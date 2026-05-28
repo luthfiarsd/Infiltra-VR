@@ -20,10 +20,10 @@ public class LaserPetani : MonoBehaviour
         // Bikin garis laser MERAH di layar Unity (cuma kelihatan di tab Scene pas Play) biar ketahuan lasernya nembak ke mana!
         Debug.DrawRay(transform.position, transform.forward * 10f, Color.red);
 
-        if (Physics.Raycast(sinarLaser, out titikYangKena, 10f, cumaTanah))
+        if (Physics.Raycast(sinarLaser, out titikYangKena, 10f, cumaTanah, QueryTriggerInteraction.Collide))
         {
             papanHologram.gameObject.SetActive(true);
-            papanHologram.PindahKeTitik(titikYangKena.point);
+            papanHologram.PindahKeTitik(titikYangKena.point + (Vector3.up * 0.1f));
         }
         else
         {
