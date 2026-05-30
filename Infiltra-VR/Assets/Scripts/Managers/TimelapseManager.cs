@@ -8,6 +8,7 @@ public class TimelapseManager : MonoBehaviour
     [Tooltip("Jika kosong, akan mencoba mencari GameManager dan WaveManager yang aktif di scene.")]
     public GameManager gameManager;
     public WaveManager waveManager;
+    public WeatherEffectController weatherEffectController;
 
     [Header("Referensi Objek Animasi (Bisa di Drag & Drop)")]
     [Tooltip("Daftar pohon dummy yang akan membesar (scale up). Nantinya bisa diganti Animator.")]
@@ -34,11 +35,13 @@ public class TimelapseManager : MonoBehaviour
         // Cari otomatis jika belum di-assign di Inspector
         if (gameManager == null) gameManager = GameManager.Instance;
         if (waveManager == null) waveManager = WaveManager.Instance;
+        if (weatherEffectController == null) weatherEffectController = FindFirstObjectByType<WeatherEffectController>();
 
         // Pastikan semua efek mati di awal
         if (rainEffect != null) rainEffect.SetActive(false);
         if (wetGroundEffect != null) wetGroundEffect.SetActive(false);
         if (floodWaveEffect != null) floodWaveEffect.SetActive(false);
+        if (weatherEffectController != null) weatherEffectController.ResetWeather();
         
         // Atur skala awal pohon menjadi 0 agar siap membesar
         foreach (var tree in dummyTrees)
@@ -60,6 +63,7 @@ public class TimelapseManager : MonoBehaviour
         
         if (gameManager == null) gameManager = GameManager.Instance;
         if (waveManager == null) waveManager = WaveManager.Instance;
+        if (weatherEffectController == null) weatherEffectController = FindFirstObjectByType<WeatherEffectController>();
 
         StartCoroutine(TimelapseSequence());
     }
@@ -99,12 +103,14 @@ public class TimelapseManager : MonoBehaviour
 
         // FASE 2: Hujan Turun
         Debug.Log("[TimelapseManager] Hujan turun...");
+        if (weatherEffectController != null) weatherEffectController.StartRain();
         if (rainEffect != null) rainEffect.SetActive(true);
         
         yield return new WaitForSeconds(rainDuration);
 
         // Hujan berhenti atau biarkan menyala? Sementara kita matikan setelah durasi
         if (rainEffect != null) rainEffect.SetActive(false);
+        if (weatherEffectController != null) weatherEffectController.StopRain(true);
 
 
         // FASE 3: Evaluasi Win/Lose
@@ -116,6 +122,7 @@ public class TimelapseManager : MonoBehaviour
         {
             // MENANG (Tanah hanya basah)
             Debug.Log("[TimelapseManager] Hasil: BERHASIL menahan air!");
+            if (weatherEffectController != null) weatherEffectController.ShowWetGround();
             if (wetGroundEffect != null) wetGroundEffect.SetActive(true);
             
             yield return new WaitForSeconds(2f); // Beri waktu player melihat tanah basah
