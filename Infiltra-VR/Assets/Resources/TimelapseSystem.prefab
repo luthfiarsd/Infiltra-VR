@@ -5343,6 +5343,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TimelapseManager
   gameManager: {fileID: 0}
   waveManager: {fileID: 0}
+  weatherEffectController: {fileID: 0}
   dummyTrees:
   - {fileID: 0}
   - {fileID: 0}
@@ -5351,7 +5352,7 @@ MonoBehaviour:
   wetGroundEffect: {fileID: 3523140596606957935}
   floodWaveEffect: {fileID: 9039047418200926428}
   treeGrowthDuration: 2
-  rainDuration: 3
+  rainDuration: 10
   floodWaveDuration: 2
 --- !u!1 &9039047418200926428
 GameObject:
