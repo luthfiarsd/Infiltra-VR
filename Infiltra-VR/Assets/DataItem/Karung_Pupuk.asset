@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemName: Karung Pupuk
   itemIcon: {fileID: 21300000, guid: bdaae33d86d83c54f983e066c84fcfee, type: 3}
-  buyPrice: 0
+  buyPrice: 100
   sellPrice: 0
   waterAbsorption: 0
+  waveRewardBonus: 0
   itemPrefab: {fileID: 1388932874330307956, guid: 9cbc4eac6019d084aaa4248edd752ec8, type: 3}
+  grownTreeData: {fileID: 0}

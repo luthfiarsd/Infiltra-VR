@@ -147,8 +147,15 @@ public class GameManager : MonoBehaviour
 
     [Header("Environment State")]
     public int totalWaterAbsorption = 0; 
+    public int totalPlantRewardBonus = 0; // Total bonus uang dari semua tanaman dewasa
     public int currentWave = 1; 
     public int baseThreshold = 50; 
+
+    [Header("Wave Reward Settings")]
+    [Tooltip("Reward dasar saat menang wave pertama")]
+    public int baseWaveReward = 1000;
+    [Tooltip("Tambahan reward per level wave")]
+    public int rewardPerWaveLevel = 500;
 
     [Header("UI Visuals Baru")]
     [Tooltip("Tarik objek Wave_Text (TMP) ke sini")]
@@ -218,6 +225,7 @@ public class GameManager : MonoBehaviour
     public void ResetGame()
     {
         totalWaterAbsorption = 0;
+        totalPlantRewardBonus = 0;
         currentWave = 1;
         
         if (WaveManager.Instance != null)
@@ -237,6 +245,27 @@ public class GameManager : MonoBehaviour
         
         UpdateUI();
         CheckWaveCondition();
+    }
+
+    /// <summary>
+    /// Dipanggil oleh TanahBerkebun saat pohon dewasa (dipupuk).
+    /// </summary>
+    public void AddPlantedTreeReward(int rewardValue)
+    {
+        totalPlantRewardBonus += rewardValue;
+        Debug.Log($"[GameManager] Bonus tanaman +{rewardValue}. Total Bonus: {totalPlantRewardBonus}");
+    }
+
+    /// <summary>
+    /// Hitung total reward menang wave.
+    /// Formula: baseWaveReward + (currentWave - 1) * rewardPerWaveLevel + totalPlantRewardBonus
+    /// </summary>
+    public int CalculateWaveReward()
+    {
+        int waveBonus = baseWaveReward + (currentWave - 1) * rewardPerWaveLevel;
+        int total = waveBonus + totalPlantRewardBonus;
+        Debug.Log($"[GameManager] Reward = {waveBonus} (wave) + {totalPlantRewardBonus} (tanaman) = {total}");
+        return total;
     }
 
     private void CheckWaveCondition()

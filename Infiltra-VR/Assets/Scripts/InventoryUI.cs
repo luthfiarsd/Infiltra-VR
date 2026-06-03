@@ -119,7 +119,17 @@ public class InventoryUI : MonoBehaviour
                 Vector3 spawnPos = camTransform.position + camTransform.forward * spawnDistance;
 
                 // Memunculkan barang ke dunia nyata
-                Instantiate(slotData.item.itemPrefab, spawnPos, Quaternion.identity);
+                GameObject spawnedItem = Instantiate(slotData.item.itemPrefab, spawnPos, Quaternion.identity);
+
+                // Pasang BibitDataCarrier agar TanahBerkebun bisa identifikasi jenis tanaman
+                BibitDataCarrier carrier = spawnedItem.AddComponent<BibitDataCarrier>();
+                carrier.itemData = slotData.item;
+
+                // Auto-tag dengan "bibit" jika barang adalah bibit tanaman
+                if (slotData.item.grownTreeData != null || slotData.item.itemName.ToLower().Contains("bibit"))
+                {
+                    spawnedItem.tag = "bibit";
+                }
 
                 // Mainkan suara jika ada
                 if (spawnSound != null && audioSource != null)

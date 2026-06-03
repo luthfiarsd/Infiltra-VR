@@ -116,10 +116,9 @@ public class ShopUI : MonoBehaviour
             playerInventory = FindAnyObjectByType<PlayerInventory>();
         }
 
-        // Pasang event klik tombol beli secara otomatis via script
+        // Pasang event klik tombol Beli langsung dari panel detail
         if (btnBeli != null)
         {
-            // Hapus listener lama untuk mencegah double-click bug
             btnBeli.onClick.RemoveAllListeners();
             btnBeli.onClick.AddListener(BuyItemFromPanel);
         }
@@ -192,9 +191,16 @@ public class ShopUI : MonoBehaviour
     // Dipanggil otomatis saat laser VR menunjuk ke kotak pohon
     public void OnLaserHoverEnter(ItemData itemData)
     {
-        // Asumsi di ItemData kamu ada variabel 'itemName' dan 'dayaSerap' (misal tipe float/int/string)
-        // Jika nama variabel daya serapmu berbeda, silakan sesuaikan namanya di bawah ini (misal: itemData.waterAbsorption)
-        hoverInfoText.text = $"{itemData.itemName}\nDaya Serap: {itemData.waterAbsorption} Liter";
+        ItemData statsSource = itemData;
+        if (itemData != null && itemData.grownTreeData != null)
+        {
+            statsSource = itemData.grownTreeData;
+        }
+
+        int absorption = (statsSource != null) ? statsSource.waterAbsorption : 0;
+        int bonus = (statsSource != null) ? statsSource.waveRewardBonus : 0;
+
+        hoverInfoText.text = $"{itemData.itemName}\nDaya Serap: {absorption} Liter\nBonus Wave: Rp {bonus}";
     }
 
     // Dipanggil otomatis saat laser VR tidak lagi menunjuk kotak tersebut
@@ -248,7 +254,7 @@ public class ShopUI : MonoBehaviour
             playerInventory.uang -= totalHarga; 
             playerInventory.AddItem(selectedItem, currentQty); 
 
-            Debug.Log($"Berhasil membeli: {currentQty} {selectedItem.itemName} | Sisa Uang: Rp {playerInventory.uang}");
+            Debug.Log($"Berhasil membeli langsung: {currentQty} {selectedItem.itemName} | Sisa Uang: Rp {playerInventory.uang}");
             
             InventoryUI inventoryUI = FindAnyObjectByType<InventoryUI>(FindObjectsInactive.Include);
             if (inventoryUI != null) inventoryUI.RefreshUI();

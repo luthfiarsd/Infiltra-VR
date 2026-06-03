@@ -17,3 +17,6 @@ MonoBehaviour:
   buyPrice: 100
   sellPrice: 90
   waterAbsorption: 25
+  waveRewardBonus: 10
+  itemPrefab: {fileID: 4815020832256044568, guid: f9ff221843245184e8fdcd253415e427, type: 3}
+  grownTreeData: {fileID: 0}

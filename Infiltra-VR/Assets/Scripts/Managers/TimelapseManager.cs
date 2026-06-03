@@ -43,12 +43,26 @@ public class TimelapseManager : MonoBehaviour
         if (floodWaveEffect != null) floodWaveEffect.SetActive(false);
         if (weatherEffectController != null) weatherEffectController.ResetWeather();
         
-        // Atur skala awal pohon menjadi 0 agar siap membesar
+        // Atur skala awal pohon menjadi 0 (hanya yang belum dewasa)
         foreach (var tree in dummyTrees)
         {
             if (tree != null)
             {
-                tree.transform.localScale = Vector3.zero;
+                TanahBerkebun tanah = tree.GetComponentInParent<TanahBerkebun>();
+                if (tanah == null || tanah.statusTanah < 5)
+                    tree.transform.localScale = Vector3.zero;
+            }
+        }
+
+        TanahBerkebun[] allPlotsStart = FindObjectsByType<TanahBerkebun>(FindObjectsSortMode.None);
+        foreach (var plot in allPlotsStart)
+        {
+            if (plot != null && plot.statusTanah < 5)
+            {
+                if (plot.activePohonInstance != null)
+                    plot.activePohonInstance.transform.localScale = Vector3.zero;
+                else if (plot.modelPohonDewasa != null)
+                    plot.modelPohonDewasa.transform.localScale = Vector3.zero;
             }
         }
     }
@@ -74,7 +88,6 @@ public class TimelapseManager : MonoBehaviour
         Debug.Log("[TimelapseManager] Memulai Fase Timelapse...");
 
         // FASE 1: Animasi Pohon Tumbuh (Scale up)
-        // Nantinya di sini kamu bisa ubah menjadi: treeAnimator.SetTrigger("Grow");
         Debug.Log("[TimelapseManager] Pohon mulai tumbuh...");
         float elapsedTime = 0f;
         while (elapsedTime < treeGrowthDuration)
@@ -82,12 +95,29 @@ public class TimelapseManager : MonoBehaviour
             elapsedTime += Time.deltaTime;
             float progress = elapsedTime / treeGrowthDuration;
             
-            // Lerp scale dari 0 ke 1
+            // Lerp scale dari 0 ke 1 untuk dummyTrees
             foreach (var tree in dummyTrees)
             {
                 if (tree != null)
                 {
-                    tree.transform.localScale = Vector3.one * progress;
+                    // Hanya scale up pohon yang sudah dewasa (dipupuk)
+                    TanahBerkebun tanah = tree.GetComponentInParent<TanahBerkebun>();
+                    if (tanah != null && tanah.statusTanah == 5)
+                        tree.transform.localScale = Vector3.one * progress;
+                }
+            }
+
+            // Lerp scale untuk model pohon dinamis pada setiap plot
+            TanahBerkebun[] allPlots = FindObjectsByType<TanahBerkebun>(FindObjectsSortMode.None);
+            foreach (var plot in allPlots)
+            {
+                if (plot != null && plot.statusTanah == 5)
+                {
+                    GameObject targetTree = (plot.activePohonInstance != null) ? plot.activePohonInstance : plot.modelPohonDewasa;
+                    if (targetTree != null)
+                    {
+                        targetTree.transform.localScale = Vector3.one * progress;
+                    }
                 }
             }
             yield return null;
@@ -97,6 +127,19 @@ public class TimelapseManager : MonoBehaviour
         foreach (var tree in dummyTrees)
         {
             if (tree != null) tree.transform.localScale = Vector3.one;
+        }
+
+        TanahBerkebun[] finalPlots = FindObjectsByType<TanahBerkebun>(FindObjectsSortMode.None);
+        foreach (var plot in finalPlots)
+        {
+            if (plot != null && plot.statusTanah == 5)
+            {
+                GameObject targetTree = (plot.activePohonInstance != null) ? plot.activePohonInstance : plot.modelPohonDewasa;
+                if (targetTree != null)
+                {
+                    targetTree.transform.localScale = Vector3.one;
+                }
+            }
         }
 
         yield return new WaitForSeconds(0.5f); // Jeda sejenak
@@ -130,8 +173,9 @@ public class TimelapseManager : MonoBehaviour
             // Beri hadiah uang ke PlayerInventory jika berhasil
             if (gameManager.playerInventory != null)
             {
-                gameManager.playerInventory.uang += 100;
-                Debug.Log($"Dapat hadiah 100 koin! Total uang: {gameManager.playerInventory.uang}");
+                int reward = gameManager.CalculateWaveReward();
+                gameManager.playerInventory.uang += reward;
+                Debug.Log($"Dapat hadiah {reward} koin! Total uang: {gameManager.playerInventory.uang}");
             }
             
             // Lanjut ke wave selanjutnya atau menang penuh
