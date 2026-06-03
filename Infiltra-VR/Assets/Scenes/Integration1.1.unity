@@ -15539,8 +15539,12 @@ MonoBehaviour:
   itemGrid: {fileID: 1216562726}
   slotPrefab: {fileID: 2219244554424043350, guid: 9f2c03080ece1ad429dae280c6d1b9e9, type: 3}
   itemsForSale:
-  - {fileID: 11400000, guid: 0f2afa243d951824ebc617cf25de9ef0, type: 2}
-  - {fileID: 11400000, guid: a534c2861c1f72d409e62142d26179dc, type: 2}
+  - {fileID: 11400000, guid: 106eca57fa4caf14a902bae2401aab98, type: 2}
+  - {fileID: 11400000, guid: 57e065e6cbfc64645b7c20181bdc7d71, type: 2}
+  - {fileID: 11400000, guid: 577e52febf5a52742840863f4f8bb43f, type: 2}
+  - {fileID: 11400000, guid: f1698227abad4fd98b10ec077a71711c, type: 2}
+  - {fileID: 11400000, guid: 8e9b492a1aa3423584e450b5e3108b20, type: 2}
+  - {fileID: 11400000, guid: 343165b942cb18d4f87349424286e474, type: 2}
   judulText: {fileID: 1872359492}
   qtyText: {fileID: 1709346194}
   totalText: {fileID: 328213556}

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Bibit_Sawit
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemName: Bibit Sawit
-  itemIcon: {fileID: 21300000, guid: 0c12e5022b3eb804aa5bf9d37a0d5ceb, type: 3}
+  itemIcon: {fileID: 21300000, guid: f63d78df18424a4cafcfc155e49a6eb8, type: 3}
   buyPrice: 150
   sellPrice: 120
   waterAbsorption: 5
