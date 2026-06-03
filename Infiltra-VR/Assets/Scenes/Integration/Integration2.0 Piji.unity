@@ -596,9 +596,11 @@ MonoBehaviour:
   modelTunas: {fileID: 173957474}
   modelPohonDewasa: {fileID: 3120140160695269774, guid: 8aa5301018f432a4d8d096392f60161f, type: 3}
   waterAbsorption: 15
+  scaleMultiplier: 1
   plantedItemData: {fileID: 0}
   activeBibitInstance: {fileID: 0}
   activePohonInstance: {fileID: 0}
+  targetPohonScale: {x: 1, y: 1, z: 1}
 --- !u!65 &30435071
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15807,9 +15809,11 @@ MonoBehaviour:
   modelTunas: {fileID: 173957474}
   modelPohonDewasa: {fileID: 3120140160695269774, guid: 8aa5301018f432a4d8d096392f60161f, type: 3}
   waterAbsorption: 15
+  scaleMultiplier: 1
   plantedItemData: {fileID: 0}
   activeBibitInstance: {fileID: 0}
   activePohonInstance: {fileID: 0}
+  targetPohonScale: {x: 1, y: 1, z: 1}
 --- !u!65 &1074398196
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -20648,9 +20652,11 @@ MonoBehaviour:
   modelTunas: {fileID: 173957474}
   modelPohonDewasa: {fileID: 3120140160695269774, guid: 8aa5301018f432a4d8d096392f60161f, type: 3}
   waterAbsorption: 15
+  scaleMultiplier: 1
   plantedItemData: {fileID: 0}
   activeBibitInstance: {fileID: 0}
   activePohonInstance: {fileID: 0}
+  targetPohonScale: {x: 1, y: 1, z: 1}
 --- !u!4 &1407113383 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a452cc6ea57fd2f45b591620d6e5aa1e, type: 3}
@@ -29791,17 +29797,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pohon_Beringin
       objectReference: {fileID: 0}
-    - target: {fileID: 4815020832256044568, guid: f9ff221843245184e8fdcd253415e427, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8602129751889804899, guid: f9ff221843245184e8fdcd253415e427, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 50.337177
+      value: 48
       objectReference: {fileID: 0}
     - target: {fileID: 8602129751889804899, guid: f9ff221843245184e8fdcd253415e427, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.9411871
+      value: 2.03
       objectReference: {fileID: 0}
     - target: {fileID: 8602129751889804899, guid: f9ff221843245184e8fdcd253415e427, type: 3}
       propertyPath: m_LocalPosition.z
@@ -29809,31 +29811,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8602129751889804899, guid: f9ff221843245184e8fdcd253415e427, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.33733273
+      value: 0.5845968
       objectReference: {fileID: 0}
     - target: {fileID: 8602129751889804899, guid: f9ff221843245184e8fdcd253415e427, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.49131244
+      value: -0.002238821
       objectReference: {fileID: 0}
     - target: {fileID: 8602129751889804899, guid: f9ff221843245184e8fdcd253415e427, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.41526508
+      value: 0.8112552
       objectReference: {fileID: 0}
     - target: {fileID: 8602129751889804899, guid: f9ff221843245184e8fdcd253415e427, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.6872945
+      value: -0.010326112
       objectReference: {fileID: 0}
     - target: {fileID: 8602129751889804899, guid: f9ff221843245184e8fdcd253415e427, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: 0.81
       objectReference: {fileID: 0}
     - target: {fileID: 8602129751889804899, guid: f9ff221843245184e8fdcd253415e427, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 108.44
       objectReference: {fileID: 0}
     - target: {fileID: 8602129751889804899, guid: f9ff221843245184e8fdcd253415e427, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: -0.9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -30038,17 +30040,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pohon_Sawit
       objectReference: {fileID: 0}
-    - target: {fileID: 1218038547799069072, guid: 45fccdd724c528346ac148425618e715, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5506030699349276354, guid: 45fccdd724c528346ac148425618e715, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 49
+      value: 46.82
       objectReference: {fileID: 0}
     - target: {fileID: 5506030699349276354, guid: 45fccdd724c528346ac148425618e715, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.9411871
+      value: 2.38
       objectReference: {fileID: 0}
     - target: {fileID: 5506030699349276354, guid: 45fccdd724c528346ac148425618e715, type: 3}
       propertyPath: m_LocalPosition.z
@@ -30056,31 +30054,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5506030699349276354, guid: 45fccdd724c528346ac148425618e715, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.33733273
+      value: 0.700792
       objectReference: {fileID: 0}
     - target: {fileID: 5506030699349276354, guid: 45fccdd724c528346ac148425618e715, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.49131244
+      value: 0.70485824
       objectReference: {fileID: 0}
     - target: {fileID: 5506030699349276354, guid: 45fccdd724c528346ac148425618e715, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.41526508
+      value: -0.06562138
       objectReference: {fileID: 0}
     - target: {fileID: 5506030699349276354, guid: 45fccdd724c528346ac148425618e715, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.6872945
+      value: 0.08808679
       objectReference: {fileID: 0}
     - target: {fileID: 5506030699349276354, guid: 45fccdd724c528346ac148425618e715, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: 91.85
       objectReference: {fileID: 0}
     - target: {fileID: 5506030699349276354, guid: 45fccdd724c528346ac148425618e715, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -85.98102
       objectReference: {fileID: 0}
     - target: {fileID: 5506030699349276354, guid: 45fccdd724c528346ac148425618e715, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: -73.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -30492,7 +30490,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1525030094778537478, guid: 44a631e00ffb2074d91164ae4c478e8b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 52
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 1525030094778537478, guid: 44a631e00ffb2074d91164ae4c478e8b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -30533,10 +30531,6 @@ PrefabInstance:
     - target: {fileID: 7011102772776785034, guid: 44a631e00ffb2074d91164ae4c478e8b, type: 3}
       propertyPath: m_Name
       value: Pohon_Jati
-      objectReference: {fileID: 0}
-    - target: {fileID: 7011102772776785034, guid: 44a631e00ffb2074d91164ae4c478e8b, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

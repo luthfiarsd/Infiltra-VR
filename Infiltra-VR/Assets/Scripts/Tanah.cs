@@ -15,6 +15,10 @@ public class TanahBerkebun : MonoBehaviour
     [Header("Pengaturan Gameplay")]
     public int waterAbsorption = 15; // Jumlah air yang diserap pohon ini saat dewasa
 
+    [Header("Pengaturan Ukuran")]
+    [Tooltip("Multiplier untuk mengatur ukuran bibit & pohon secara manual")]
+    public float scaleMultiplier = 1.0f;
+
     [Header("Data Tanaman yang Ditanam")]
     public ItemData plantedItemData; // Diisi otomatis saat bibit dimasukkan
 
@@ -24,6 +28,8 @@ public class TanahBerkebun : MonoBehaviour
 
     private Vector3 originalBibitScale = Vector3.one;
     private Vector3 originalPohonScale = Vector3.one;
+    [HideInInspector]
+    public Vector3 targetPohonScale = Vector3.one;
 
     void Awake()
     {
@@ -34,6 +40,7 @@ public class TanahBerkebun : MonoBehaviour
         if (modelPohonDewasa != null)
         {
             originalPohonScale = modelPohonDewasa.transform.localScale;
+            targetPohonScale = originalPohonScale;
         }
     }
 
@@ -69,7 +76,6 @@ public class TanahBerkebun : MonoBehaviour
 
             // Tentukan posisi & rotasi spawn di tingkat dunia (world space) menggunakan plot tanah langsung
             Vector3 spawnPos = transform.position;
-            Quaternion spawnRot = transform.rotation;
 
             // Cari prefab bibit yang akan ditampilkan di tanah (utamakan plantedVisualPrefab)
             GameObject bibitVisualPrefab = null;
@@ -78,13 +84,16 @@ public class TanahBerkebun : MonoBehaviour
                 bibitVisualPrefab = (plantedItemData.plantedVisualPrefab != null) ? plantedItemData.plantedVisualPrefab : plantedItemData.itemPrefab;
             }
 
+            // Gunakan rotasi asli dari prefab secara langsung
+            Quaternion spawnRot = (bibitVisualPrefab != null) ? bibitVisualPrefab.transform.rotation : Quaternion.identity;
+
             // Spawn model bibit spesifik dari ScriptableObject di tingkat dunia (tanpa parent)
             if (bibitVisualPrefab != null)
             {
                 activeBibitInstance = Instantiate(bibitVisualPrefab, spawnPos, spawnRot);
                 
-                // Salin skala lokal asli agar tidak terpengaruh scale parent
-                activeBibitInstance.transform.localScale = originalBibitScale;
+                // Gunakan skala asli dari prefab secara langsung
+                activeBibitInstance.transform.localScale = bibitVisualPrefab.transform.localScale;
 
                 BekukanFisika(activeBibitInstance);
                 activeBibitInstance.SetActive(true);
@@ -110,77 +119,11 @@ public class TanahBerkebun : MonoBehaviour
         }
 
         // STEP 5: DIBERI PUPUK (Tumbuh Dewasa & Masuk ke GameManager)
-        else if (statusTanah == 4 && bendaYangNyentuh.CompareTag("pupuk"))
+        else if (statusTanah >= 2 && statusTanah <= 4 && bendaYangNyentuh.CompareTag("pupuk"))
         {
-            statusTanah = 5;
-            Debug.Log("Diberi Pupuk! Pohon tumbuh dewasa dan menyerap air!");
+            TumbuhkanKeDewasa(startAtZeroScale: false);
             
-            // Sembunyikan/hapus model bibit
-            if (activeBibitInstance != null)
-            {
-                if (activeBibitInstance == modelBibit)
-                    modelBibit.SetActive(false);
-                else
-                    Destroy(activeBibitInstance);
-            }
-            else if (modelBibit != null)
-            {
-                modelBibit.SetActive(false);
-            }
-
-            // Nonaktifkan model default pohon dewasa (jika ada)
-            if (modelPohonDewasa != null) modelPohonDewasa.SetActive(false);
-
-            // Cari prefab pohon dewasa
-            GameObject adultPrefab = null;
-            ItemData statsSource = plantedItemData;
-            if (plantedItemData != null)
-            {
-                if (plantedItemData.grownTreeData != null)
-                {
-                    statsSource = plantedItemData.grownTreeData;
-                }
-                
-                if (statsSource != null)
-                {
-                    adultPrefab = statsSource.itemPrefab;
-                }
-            }
-
-            // Tentukan posisi & rotasi spawn di tingkat dunia (world space) menggunakan plot tanah langsung
-            Vector3 spawnPos = transform.position;
-            Quaternion spawnRot = transform.rotation;
-
-            // Spawn model pohon dewasa di tingkat dunia (tanpa parent agar tidak terpengaruh scale parent)
-            if (adultPrefab != null)
-            {
-                activePohonInstance = Instantiate(adultPrefab, spawnPos, spawnRot);
-                
-                // Salin skala lokal asli agar tidak terpengaruh scale parent
-                activePohonInstance.transform.localScale = originalPohonScale;
-
-                BekukanFisika(activePohonInstance);
-                activePohonInstance.SetActive(true);
-            }
-            else if (modelPohonDewasa != null)
-            {
-                // Fallback ke model default plot
-                modelPohonDewasa.SetActive(true);
-                activePohonInstance = modelPohonDewasa;
-                activePohonInstance.transform.localScale = originalPohonScale; // Set ke skala asli
-            }
-
-            // Menyambungkan ke GameManager dan WaveManager
-            if (GameManager.Instance != null)
-            {
-                int absorption = (statsSource != null) ? statsSource.waterAbsorption : waterAbsorption;
-                int bonus = (statsSource != null) ? statsSource.waveRewardBonus : 0;
-
-                GameManager.Instance.AddPlantedTreeAbsorption(absorption);
-                GameManager.Instance.AddPlantedTreeReward(bonus);
-            }
-            
-            // Opsional: Hancurkan item pupuk setelah dipakai
+            // Hancurkan item pupuk setelah dipakai
             Destroy(bendaYangNyentuh.gameObject);
         }
     }
@@ -198,6 +141,114 @@ public class TanahBerkebun : MonoBehaviour
             
             // Bibit tetap terlihat (modelBibit sudah aktif dari step 2)
             // Tidak ada perubahan visual — menunggu pupuk untuk tumbuh
+        }
+    }
+
+    public void TumbuhkanKeDewasa(bool startAtZeroScale = false)
+    {
+        statusTanah = 5;
+        Debug.Log("Pohon tumbuh dewasa!");
+
+        // Sembunyikan/hapus model bibit
+        if (activeBibitInstance != null)
+        {
+            if (activeBibitInstance == modelBibit)
+                modelBibit.SetActive(false);
+            else
+                Destroy(activeBibitInstance);
+        }
+        else if (modelBibit != null)
+        {
+            modelBibit.SetActive(false);
+        }
+
+        // Nonaktifkan model default pohon dewasa (jika ada)
+        if (modelPohonDewasa != null) modelPohonDewasa.SetActive(false);
+
+        // Cari prefab pohon dewasa
+        GameObject adultPrefab = null;
+        ItemData statsSource = plantedItemData;
+        if (plantedItemData != null)
+        {
+            if (plantedItemData.grownTreeData != null)
+            {
+                statsSource = plantedItemData.grownTreeData;
+            }
+            
+            if (statsSource != null)
+            {
+                adultPrefab = statsSource.itemPrefab;
+            }
+        }
+
+        // Tentukan posisi & rotasi spawn di tingkat dunia (world space) menggunakan plot tanah langsung
+        Vector3 spawnPos = transform.position;
+        // Gunakan rotasi asli dari prefab secara langsung
+        Quaternion spawnRot = (adultPrefab != null) ? adultPrefab.transform.rotation : Quaternion.identity;
+
+        // Spawn model pohon dewasa di tingkat dunia (tanpa parent agar tidak terpengaruh scale parent)
+        if (adultPrefab != null)
+        {
+            activePohonInstance = Instantiate(adultPrefab, spawnPos, spawnRot);
+            
+            // Simpan skala asli langsung dari prefab
+            targetPohonScale = adultPrefab.transform.localScale;
+            
+            // Salin skala asli prefab atau 0
+            activePohonInstance.transform.localScale = startAtZeroScale ? Vector3.zero : targetPohonScale;
+
+            BekukanFisika(activePohonInstance);
+            activePohonInstance.SetActive(true);
+        }
+        else if (modelPohonDewasa != null)
+        {
+            // Fallback ke model default plot
+            modelPohonDewasa.SetActive(true);
+            activePohonInstance = modelPohonDewasa;
+            targetPohonScale = originalPohonScale;
+            activePohonInstance.transform.localScale = startAtZeroScale ? Vector3.zero : targetPohonScale;
+        }
+
+        // Menyambungkan ke GameManager dan WaveManager
+        if (GameManager.Instance != null)
+        {
+            int absorption = (statsSource != null) ? statsSource.waterAbsorption : waterAbsorption;
+            int bonus = (statsSource != null) ? statsSource.waveRewardBonus : 0;
+
+            GameManager.Instance.AddPlantedTreeAbsorption(absorption);
+            GameManager.Instance.AddPlantedTreeReward(bonus);
+        }
+    }
+
+    public void ResetPlot()
+    {
+        statusTanah = 0;
+        plantedItemData = null;
+
+        // Hancurkan instance dinamis
+        if (activeBibitInstance != null)
+        {
+            if (activeBibitInstance != modelBibit)
+                Destroy(activeBibitInstance);
+        }
+        if (activePohonInstance != null)
+        {
+            if (activePohonInstance != modelPohonDewasa)
+                Destroy(activePohonInstance);
+        }
+
+        activeBibitInstance = null;
+        activePohonInstance = null;
+
+        // Reset model visual default
+        if (modelTanahBerlubang != null) modelTanahBerlubang.SetActive(false);
+        if (modelBibit != null) modelBibit.SetActive(false);
+        if (modelTanahTertutup != null) modelTanahTertutup.SetActive(false);
+        if (modelTunas != null) modelTunas.SetActive(false);
+        if (modelPohonDewasa != null)
+        {
+            modelPohonDewasa.SetActive(false);
+            modelPohonDewasa.transform.localScale = originalPohonScale;
         }
     }
 

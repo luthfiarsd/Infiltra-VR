@@ -20,13 +20,16 @@ public class TimelapseManager : MonoBehaviour
     [Tooltip("Objek dummy untuk tanah basah (Win).")]
     public GameObject wetGroundEffect;
     
-    [Tooltip("Objek dummy untuk banjir dari sisi sungai (Lose).")]
+    [Tooltip("Tarik objek 'AirNaik' yang memiliki animasi banjir (Lose) ke sini.")]
     public GameObject floodWaveEffect;
+
+    [Tooltip("Tarik gameObjek 'wave' yang memiliki animasi gerakWave (Lose) ke sini.")]
+    public GameObject riverWaveEffect;
 
     [Header("Pengaturan Waktu Animasi (Detik)")]
     public float treeGrowthDuration = 2f;
     public float rainDuration = 3f;
-    public float floodWaveDuration = 2f;
+    public float floodWaveDuration = 10f; // Sesuai dengan durasi file animasi gerakairNaik (10 detik)
 
     private bool isTimelapseRunning = false;
 
@@ -41,6 +44,7 @@ public class TimelapseManager : MonoBehaviour
         if (rainEffect != null) rainEffect.SetActive(false);
         if (wetGroundEffect != null) wetGroundEffect.SetActive(false);
         if (floodWaveEffect != null) floodWaveEffect.SetActive(false);
+        if (riverWaveEffect != null) riverWaveEffect.SetActive(false);
         if (weatherEffectController != null) weatherEffectController.ResetWeather();
         
         // Atur skala awal pohon menjadi 0 (hanya yang belum dewasa)
@@ -87,6 +91,22 @@ public class TimelapseManager : MonoBehaviour
         isTimelapseRunning = true;
         Debug.Log("[TimelapseManager] Memulai Fase Timelapse...");
 
+        // Capture snapshot dari serapan dan reward saat ini (untuk evaluasi wave ini)
+        int playerAbsorptionForThisWave = (gameManager != null) ? gameManager.totalWaterAbsorption : 0;
+        int playerRewardBonusForThisWave = (gameManager != null) ? gameManager.totalPlantRewardBonus : 0;
+
+        // Cari semua plot tanah yang belum dipupuk/dewasa tapi sudah ditanami bibit (statusTanah >= 2 dan <= 4)
+        List<TanahBerkebun> newlyGrownPlots = new List<TanahBerkebun>();
+        TanahBerkebun[] allPlots = FindObjectsByType<TanahBerkebun>(FindObjectsSortMode.None);
+        foreach (var plot in allPlots)
+        {
+            if (plot != null && plot.statusTanah >= 2 && plot.statusTanah <= 4)
+            {
+                newlyGrownPlots.Add(plot);
+                plot.TumbuhkanKeDewasa(startAtZeroScale: true);
+            }
+        }
+
         // FASE 1: Animasi Pohon Tumbuh (Scale up)
         Debug.Log("[TimelapseManager] Pohon mulai tumbuh...");
         float elapsedTime = 0f;
@@ -95,76 +115,83 @@ public class TimelapseManager : MonoBehaviour
             elapsedTime += Time.deltaTime;
             float progress = elapsedTime / treeGrowthDuration;
             
-            // Lerp scale dari 0 ke 1 untuk dummyTrees
+            // Lerp scale dari 0 ke target scale untuk dummyTrees yang baru tumbuh
             foreach (var tree in dummyTrees)
             {
                 if (tree != null)
                 {
-                    // Hanya scale up pohon yang sudah dewasa (dipupuk)
                     TanahBerkebun tanah = tree.GetComponentInParent<TanahBerkebun>();
-                    if (tanah != null && tanah.statusTanah == 5)
-                        tree.transform.localScale = Vector3.one * progress;
+                    if (tanah != null && newlyGrownPlots.Contains(tanah))
+                    {
+                        tree.transform.localScale = tanah.targetPohonScale * progress;
+                    }
                 }
             }
 
-            // Lerp scale untuk model pohon dinamis pada setiap plot
-            TanahBerkebun[] allPlots = FindObjectsByType<TanahBerkebun>(FindObjectsSortMode.None);
-            foreach (var plot in allPlots)
+            // Lerp scale untuk model pohon dinamis pada plot yang baru tumbuh
+            foreach (var plot in newlyGrownPlots)
             {
-                if (plot != null && plot.statusTanah == 5)
+                if (plot != null)
                 {
                     GameObject targetTree = (plot.activePohonInstance != null) ? plot.activePohonInstance : plot.modelPohonDewasa;
                     if (targetTree != null)
                     {
-                        targetTree.transform.localScale = Vector3.one * progress;
+                        targetTree.transform.localScale = plot.targetPohonScale * progress;
                     }
                 }
             }
             yield return null;
         }
 
-        // Pastikan skala penuh pada akhirnya
+        // Pastikan skala penuh untuk newlyGrownPlots pada akhirnya
         foreach (var tree in dummyTrees)
         {
-            if (tree != null) tree.transform.localScale = Vector3.one;
+            if (tree != null)
+            {
+                TanahBerkebun tanah = tree.GetComponentInParent<TanahBerkebun>();
+                if (tanah != null && newlyGrownPlots.Contains(tanah))
+                {
+                    tree.transform.localScale = tanah.targetPohonScale;
+                }
+            }
         }
 
-        TanahBerkebun[] finalPlots = FindObjectsByType<TanahBerkebun>(FindObjectsSortMode.None);
-        foreach (var plot in finalPlots)
+        foreach (var plot in newlyGrownPlots)
         {
-            if (plot != null && plot.statusTanah == 5)
+            if (plot != null)
             {
                 GameObject targetTree = (plot.activePohonInstance != null) ? plot.activePohonInstance : plot.modelPohonDewasa;
                 if (targetTree != null)
                 {
-                    targetTree.transform.localScale = Vector3.one;
+                    targetTree.transform.localScale = plot.targetPohonScale;
                 }
             }
         }
 
         yield return new WaitForSeconds(0.5f); // Jeda sejenak
 
-        // FASE 2: Hujan Turun
-        Debug.Log("[TimelapseManager] Hujan turun...");
-        if (weatherEffectController != null) weatherEffectController.StartRain();
-        if (rainEffect != null) rainEffect.SetActive(true);
-        
-        yield return new WaitForSeconds(rainDuration);
-
-        // Hujan berhenti atau biarkan menyala? Sementara kita matikan setelah durasi
-        if (rainEffect != null) rainEffect.SetActive(false);
-        if (weatherEffectController != null) weatherEffectController.StopRain(true);
-
-
-        // FASE 3: Evaluasi Win/Lose
+        // FASE 2 & FASE 3: Evaluasi Hasil & Animasi Sesuai State
         Debug.Log("[TimelapseManager] Mengevaluasi apakah serapan cukup...");
-        int playerAbsorption = gameManager.totalWaterAbsorption;
+        int playerAbsorption = playerAbsorptionForThisWave;
         int currentThreat = waveManager.waveWaterThreshold;
 
         if (playerAbsorption >= currentThreat)
         {
-            // MENANG (Tanah hanya basah)
+            // --- JALUR MENANG ---
             Debug.Log("[TimelapseManager] Hasil: BERHASIL menahan air!");
+            
+            // Hujan mulai turun
+            Debug.Log("[TimelapseManager] Hujan turun...");
+            if (weatherEffectController != null) weatherEffectController.StartRain();
+            if (rainEffect != null) rainEffect.SetActive(true);
+            
+            yield return new WaitForSeconds(rainDuration);
+
+            // Hujan berhenti
+            if (rainEffect != null) rainEffect.SetActive(false);
+            if (weatherEffectController != null) weatherEffectController.StopRain(true);
+
+            // Efek tanah basah muncul
             if (weatherEffectController != null) weatherEffectController.ShowWetGround();
             if (wetGroundEffect != null) wetGroundEffect.SetActive(true);
             
@@ -173,7 +200,7 @@ public class TimelapseManager : MonoBehaviour
             // Beri hadiah uang ke PlayerInventory jika berhasil
             if (gameManager.playerInventory != null)
             {
-                int reward = gameManager.CalculateWaveReward();
+                int reward = gameManager.baseWaveReward + (gameManager.currentWave - 1) * gameManager.rewardPerWaveLevel + playerRewardBonusForThisWave;
                 gameManager.playerInventory.uang += reward;
                 Debug.Log($"Dapat hadiah {reward} koin! Total uang: {gameManager.playerInventory.uang}");
             }
@@ -186,39 +213,67 @@ public class TimelapseManager : MonoBehaviour
             else
             {
                 // Naikkan wave dan panggil layar WaveWon
-                // Kamu juga bisa langsung panggil waveManager.StartNextWave() di sini 
-                // jika tidak mau ada layar perantara.
                 gameManager.ChangeState(GameState.WaveWon);
             }
         }
         else
         {
-            // KALAH (Air banjir meluap)
+            // --- JALUR KALAH ---
             Debug.Log("[TimelapseManager] Hasil: GAGAL! Banjir terjadi!");
+            
+            // Hujan mulai turun
+            Debug.Log("[TimelapseManager] Hujan turun...");
+            if (weatherEffectController != null) weatherEffectController.StartRain();
+            if (rainEffect != null) rainEffect.SetActive(true);
+
+            yield return new WaitForSeconds(1.0f); // Hujan selama 1 detik sebelum banjir naik
+
+            // Aktifkan objek banjir (AirNaik / floodWaveEffect) untuk memutar animasinya secara otomatis
             if (floodWaveEffect != null) 
             {
                 floodWaveEffect.SetActive(true);
-                // Animasi sederhana gelombang datang (misal geser dari kiri ke kanan)
-                // Kita anggap floodWaveEffect adalah objek air yang bergerak
-                Vector3 startPos = floodWaveEffect.transform.position;
-                Vector3 targetPos = startPos + new Vector3(10f, 0f, 0f); // Geser 10 unit ke arah X
-                
-                float floodTime = 0f;
-                while (floodTime < floodWaveDuration)
-                {
-                    floodTime += Time.deltaTime;
-                    float progress = floodTime / floodWaveDuration;
-                    floodWaveEffect.transform.position = Vector3.Lerp(startPos, targetPos, progress);
-                    yield return null;
-                }
+                Debug.Log("[TimelapseManager] Mengaktifkan objek AirNaik (Banjir)...");
             }
 
-            yield return new WaitForSeconds(1.5f); // Jeda sebelum GameOver
+            // Aktifkan objek wave (wave / riverWaveEffect) untuk memutar animasinya secara otomatis
+            if (riverWaveEffect != null) 
+            {
+                riverWaveEffect.SetActive(true);
+                Debug.Log("[TimelapseManager] Mengaktifkan objek wave (Gerak Wave)...");
+            }
 
-            // Player bisa ulang dari awal atau wave sama melalui UI GameOver nantinya
+            // Tunggu selama durasi animasi banjir
+            yield return new WaitForSeconds(floodWaveDuration);
+
+            // Hujan berhenti
+            if (rainEffect != null) rainEffect.SetActive(false);
+            if (weatherEffectController != null) weatherEffectController.StopRain(true);
+
+            yield return new WaitForSeconds(1.0f); // Jeda sejenak sebelum memunculkan panel kalah
+
+            // Tampilkan Layar GameOver (Panel Kalah)
             gameManager.ChangeState(GameState.GameOver);
         }
 
         isTimelapseRunning = false;
+    }
+
+    public void ResetEnvironment()
+    {
+        // Hentikan coroutine yang sedang berjalan
+        StopAllCoroutines();
+        isTimelapseRunning = false;
+
+        // Matikan semua efek visual cuaca dan banjir
+        if (rainEffect != null) rainEffect.SetActive(false);
+        if (wetGroundEffect != null) wetGroundEffect.SetActive(false);
+        if (floodWaveEffect != null) floodWaveEffect.SetActive(false);
+        if (riverWaveEffect != null) riverWaveEffect.SetActive(false);
+
+        if (weatherEffectController != null)
+        {
+            weatherEffectController.StopRain(true);
+            weatherEffectController.ResetWeather();
+        }
     }
 }

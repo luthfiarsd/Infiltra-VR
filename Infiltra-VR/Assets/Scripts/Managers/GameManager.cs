@@ -233,9 +233,31 @@ public class GameManager : MonoBehaviour
             WaveManager.Instance.currentWave = 1;
             WaveManager.Instance.waveWaterThreshold = 50;
         }
+
+        // Reset efek cuaca dan banjir di TimelapseManager
+        TimelapseManager timelapse = FindAnyObjectByType<TimelapseManager>();
+        if (timelapse != null)
+        {
+            timelapse.ResetEnvironment();
+        }
+
+        // Reset semua plot tanah ke kosong
+        ResetAllPlots();
         
         UpdateUI();
         Debug.Log("[GameManager] Game di-reset ke awal.");
+    }
+
+    private void ResetAllPlots()
+    {
+        TanahBerkebun[] allPlots = FindObjectsByType<TanahBerkebun>(FindObjectsSortMode.None);
+        foreach (var plot in allPlots)
+        {
+            if (plot != null)
+            {
+                plot.ResetPlot();
+            }
+        }
     }
 
     public void AddPlantedTreeAbsorption(int absorptionValue)
