@@ -14,6 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemName: Bibit Beringin
   itemIcon: {fileID: 21300000, guid: 0c12e5022b3eb804aa5bf9d37a0d5ceb, type: 3}
-  buyPrice: 0
-  sellPrice: 0
-  waterAbsorption: 0
+  buyPrice: 100
+  sellPrice: 90
+  waterAbsorption: 25
+  waveRewardBonus: 10
+  itemPrefab: {fileID: 6009389182520010805, guid: b19299f5fec67bb4aa3ec4e06d970f8f, type: 3}
+  plantedVisualPrefab: {fileID: 4944357274178166984, guid: 8303dbc6cd3d020468be7cd3084b5fe1, type: 3}
+  grownTreeData: {fileID: 11400000, guid: 0f2afa243d951824ebc617cf25de9ef0, type: 2}

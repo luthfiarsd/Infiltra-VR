@@ -71,8 +71,9 @@ public class WaveManager : MonoBehaviour
             // Beri hadiah uang ke PlayerInventory jika berhasil
             if (GameManager.Instance.playerInventory != null)
             {
-                GameManager.Instance.playerInventory.uang += 100;
-                Debug.Log($"Dapat hadiah 100 koin! Total uang: {GameManager.Instance.playerInventory.uang}");
+                int reward = GameManager.Instance.CalculateWaveReward();
+                GameManager.Instance.playerInventory.uang += reward;
+                Debug.Log($"Dapat hadiah {reward} koin! Total uang: {GameManager.Instance.playerInventory.uang}");
             }
 
             // Jika ini wave terakhir, player Menang

@@ -12,7 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3c6eaefe675ef14188e37e436d6713b, type: 3}
   m_Name: Pohon_Sawit
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  itemName: 
-  itemIcon: {fileID: 0}
-  buyPrice: 0
-  sellPrice: 0
+  itemName: Pohon Sawit
+  itemIcon: {fileID: 21300000, guid: b358ca45af254771aae5a194d7baed36, type: 3}
+  buyPrice: 150
+  sellPrice: 120
+  waterAbsorption: 5
+  waveRewardBonus: 100
+  itemPrefab: {fileID: 1218038547799069072, guid: 45fccdd724c528346ac148425618e715, type: 3}
+  grownTreeData: {fileID: 0}

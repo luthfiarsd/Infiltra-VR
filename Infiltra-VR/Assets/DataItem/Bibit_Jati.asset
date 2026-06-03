@@ -14,6 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemName: Bibit Jati
   itemIcon: {fileID: 21300000, guid: 6d478faf737740f4c8743f087e2f1761, type: 3}
-  buyPrice: 0
-  sellPrice: 0
-  waterAbsorption: 0
+  buyPrice: 80
+  sellPrice: 70
+  waterAbsorption: 15
+  waveRewardBonus: 25
+  itemPrefab: {fileID: 4662154372987721550, guid: d5159a0ca50d3ed43ba64c6397f3d880, type: 3}
+  plantedVisualPrefab: {fileID: 6782249175937016799, guid: f234306164ef24e468f528b56a78a99a, type: 3}
+  grownTreeData: {fileID: 11400000, guid: a534c2861c1f72d409e62142d26179dc, type: 2}

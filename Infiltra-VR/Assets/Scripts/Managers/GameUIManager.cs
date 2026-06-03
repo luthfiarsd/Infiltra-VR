@@ -158,4 +158,13 @@ public class GameUIManager : MonoBehaviour
         // Lanjut main
         GameManager.Instance.ChangeState(GameState.Playing);
     }
+
+    public void Button_RetryGame()
+    {
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.ResetGame();
+            GameManager.Instance.ChangeState(GameState.Playing);
+        }
+    }
 }
