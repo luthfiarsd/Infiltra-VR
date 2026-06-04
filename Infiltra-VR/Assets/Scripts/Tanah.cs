@@ -15,9 +15,13 @@ public class TanahBerkebun : MonoBehaviour
     [Header("Pengaturan Gameplay")]
     public int waterAbsorption = 15; // Jumlah air yang diserap pohon ini saat dewasa
 
-    [Header("Pengaturan Ukuran")]
+    [Header("Pengaturan Ukuran & Posisi Kustom")]
     [Tooltip("Multiplier untuk mengatur ukuran bibit & pohon secara manual")]
     public float scaleMultiplier = 1.0f;
+    [Tooltip("Offset posisi kustom untuk bibit & pohon dewasa di plot ini")]
+    public Vector3 customPositionOffset = Vector3.zero;
+    [Tooltip("Rotasi kustom (Euler) untuk bibit & pohon dewasa di plot ini (jika Vector3.zero, menggunakan rotasi prefab)")]
+    public Vector3 customRotationOffset = Vector3.zero;
 
     [Header("Data Tanaman yang Ditanam")]
     public ItemData plantedItemData; // Diisi otomatis saat bibit dimasukkan
@@ -31,6 +35,17 @@ public class TanahBerkebun : MonoBehaviour
     [HideInInspector]
     public Vector3 targetPohonScale = Vector3.one;
 
+    [Header("Visual Cue Cangkul/Gembur")]
+    [Tooltip("Material untuk tanah gembur (opsional, jika ingin mengganti material)")]
+    public Material materialTanahGembur;
+    [Tooltip("Warna tanah saat gembur (jika materialTanahGembur tidak diisi)")]
+    public Color warnaTanahGembur = new Color(0.6f, 0.45f, 0.3f);
+
+    private Renderer plotRenderer;
+    private Material originalMaterial;
+    private Color originalColor;
+    private bool hasOriginalColor = false;
+
     void Awake()
     {
         if (modelBibit != null)
@@ -41,6 +56,23 @@ public class TanahBerkebun : MonoBehaviour
         {
             originalPohonScale = modelPohonDewasa.transform.localScale;
             targetPohonScale = originalPohonScale;
+        }
+
+        // Cari renderer utama pada plot tanah ini (atau pada anaknya)
+        plotRenderer = GetComponent<Renderer>();
+        if (plotRenderer == null)
+        {
+            plotRenderer = GetComponentInChildren<Renderer>();
+        }
+
+        if (plotRenderer != null)
+        {
+            originalMaterial = plotRenderer.material;
+            if (originalMaterial.HasProperty("_Color"))
+            {
+                originalColor = originalMaterial.color;
+                hasOriginalColor = true;
+            }
         }
     }
 
@@ -55,6 +87,14 @@ public class TanahBerkebun : MonoBehaviour
             statusTanah = 1;
             Debug.Log("Tanah berlubang!");
             if(modelTanahBerlubang != null) modelTanahBerlubang.SetActive(true);
+
+            SetTilledVisual(true);
+
+            // Progress planting guide to Step 2 (Ambil bibit...)
+            if (GameManager.Instance != null && GameManager.Instance.plantingGuideTrigger != null)
+            {
+                GameManager.Instance.plantingGuideTrigger.ProgressPlantingGuide(1);
+            }
         }
 
         // STEP 2: MASUKIN BIBIT
@@ -74,8 +114,8 @@ public class TanahBerkebun : MonoBehaviour
             // Nonaktifkan model default bibit (jika ada)
             if (modelBibit != null) modelBibit.SetActive(false);
 
-            // Tentukan posisi & rotasi spawn di tingkat dunia (world space) menggunakan plot tanah langsung
-            Vector3 spawnPos = transform.position;
+            // Tentukan posisi & rotasi spawn di tingkat dunia (world space) menggunakan plot tanah langsung + offset
+            Vector3 spawnPos = transform.position + customPositionOffset;
 
             // Cari prefab bibit yang akan ditampilkan di tanah (utamakan plantedVisualPrefab)
             GameObject bibitVisualPrefab = null;
@@ -84,16 +124,24 @@ public class TanahBerkebun : MonoBehaviour
                 bibitVisualPrefab = (plantedItemData.plantedVisualPrefab != null) ? plantedItemData.plantedVisualPrefab : plantedItemData.itemPrefab;
             }
 
-            // Gunakan rotasi asli dari prefab secara langsung
-            Quaternion spawnRot = (bibitVisualPrefab != null) ? bibitVisualPrefab.transform.rotation : Quaternion.identity;
+            // Gunakan rotasi kustom jika diisi, jika tidak gunakan rotasi asli prefab
+            Quaternion spawnRot = Quaternion.identity;
+            if (customRotationOffset != Vector3.zero)
+            {
+                spawnRot = Quaternion.Euler(customRotationOffset);
+            }
+            else
+            {
+                spawnRot = (bibitVisualPrefab != null) ? bibitVisualPrefab.transform.rotation : Quaternion.identity;
+            }
 
             // Spawn model bibit spesifik dari ScriptableObject di tingkat dunia (tanpa parent)
             if (bibitVisualPrefab != null)
             {
                 activeBibitInstance = Instantiate(bibitVisualPrefab, spawnPos, spawnRot);
                 
-                // Gunakan skala asli dari prefab secara langsung
-                activeBibitInstance.transform.localScale = bibitVisualPrefab.transform.localScale;
+                // Gunakan skala asli dari prefab dikali scaleMultiplier
+                activeBibitInstance.transform.localScale = bibitVisualPrefab.transform.localScale * scaleMultiplier;
 
                 BekukanFisika(activeBibitInstance);
                 activeBibitInstance.SetActive(true);
@@ -106,6 +154,12 @@ public class TanahBerkebun : MonoBehaviour
             }
 
             Destroy(bendaYangNyentuh.gameObject); 
+
+            // Progress planting guide to Step 4 (Tutup/padatkan tanah...)
+            if (GameManager.Instance != null && GameManager.Instance.plantingGuideTrigger != null)
+            {
+                GameManager.Instance.plantingGuideTrigger.ProgressPlantingGuide(3);
+            }
         }
 
         // STEP 3: TUTUP TANAH
@@ -116,6 +170,14 @@ public class TanahBerkebun : MonoBehaviour
             if(modelTanahBerlubang != null) modelTanahBerlubang.SetActive(false);
             if(activeBibitInstance != null) activeBibitInstance.SetActive(true);
             if(modelTanahTertutup != null) modelTanahTertutup.SetActive(true);
+
+            SetTilledVisual(false);
+
+            // Progress planting guide to Step 5 (Siram tanaman...)
+            if (GameManager.Instance != null && GameManager.Instance.plantingGuideTrigger != null)
+            {
+                GameManager.Instance.plantingGuideTrigger.ProgressPlantingGuide(4);
+            }
         }
 
         // STEP 5: DIBERI PUPUK (Tumbuh Dewasa & Masuk ke GameManager)
@@ -125,6 +187,12 @@ public class TanahBerkebun : MonoBehaviour
             
             // Hancurkan item pupuk setelah dipakai
             Destroy(bendaYangNyentuh.gameObject);
+
+            // Progress planting guide to Step 7 (Selamat! Tanamanmu...)
+            if (GameManager.Instance != null && GameManager.Instance.plantingGuideTrigger != null)
+            {
+                GameManager.Instance.plantingGuideTrigger.ProgressPlantingGuide(6);
+            }
         }
     }
 
@@ -141,6 +209,12 @@ public class TanahBerkebun : MonoBehaviour
             
             // Bibit tetap terlihat (modelBibit sudah aktif dari step 2)
             // Tidak ada perubahan visual — menunggu pupuk untuk tumbuh
+
+            // Progress planting guide to Step 6 (Berikan pupuk...)
+            if (GameManager.Instance != null && GameManager.Instance.plantingGuideTrigger != null)
+            {
+                GameManager.Instance.plantingGuideTrigger.ProgressPlantingGuide(5);
+            }
         }
     }
 
@@ -181,18 +255,27 @@ public class TanahBerkebun : MonoBehaviour
             }
         }
 
-        // Tentukan posisi & rotasi spawn di tingkat dunia (world space) menggunakan plot tanah langsung
-        Vector3 spawnPos = transform.position;
-        // Gunakan rotasi asli dari prefab secara langsung
-        Quaternion spawnRot = (adultPrefab != null) ? adultPrefab.transform.rotation : Quaternion.identity;
+        // Tentukan posisi & rotasi spawn di tingkat dunia (world space) menggunakan plot tanah langsung + offset
+        Vector3 spawnPos = transform.position + new Vector3(0, 1f, 0) + customPositionOffset;
+        
+        // Gunakan rotasi kustom jika diisi, jika tidak gunakan rotasi asli prefab
+        Quaternion spawnRot = Quaternion.identity;
+        if (customRotationOffset != Vector3.zero)
+        {
+            spawnRot = Quaternion.Euler(customRotationOffset);
+        }
+        else
+        {
+            spawnRot = (adultPrefab != null) ? adultPrefab.transform.rotation : Quaternion.identity;
+        }
 
         // Spawn model pohon dewasa di tingkat dunia (tanpa parent agar tidak terpengaruh scale parent)
         if (adultPrefab != null)
         {
             activePohonInstance = Instantiate(adultPrefab, spawnPos, spawnRot);
             
-            // Simpan skala asli langsung dari prefab
-            targetPohonScale = adultPrefab.transform.localScale;
+            // Simpan skala asli langsung dari prefab dikali scaleMultiplier
+            targetPohonScale = adultPrefab.transform.localScale * scaleMultiplier;
             
             // Salin skala asli prefab atau 0
             activePohonInstance.transform.localScale = startAtZeroScale ? Vector3.zero : targetPohonScale;
@@ -205,7 +288,7 @@ public class TanahBerkebun : MonoBehaviour
             // Fallback ke model default plot
             modelPohonDewasa.SetActive(true);
             activePohonInstance = modelPohonDewasa;
-            targetPohonScale = originalPohonScale;
+            targetPohonScale = originalPohonScale * scaleMultiplier;
             activePohonInstance.transform.localScale = startAtZeroScale ? Vector3.zero : targetPohonScale;
         }
 
@@ -224,6 +307,8 @@ public class TanahBerkebun : MonoBehaviour
     {
         statusTanah = 0;
         plantedItemData = null;
+
+        SetTilledVisual(false);
 
         // Hancurkan instance dinamis
         if (activeBibitInstance != null)
@@ -267,6 +352,37 @@ public class TanahBerkebun : MonoBehaviour
         foreach (var col in cols)
         {
             col.isTrigger = true;
+        }
+    }
+
+    private void SetTilledVisual(bool isTilled)
+    {
+        if (plotRenderer == null) return;
+
+        if (isTilled)
+        {
+            if (materialTanahGembur != null)
+            {
+                plotRenderer.material = materialTanahGembur;
+            }
+            else if (hasOriginalColor)
+            {
+                plotRenderer.material.color = warnaTanahGembur;
+            }
+        }
+        else
+        {
+            if (materialTanahGembur != null)
+            {
+                if (originalMaterial != null)
+                {
+                    plotRenderer.material = originalMaterial;
+                }
+            }
+            else if (hasOriginalColor)
+            {
+                plotRenderer.material.color = originalColor;
+            }
         }
     }
 }

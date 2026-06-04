@@ -63,6 +63,15 @@ public class ChestUI : MonoBehaviour
         {
             // 1. Masukkan 1 barang ke tas pemain
             playerInventory.AddItem(chestSlot.item, 1);
+
+            // Progress planting guide if player takes Cangkul
+            if (chestSlot.item != null && chestSlot.item.itemName.ToLower().Contains("cangkul"))
+            {
+                if (GameManager.Instance != null && GameManager.Instance.plantingGuideTrigger != null)
+                {
+                    GameManager.Instance.plantingGuideTrigger.ProgressPlantingGuide(0);
+                }
+            }
             
             // 2. Kurangi 1 barang dari peti
             chestSlot.amount -= 1;

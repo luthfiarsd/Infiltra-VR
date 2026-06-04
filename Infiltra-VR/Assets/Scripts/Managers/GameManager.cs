@@ -145,6 +145,9 @@ public class GameManager : MonoBehaviour
     [Tooltip("Tarik GameObject yang memiliki script PlayerInventory ke sini")]
     public PlayerInventory playerInventory;
 
+    [Tooltip("Tarik GameObject yang memiliki script StoryTrigger (ZonaPanduanMenanam) ke sini")]
+    public StoryTrigger plantingGuideTrigger;
+
     [Header("Environment State")]
     public int totalWaterAbsorption = 0; 
     public int totalPlantRewardBonus = 0; // Total bonus uang dari semua tanaman dewasa

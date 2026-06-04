@@ -41,6 +41,27 @@ public class StoryTrigger : MonoBehaviour
 
     public static StoryTrigger Instance { get; private set; }
 
+    private static StoryTrigger _plantingInstance;
+    public static StoryTrigger PlantingInstance
+    {
+        get
+        {
+            if (_plantingInstance == null)
+            {
+                StoryTrigger[] triggers = FindObjectsByType<StoryTrigger>(FindObjectsSortMode.None);
+                foreach (var t in triggers)
+                {
+                    if (t.gameObject.name == "ZonaPanduanMenanam")
+                    {
+                        _plantingInstance = t;
+                        break;
+                    }
+                }
+            }
+            return _plantingInstance;
+        }
+    }
+
     private bool hasBeenTriggered = false;
     private bool hasTriggeredPhase1 = false;
     private bool hasTriggeredPhase2 = false;
@@ -101,12 +122,23 @@ public class StoryTrigger : MonoBehaviour
         {
             if (StoryUIManager.Instance != null)
             {
-                StoryUIManager.Instance.ShowStory(storyText, displayDuration, () => 
+                // Jika ini adalah panduan menanam, lewati pengingat dan mulai panduan langsung
+                bool isPlantingGuide = (GameManager.Instance != null && GameManager.Instance.plantingGuideTrigger == this) || gameObject.name == "ZonaPanduanMenanam";
+                if (isPlantingGuide)
                 {
-                    OnStoryFinished?.Invoke();
-                });
-                hasTriggeredPhase1 = true;
-                hasBeenTriggered = true;
+                    hasTriggeredPhase1 = true;
+                    hasBeenTriggered = true;
+                    TriggerPhase2Step(0);
+                }
+                else
+                {
+                    StoryUIManager.Instance.ShowStory(storyText, displayDuration, () => 
+                    {
+                        OnStoryFinished?.Invoke();
+                    });
+                    hasTriggeredPhase1 = true;
+                    hasBeenTriggered = true;
+                }
             }
             else
             {
@@ -189,6 +221,21 @@ public class StoryTrigger : MonoBehaviour
         {
             hasTriggeredPhase2 = true;
             OnPhase2Finished?.Invoke();
+        }
+    }
+
+    public void ProgressPlantingGuide(int stepIndex)
+    {
+
+        // Set state agar fase 1 dianggap sudah lewat jika pemain sudah mulai bertindak
+        hasTriggeredPhase1 = true;
+        hasBeenTriggered = true;
+
+        // Hanya maju jika stepIndex lebih besar dari currentPhase2Index
+        if (stepIndex > currentPhase2Index && stepIndex < storyTextsPhase2.Length)
+        {
+            // Tampilkan langkah baru
+            TriggerPhase2Step(stepIndex);
         }
     }
 }

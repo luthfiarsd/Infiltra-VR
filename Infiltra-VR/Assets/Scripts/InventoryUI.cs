@@ -125,10 +125,25 @@ public class InventoryUI : MonoBehaviour
                 BibitDataCarrier carrier = spawnedItem.AddComponent<BibitDataCarrier>();
                 carrier.itemData = slotData.item;
 
+                // Progress planting guide if equipping Cangkul
+                if (slotData.item.itemName.ToLower().Contains("cangkul"))
+                {
+                    if (GameManager.Instance != null && GameManager.Instance.plantingGuideTrigger != null)
+                    {
+                        GameManager.Instance.plantingGuideTrigger.ProgressPlantingGuide(0);
+                    }
+                }
+
                 // Auto-tag dengan "bibit" jika barang adalah bibit tanaman
                 if (slotData.item.grownTreeData != null || slotData.item.itemName.ToLower().Contains("bibit"))
                 {
                     spawnedItem.tag = "bibit";
+
+                    // Progress planting guide to Step 3 (Masukkan bibit...)
+                    if (GameManager.Instance != null && GameManager.Instance.plantingGuideTrigger != null)
+                    {
+                        GameManager.Instance.plantingGuideTrigger.ProgressPlantingGuide(2);
+                    }
                 }
 
                 // Mainkan suara jika ada
