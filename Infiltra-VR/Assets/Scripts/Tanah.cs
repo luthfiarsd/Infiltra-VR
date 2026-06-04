@@ -26,6 +26,7 @@ public class TanahBerkebun : MonoBehaviour
             statusTanah = 1;
             Debug.Log("Tanah berlubang!");
             if(modelTanahBerlubang != null) modelTanahBerlubang.SetActive(true);
+            if (StoryTrigger.Instance != null) StoryTrigger.Instance.TriggerPhase2Step(1);
         }
 
         // STEP 2: MASUKIN BIBIT
@@ -38,6 +39,7 @@ public class TanahBerkebun : MonoBehaviour
                 BekukanFisika(modelBibit);
             }
             Destroy(bendaYangNyentuh.gameObject); 
+            if (StoryTrigger.Instance != null) StoryTrigger.Instance.TriggerPhase2Step(2);
         }
 
         // STEP 3: TUTUP TANAH
@@ -48,6 +50,7 @@ public class TanahBerkebun : MonoBehaviour
             if(modelTanahBerlubang != null) modelTanahBerlubang.SetActive(false);
             if(modelBibit != null) modelBibit.SetActive(true);
             if(modelTanahTertutup != null) modelTanahTertutup.SetActive(true);
+            if (StoryTrigger.Instance != null) StoryTrigger.Instance.TriggerPhase2Step(3);
         }
 
         // STEP 5: DIBERI PUPUK (Tumbuh Dewasa & Masuk ke GameManager)
@@ -71,6 +74,8 @@ public class TanahBerkebun : MonoBehaviour
             
             // Opsional: Hancurkan item pupuk setelah dipakai
             Destroy(bendaYangNyentuh.gameObject);
+
+            if (StoryTrigger.Instance != null) StoryTrigger.Instance.TriggerPhase2Step(5);
         }
     }
 
@@ -89,6 +94,8 @@ public class TanahBerkebun : MonoBehaviour
                 modelTunas.SetActive(true);
                 BekukanFisika(modelTunas);
             }
+
+            if (StoryTrigger.Instance != null) StoryTrigger.Instance.TriggerPhase2Step(4);
         }
     }
 
