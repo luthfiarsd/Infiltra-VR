@@ -10,10 +10,19 @@ public class ChestInteract : MonoBehaviour
 
     private bool isPlayerNear = false; // --- TAMBAHAN BARU: Jarak pemain ---
 
+    public static bool HasOpenedChest { get; private set; } = false;
+
+    private void Awake()
+    {
+        HasOpenedChest = false;
+    }
+
     // Fungsi ini akan dipanggil oleh sistem interaksi VR atau lewat tombol tes
     [ContextMenu("Tes Buka Peti (Klik Kanan)")]
     public void OpenChest()
     {
+        HasOpenedChest = true; // Set status bahwa peti telah dibuka
+        
         // 1. Beritahu UI bahwa "Peti ini" yang sedang dibuka
         chestUIManager.currentChest = GetComponent<ChestInventory>();
         
