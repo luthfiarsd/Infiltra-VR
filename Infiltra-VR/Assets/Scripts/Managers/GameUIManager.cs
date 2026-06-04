@@ -5,11 +5,17 @@ public class GameUIManager : MonoBehaviour
 {
     [Header("UI Panels (Tarik dari Hierarchy)")]
     public GameObject mainMenuPanel;
+    public GameObject profilePanel;    // Profile_Panel
+    public GameObject tutorialPanel;   // Tutorial_Panel
     public GameObject gameplayHUDPanel; // Panel seperti Inventory, Serapan Air
     public GameObject pauseMenuPanel;
     public GameObject winPanel;
     public GameObject waveWonPanel; // Panel untuk menang per wave
     public GameObject losePanel;
+
+    [Header("Locomotion System (Tarik dari Hierarchy)")]
+    [Tooltip("Tarik GameObject Locomotion System ke sini. Akan dimatikan saat di Main Menu agar pemain tidak bisa berjalan.")]
+    public GameObject locomotionSystem;
 
     [Header("Input System (Tarik Action dari XR Default Input Actions)")]
     public InputActionReference pauseAction;
@@ -56,7 +62,7 @@ public class GameUIManager : MonoBehaviour
     private void Start()
     {
         // Cari otomatis panel-panel utama jika kosong (untuk mencegah bug kalau lupa ditarik)
-        if (gameplayHUDPanel == null || mainMenuPanel == null)
+        if (gameplayHUDPanel == null || mainMenuPanel == null || profilePanel == null || tutorialPanel == null)
         {
             RectTransform[] allPanels = FindObjectsByType<RectTransform>(FindObjectsInactive.Include, FindObjectsSortMode.None);
             foreach (RectTransform rt in allPanels)
@@ -65,6 +71,10 @@ public class GameUIManager : MonoBehaviour
                     gameplayHUDPanel = rt.gameObject;
                 if (mainMenuPanel == null && rt.name == "MainMenu_Panel") 
                     mainMenuPanel = rt.gameObject;
+                if (profilePanel == null && rt.name == "Profile_Panel") 
+                    profilePanel = rt.gameObject;
+                if (tutorialPanel == null && rt.name == "Tutorial_Panel") 
+                    tutorialPanel = rt.gameObject;
             }
         }
 
@@ -85,9 +95,15 @@ public class GameUIManager : MonoBehaviour
         {
             case GameState.MainMenu:
                 if (mainMenuPanel != null) mainMenuPanel.SetActive(true);
+                if (profilePanel != null) profilePanel.SetActive(true);
+                if (tutorialPanel != null) tutorialPanel.SetActive(true);
+                // Matikan locomotion saat di Main Menu agar pemain tidak bisa berjalan
+                SetLocomotionEnabled(false);
                 break;
             case GameState.Playing:
                 if (gameplayHUDPanel != null) gameplayHUDPanel.SetActive(true);
+                // Aktifkan locomotion saat bermain
+                SetLocomotionEnabled(true);
                 break;
             case GameState.Paused:
                 if (pauseMenuPanel != null) pauseMenuPanel.SetActive(true);
@@ -109,11 +125,24 @@ public class GameUIManager : MonoBehaviour
     private void HideAllPanels()
     {
         if (mainMenuPanel != null) mainMenuPanel.SetActive(false);
+        if (profilePanel != null) profilePanel.SetActive(false);
+        if (tutorialPanel != null) tutorialPanel.SetActive(false);
         if (gameplayHUDPanel != null) gameplayHUDPanel.SetActive(false);
         if (pauseMenuPanel != null) pauseMenuPanel.SetActive(false);
         if (winPanel != null) winPanel.SetActive(false);
         if (waveWonPanel != null) waveWonPanel.SetActive(false);
         if (losePanel != null) losePanel.SetActive(false);
+    }
+
+    /// <summary>
+    /// Mengaktifkan/menonaktifkan sistem locomotion (pergerakan pemain).
+    /// </summary>
+    private void SetLocomotionEnabled(bool enabled)
+    {
+        if (locomotionSystem != null)
+        {
+            locomotionSystem.SetActive(enabled);
+        }
     }
 
     // --- FUNGSI UNTUK TOMBOL UI ---
