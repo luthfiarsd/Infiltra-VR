@@ -8718,7 +8718,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330942040}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: -2200911647707196941, guid: d4f5eff1526e6034aa8963e1f98ccd39, type: 3}
 --- !u!4 &330942045
 Transform:
   m_ObjectHideFlags: 0
@@ -8729,7 +8729,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 2.220446e-16, y: -0.999998, z: -0, w: -0.0019956082}
   m_LocalPosition: {x: 43.918266, y: 6.56, z: 107.24398}
-  m_LocalScale: {x: 1, y: 2, z: 0.2}
+  m_LocalScale: {x: 2, y: 4, z: 0.2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -56021,10 +56021,6 @@ PrefabInstance:
     - target: {fileID: 1388932874330307956, guid: 9cbc4eac6019d084aaa4248edd752ec8, type: 3}
       propertyPath: m_Name
       value: Pupuk
-      objectReference: {fileID: 0}
-    - target: {fileID: 1388932874330307956, guid: 9cbc4eac6019d084aaa4248edd752ec8, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6902855181821499849, guid: 9cbc4eac6019d084aaa4248edd752ec8, type: 3}
       propertyPath: m_LocalPosition.x

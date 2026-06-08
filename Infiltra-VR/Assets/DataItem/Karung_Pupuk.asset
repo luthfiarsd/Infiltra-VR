@@ -19,4 +19,5 @@ MonoBehaviour:
   waterAbsorption: 0
   waveRewardBonus: 0
   itemPrefab: {fileID: 1388932874330307956, guid: 9cbc4eac6019d084aaa4248edd752ec8, type: 3}
+  plantedVisualPrefab: {fileID: 0}
   grownTreeData: {fileID: 0}
