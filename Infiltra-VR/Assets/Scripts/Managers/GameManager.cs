@@ -121,6 +121,7 @@ using System;
 using UnityEngine;
 using TMPro; 
 using UnityEngine.UI; 
+using UnityEngine.SceneManagement;
 
 public enum GameState
 {
@@ -176,23 +177,82 @@ public class GameManager : MonoBehaviour
     public Color warnaNormal = Color.green; // Warna saat belum tercapai
     public Color warnaTargetTercapai = new Color(0.2f, 0.8f, 1f); // Warna biru muda saat target tercapai
 
+    private bool isRetrying = false;
+
     private void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
+            transform.SetParent(null); // Lepas dari parent agar DontDestroyOnLoad selalu berhasil (hanya bisa di root GameObject)
             DontDestroyOnLoad(gameObject);
+            Debug.Log("[GameManager] Awake: Instance utama dibuat & DontDestroyOnLoad diterapkan.");
         }
         else
         {
+            Debug.Log("[GameManager] Awake: Instance duplikat dihancurkan.");
             Destroy(gameObject);
         }
     }
 
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
     private void Start()
     {
+        if (Instance != this) return; // Mencegah duplikat menjalankan Start()
+
         ChangeState(GameState.MainMenu);
         UpdateUI();
+
+        // Auto-assign references if null
+        if (playerInventory == null) playerInventory = FindFirstObjectByType<PlayerInventory>();
+        if (plantingGuideTrigger == null) plantingGuideTrigger = FindFirstObjectByType<StoryTrigger>();
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (Instance != this) return; // Hanya jalankan pada instance utama/persistent
+
+        Debug.Log($"[GameManager] OnSceneLoaded: Scene {scene.name} dimuat. isRetrying = {isRetrying}");
+
+        // Re-assign references in the newly loaded scene
+        playerInventory = FindFirstObjectByType<PlayerInventory>();
+        plantingGuideTrigger = FindFirstObjectByType<StoryTrigger>();
+
+        if (isRetrying)
+        {
+            isRetrying = false;
+            ChangeState(GameState.Playing);
+
+            // Teleport player to wakeUpAnchor if it exists
+            BedInteract bed = FindFirstObjectByType<BedInteract>();
+            if (bed != null && bed.wakeUpAnchor != null)
+            {
+                var origin = FindFirstObjectByType<Unity.XR.CoreUtils.XROrigin>();
+                if (origin != null)
+                {
+                    origin.transform.position = bed.wakeUpAnchor.position;
+                    origin.transform.rotation = bed.wakeUpAnchor.rotation;
+                    Debug.Log("[GameManager] Player diteleportasi ke wakeUpAnchor setelah Retry.");
+                }
+            }
+
+            UpdateUI();
+        }
+    }
+
+    public void PrepareRetry()
+    {
+        isRetrying = true;
+        ResetGame();
     }
 
     public void ChangeState(GameState newState)

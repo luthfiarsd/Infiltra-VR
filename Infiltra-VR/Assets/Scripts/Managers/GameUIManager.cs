@@ -192,8 +192,8 @@ public class GameUIManager : MonoBehaviour
     {
         if (GameManager.Instance != null)
         {
-            GameManager.Instance.ResetGame();
-            GameManager.Instance.ChangeState(GameState.Playing);
+            GameManager.Instance.PrepareRetry();
+            UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
         }
     }
 }

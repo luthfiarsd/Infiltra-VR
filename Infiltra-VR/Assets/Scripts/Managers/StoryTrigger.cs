@@ -29,6 +29,9 @@ public class StoryTrigger : MonoBehaviour
     public UnityEvent OnStoryFinished;
 
     [Header("Phase 2 Settings (Optional)")]
+    [Tooltip("Centang jika ingin langsung memulai Fase 2 (tutorial/multi-stage) tanpa memutar teks Fase 1 di awal")]
+    [SerializeField] private bool skipPhase1 = false;
+
     [Tooltip("Kumpulan teks petunjuk untuk Fase 2 (misalnya 5 langkah menanam)")]
     [TextArea(3, 5)]
     [SerializeField] private string[] storyTextsPhase2;
@@ -122,8 +125,8 @@ public class StoryTrigger : MonoBehaviour
         {
             if (StoryUIManager.Instance != null)
             {
-                // Jika ini adalah panduan menanam, lewati pengingat dan mulai panduan langsung
-                bool isPlantingGuide = (GameManager.Instance != null && GameManager.Instance.plantingGuideTrigger == this) || gameObject.name == "ZonaPanduanMenanam";
+                // Jika skipPhase1 dicentang (atau ini adalah panduan menanam), lewati pengingat dan mulai panduan langsung
+                bool isPlantingGuide = skipPhase1 || (GameManager.Instance != null && GameManager.Instance.plantingGuideTrigger == this) || gameObject.name == "ZonaPanduanMenanam";
                 if (isPlantingGuide)
                 {
                     hasTriggeredPhase1 = true;
@@ -147,8 +150,8 @@ public class StoryTrigger : MonoBehaviour
         }
         else if (!hasTriggeredPhase2)
         {
-            // Cek apakah pemain sudah membuka peti
-            if (ChestInteract.HasOpenedChest)
+            // Cek apakah pemain sudah membuka peti (atau lewati jika skipPhase1 dicentang)
+            if (skipPhase1 || ChestInteract.HasOpenedChest)
             {
                 // Tampilkan langkah Fase 2 saat ini (dimulai dari 0)
                 TriggerPhase2Step(currentPhase2Index);

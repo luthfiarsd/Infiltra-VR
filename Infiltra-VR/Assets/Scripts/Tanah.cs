@@ -73,6 +73,70 @@ public class TanahBerkebun : MonoBehaviour
                 originalColor = originalMaterial.color;
                 hasOriginalColor = true;
             }
+            else if (originalMaterial.HasProperty("_BaseColor"))
+            {
+                originalColor = originalMaterial.GetColor("_BaseColor");
+                hasOriginalColor = true;
+            }
+        }
+    }
+
+    void Start()
+    {
+        // Pastikan visual awal sesuai dengan statusTanah saat game mulai
+        if (statusTanah == 0)
+        {
+            if (modelTanahBerlubang != null) modelTanahBerlubang.SetActive(false);
+            if (modelBibit != null) modelBibit.SetActive(false);
+            if (modelTanahTertutup != null) modelTanahTertutup.SetActive(false);
+            if (modelTunas != null) modelTunas.SetActive(false);
+            if (modelPohonDewasa != null) modelPohonDewasa.SetActive(false);
+            SetTilledVisual(false);
+        }
+        else if (statusTanah == 1)
+        {
+            if (modelTanahBerlubang != null) modelTanahBerlubang.SetActive(true);
+            if (modelBibit != null) modelBibit.SetActive(false);
+            if (modelTanahTertutup != null) modelTanahTertutup.SetActive(false);
+            if (modelTunas != null) modelTunas.SetActive(false);
+            if (modelPohonDewasa != null) modelPohonDewasa.SetActive(false);
+            SetTilledVisual(true);
+        }
+        else if (statusTanah == 2)
+        {
+            if (modelTanahBerlubang != null) modelTanahBerlubang.SetActive(true);
+            if (modelBibit != null) modelBibit.SetActive(true);
+            if (modelTanahTertutup != null) modelTanahTertutup.SetActive(false);
+            if (modelTunas != null) modelTunas.SetActive(false);
+            if (modelPohonDewasa != null) modelPohonDewasa.SetActive(false);
+            SetTilledVisual(true);
+        }
+        else if (statusTanah == 3)
+        {
+            if (modelTanahBerlubang != null) modelTanahBerlubang.SetActive(false);
+            if (modelBibit != null) modelBibit.SetActive(true);
+            if (modelTanahTertutup != null) modelTanahTertutup.SetActive(true);
+            if (modelTunas != null) modelTunas.SetActive(false);
+            if (modelPohonDewasa != null) modelPohonDewasa.SetActive(false);
+            SetTilledVisual(false);
+        }
+        else if (statusTanah == 4)
+        {
+            if (modelTanahBerlubang != null) modelTanahBerlubang.SetActive(false);
+            if (modelBibit != null) modelBibit.SetActive(true);
+            if (modelTanahTertutup != null) modelTanahTertutup.SetActive(false);
+            if (modelTunas != null) modelTunas.SetActive(false);
+            if (modelPohonDewasa != null) modelPohonDewasa.SetActive(false);
+            SetTilledVisual(false);
+        }
+        else if (statusTanah == 5)
+        {
+            if (modelTanahBerlubang != null) modelTanahBerlubang.SetActive(false);
+            if (modelBibit != null) modelBibit.SetActive(false);
+            if (modelTanahTertutup != null) modelTanahTertutup.SetActive(false);
+            if (modelTunas != null) modelTunas.SetActive(false);
+            if (modelPohonDewasa != null) modelPohonDewasa.SetActive(true);
+            SetTilledVisual(false);
         }
     }
 
@@ -355,6 +419,18 @@ public class TanahBerkebun : MonoBehaviour
         }
     }
 
+    private void SetMaterialColor(Material mat, Color col)
+    {
+        if (mat.HasProperty("_Color"))
+        {
+            mat.color = col;
+        }
+        else if (mat.HasProperty("_BaseColor"))
+        {
+            mat.SetColor("_BaseColor", col);
+        }
+    }
+
     private void SetTilledVisual(bool isTilled)
     {
         if (plotRenderer == null) return;
@@ -367,7 +443,7 @@ public class TanahBerkebun : MonoBehaviour
             }
             else if (hasOriginalColor)
             {
-                plotRenderer.material.color = warnaTanahGembur;
+                SetMaterialColor(plotRenderer.material, warnaTanahGembur);
             }
         }
         else
@@ -381,7 +457,7 @@ public class TanahBerkebun : MonoBehaviour
             }
             else if (hasOriginalColor)
             {
-                plotRenderer.material.color = originalColor;
+                SetMaterialColor(plotRenderer.material, originalColor);
             }
         }
     }
