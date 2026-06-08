@@ -15975,6 +15975,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3442528492277559201, guid: 8da894e81956c3f4fb2103fbd240a1c0, type: 3}
+      propertyPath: rainEffect
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3442528492277559201, guid: 8da894e81956c3f4fb2103fbd240a1c0, type: 3}
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 603689436}
@@ -16016,7 +16020,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6194765351550697501, guid: 8da894e81956c3f4fb2103fbd240a1c0, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
