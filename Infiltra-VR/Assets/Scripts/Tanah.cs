@@ -35,16 +35,37 @@ public class TanahBerkebun : MonoBehaviour
     [HideInInspector]
     public Vector3 targetPohonScale = Vector3.one;
 
-    [Header("Visual Cue Cangkul/Gembur")]
-    [Tooltip("Material untuk tanah gembur (opsional, jika ingin mengganti material)")]
+    [Header("Visual Cue States")]
+    [Tooltip("Material untuk tanah gembur/digali (opsional)")]
     public Material materialTanahGembur;
-    [Tooltip("Warna tanah saat gembur (jika materialTanahGembur tidak diisi)")]
+    [Tooltip("Warna tanah saat gembur/digali")]
     public Color warnaTanahGembur = new Color(0.6f, 0.45f, 0.3f);
 
+    [Tooltip("Material untuk tanah dipadatkan/ditutup (opsional)")]
+    public Material materialTanahPadat;
+    [Tooltip("Warna tanah saat dipadatkan/ditutup")]
+    public Color warnaTanahPadat = new Color(0.45f, 0.35f, 0.25f);
+
+    [Tooltip("Material untuk tanah disiram/basah (opsional)")]
+    public Material materialTanahDisiram;
+    [Tooltip("Warna tanah saat disiram/basah")]
+    public Color warnaTanahDisiram = new Color(0.25f, 0.18f, 0.12f);
+
+    // Renderer untuk masing-masing bagian tanah agar semuanya berubah warna bersamaan
     private Renderer plotRenderer;
     private Material originalMaterial;
     private Color originalColor;
     private bool hasOriginalColor = false;
+
+    private Renderer lobaRenderer;
+    private Material originalLobaMaterial;
+    private Color originalLobaColor;
+    private bool hasOriginalLobaColor = false;
+
+    private Renderer tutupRenderer;
+    private Material originalTutupMaterial;
+    private Color originalTutupColor;
+    private bool hasOriginalTutupColor = false;
 
     void Awake()
     {
@@ -58,13 +79,12 @@ public class TanahBerkebun : MonoBehaviour
             targetPohonScale = originalPohonScale;
         }
 
-        // Cari renderer utama pada plot tanah ini (atau pada anaknya)
+        // 1. Simpan referensi & warna asli dari base plot
         plotRenderer = GetComponent<Renderer>();
         if (plotRenderer == null)
         {
             plotRenderer = GetComponentInChildren<Renderer>();
         }
-
         if (plotRenderer != null)
         {
             originalMaterial = plotRenderer.material;
@@ -79,6 +99,48 @@ public class TanahBerkebun : MonoBehaviour
                 hasOriginalColor = true;
             }
         }
+
+        // 2. Simpan referensi & warna asli dari lubang tanah
+        if (modelTanahBerlubang != null)
+        {
+            lobaRenderer = modelTanahBerlubang.GetComponent<Renderer>();
+            if (lobaRenderer == null) lobaRenderer = modelTanahBerlubang.GetComponentInChildren<Renderer>();
+            if (lobaRenderer != null)
+            {
+                originalLobaMaterial = lobaRenderer.material;
+                if (originalLobaMaterial.HasProperty("_Color"))
+                {
+                    originalLobaColor = originalLobaMaterial.color;
+                    hasOriginalLobaColor = true;
+                }
+                else if (originalLobaMaterial.HasProperty("_BaseColor"))
+                {
+                    originalLobaColor = originalLobaMaterial.GetColor("_BaseColor");
+                    hasOriginalLobaColor = true;
+                }
+            }
+        }
+
+        // 3. Simpan referensi & warna asli dari gundukan tanah tutup
+        if (modelTanahTertutup != null)
+        {
+            tutupRenderer = modelTanahTertutup.GetComponent<Renderer>();
+            if (tutupRenderer == null) tutupRenderer = modelTanahTertutup.GetComponentInChildren<Renderer>();
+            if (tutupRenderer != null)
+            {
+                originalTutupMaterial = tutupRenderer.material;
+                if (originalTutupMaterial.HasProperty("_Color"))
+                {
+                    originalTutupColor = originalTutupMaterial.color;
+                    hasOriginalTutupColor = true;
+                }
+                else if (originalTutupMaterial.HasProperty("_BaseColor"))
+                {
+                    originalTutupColor = originalTutupMaterial.GetColor("_BaseColor");
+                    hasOriginalTutupColor = true;
+                }
+            }
+        }
     }
 
     void Start()
@@ -91,7 +153,7 @@ public class TanahBerkebun : MonoBehaviour
             if (modelTanahTertutup != null) modelTanahTertutup.SetActive(false);
             if (modelTunas != null) modelTunas.SetActive(false);
             if (modelPohonDewasa != null) modelPohonDewasa.SetActive(false);
-            SetTilledVisual(false);
+            UpdateVisualCue(0);
         }
         else if (statusTanah == 1)
         {
@@ -100,7 +162,7 @@ public class TanahBerkebun : MonoBehaviour
             if (modelTanahTertutup != null) modelTanahTertutup.SetActive(false);
             if (modelTunas != null) modelTunas.SetActive(false);
             if (modelPohonDewasa != null) modelPohonDewasa.SetActive(false);
-            SetTilledVisual(true);
+            UpdateVisualCue(1);
         }
         else if (statusTanah == 2)
         {
@@ -109,7 +171,7 @@ public class TanahBerkebun : MonoBehaviour
             if (modelTanahTertutup != null) modelTanahTertutup.SetActive(false);
             if (modelTunas != null) modelTunas.SetActive(false);
             if (modelPohonDewasa != null) modelPohonDewasa.SetActive(false);
-            SetTilledVisual(true);
+            UpdateVisualCue(2);
         }
         else if (statusTanah == 3)
         {
@@ -118,16 +180,17 @@ public class TanahBerkebun : MonoBehaviour
             if (modelTanahTertutup != null) modelTanahTertutup.SetActive(true);
             if (modelTunas != null) modelTunas.SetActive(false);
             if (modelPohonDewasa != null) modelPohonDewasa.SetActive(false);
-            SetTilledVisual(false);
+            UpdateVisualCue(3);
         }
         else if (statusTanah == 4)
         {
             if (modelTanahBerlubang != null) modelTanahBerlubang.SetActive(false);
             if (modelBibit != null) modelBibit.SetActive(true);
-            if (modelTanahTertutup != null) modelTanahTertutup.SetActive(false);
+            // Gundukan tanah tetap aktif tapi warnanya basah
+            if (modelTanahTertutup != null) modelTanahTertutup.SetActive(true); 
             if (modelTunas != null) modelTunas.SetActive(false);
             if (modelPohonDewasa != null) modelPohonDewasa.SetActive(false);
-            SetTilledVisual(false);
+            UpdateVisualCue(4);
         }
         else if (statusTanah == 5)
         {
@@ -136,7 +199,7 @@ public class TanahBerkebun : MonoBehaviour
             if (modelTanahTertutup != null) modelTanahTertutup.SetActive(false);
             if (modelTunas != null) modelTunas.SetActive(false);
             if (modelPohonDewasa != null) modelPohonDewasa.SetActive(true);
-            SetTilledVisual(false);
+            UpdateVisualCue(5);
         }
     }
 
@@ -152,7 +215,7 @@ public class TanahBerkebun : MonoBehaviour
             Debug.Log("Tanah berlubang!");
             if(modelTanahBerlubang != null) modelTanahBerlubang.SetActive(true);
 
-            SetTilledVisual(true);
+            UpdateVisualCue(1);
 
             // Progress planting guide to Step 2 (Ambil bibit...)
             if (GameManager.Instance != null && GameManager.Instance.plantingGuideTrigger != null)
@@ -219,6 +282,8 @@ public class TanahBerkebun : MonoBehaviour
 
             Destroy(bendaYangNyentuh.gameObject); 
 
+            UpdateVisualCue(2);
+
             // Progress planting guide to Step 4 (Tutup/padatkan tanah...)
             if (GameManager.Instance != null && GameManager.Instance.plantingGuideTrigger != null)
             {
@@ -235,7 +300,7 @@ public class TanahBerkebun : MonoBehaviour
             if(activeBibitInstance != null) activeBibitInstance.SetActive(true);
             if(modelTanahTertutup != null) modelTanahTertutup.SetActive(true);
 
-            SetTilledVisual(false);
+            UpdateVisualCue(3);
 
             // Progress planting guide to Step 5 (Siram tanaman...)
             if (GameManager.Instance != null && GameManager.Instance.plantingGuideTrigger != null)
@@ -267,12 +332,12 @@ public class TanahBerkebun : MonoBehaviour
         if (statusTanah == 3)
         {
             statusTanah = 4;
-            Debug.Log("Disiram! Bibit tetap terlihat, menunggu pupuk untuk tumbuh dewasa.");
+            Debug.Log("Disiram! Gundukan tanah tetap terlihat basah.");
             
-            if(modelTanahTertutup != null) modelTanahTertutup.SetActive(false);
+            // Gundukan tanah tetap terlihat
+            if(modelTanahTertutup != null) modelTanahTertutup.SetActive(true);
             
-            // Bibit tetap terlihat (modelBibit sudah aktif dari step 2)
-            // Tidak ada perubahan visual — menunggu pupuk untuk tumbuh
+            UpdateVisualCue(4);
 
             // Progress planting guide to Step 6 (Berikan pupuk...)
             if (GameManager.Instance != null && GameManager.Instance.plantingGuideTrigger != null)
@@ -356,6 +421,8 @@ public class TanahBerkebun : MonoBehaviour
             activePohonInstance.transform.localScale = startAtZeroScale ? Vector3.zero : targetPohonScale;
         }
 
+        UpdateVisualCue(5);
+
         // Menyambungkan ke GameManager dan WaveManager
         if (GameManager.Instance != null)
         {
@@ -372,7 +439,7 @@ public class TanahBerkebun : MonoBehaviour
         statusTanah = 0;
         plantedItemData = null;
 
-        SetTilledVisual(false);
+        UpdateVisualCue(0);
 
         // Hancurkan instance dinamis
         if (activeBibitInstance != null)
@@ -431,34 +498,81 @@ public class TanahBerkebun : MonoBehaviour
         }
     }
 
-    private void SetTilledVisual(bool isTilled)
+    private void UpdateRendererVisualCue(Renderer r, Material originalMatOfRenderer, Color originalColorOfRenderer, bool hasOriginalColorOfRenderer, int state)
     {
-        if (plotRenderer == null) return;
+        if (r == null) return;
 
-        if (isTilled)
+        Material targetMaterial = originalMatOfRenderer;
+        Color targetColor = originalColorOfRenderer;
+        bool useCustomMaterial = false;
+
+        switch (state)
         {
-            if (materialTanahGembur != null)
-            {
-                plotRenderer.material = materialTanahGembur;
-            }
-            else if (hasOriginalColor)
-            {
-                SetMaterialColor(plotRenderer.material, warnaTanahGembur);
-            }
+            case 0: // Tanah biasa
+                targetMaterial = originalMatOfRenderer;
+                targetColor = originalColorOfRenderer;
+                break;
+            case 1: // Tanah digali
+            case 2: // Tanah dimasuki bibit
+                if (materialTanahGembur != null)
+                {
+                    targetMaterial = materialTanahGembur;
+                    useCustomMaterial = true;
+                }
+                else
+                {
+                    targetColor = warnaTanahGembur;
+                }
+                break;
+            case 3: // Tanah dipadatkan
+                if (materialTanahPadat != null)
+                {
+                    targetMaterial = materialTanahPadat;
+                    useCustomMaterial = true;
+                }
+                else
+                {
+                    targetColor = warnaTanahPadat;
+                }
+                break;
+            case 4: // Tanah disiram
+                if (materialTanahDisiram != null)
+                {
+                    targetMaterial = materialTanahDisiram;
+                    useCustomMaterial = true;
+                }
+                else
+                {
+                    targetColor = warnaTanahDisiram;
+                }
+                break;
+            case 5: // Pohon dewasa (kembali ke tanah original)
+                targetMaterial = originalMatOfRenderer;
+                targetColor = originalColorOfRenderer;
+                break;
+        }
+
+        if (useCustomMaterial)
+        {
+            r.material = targetMaterial;
         }
         else
         {
-            if (materialTanahGembur != null)
+            if (r.material != originalMatOfRenderer)
             {
-                if (originalMaterial != null)
-                {
-                    plotRenderer.material = originalMaterial;
-                }
+                r.material = originalMatOfRenderer;
             }
-            else if (hasOriginalColor)
+            if (hasOriginalColorOfRenderer)
             {
-                SetMaterialColor(plotRenderer.material, originalColor);
+                SetMaterialColor(r.material, targetColor);
             }
         }
+    }
+
+    private void UpdateVisualCue(int state)
+    {
+        UpdateRendererVisualCue(plotRenderer, originalMaterial, originalColor, hasOriginalColor, state);
+        UpdateRendererVisualCue(lobaRenderer, originalLobaMaterial, originalLobaColor, hasOriginalLobaColor, state);
+        UpdateRendererVisualCue(tutupRenderer, originalTutupMaterial, originalTutupColor, hasOriginalTutupColor, state);
     }
 }

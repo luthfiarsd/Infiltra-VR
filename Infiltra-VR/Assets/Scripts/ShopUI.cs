@@ -1,4 +1,3 @@
-/*
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,88 +5,19 @@ using TMPro;
 
 public class ShopUI : MonoBehaviour
 {
-    [Header("Referensi")]
-    public PlayerInventory playerInventory; // Akses ke tas dan uang pemain
-    public Transform itemGrid; // Tempat spawn area toko
-    public GameObject slotPrefab; // Boleh pakai prefab yang sama (InventorySlot)
-
-    [Header("Barang yang Dijual")]
-    public List<ItemData> itemsForSale = new List<ItemData>(); // Daftar jualan
-
-    public void RefreshUI()
+    [System.Serializable]
+    public class CartItem
     {
-        // 1. Bersihkan jualan sebelumnya (jika ada)
-        foreach (Transform child in itemGrid)
+        public ItemData item;
+        public int qty;
+
+        public CartItem(ItemData item, int qty)
         {
-            Destroy(child.gameObject);
-        }
-
-        // 2. Munculkan daftar barang jualan
-        foreach (var itemData in itemsForSale)
-        {
-            GameObject newSlot = Instantiate(slotPrefab, itemGrid);
-            
-            // Set gambar
-            Transform iconTransform = newSlot.transform.Find("ItemIcon");
-            if (iconTransform != null)
-                iconTransform.GetComponent<Image>().sprite = itemData.itemIcon;
-
-            // Berhubung ini toko, teks "Amount" kita gunakan untuk menampilkan Harga
-            Transform textTransform = newSlot.transform.Find("AmountText");
-            if (textTransform != null)
-            {
-                TextMeshProUGUI priceText = textTransform.GetComponent<TextMeshProUGUI>();
-                priceText.text = "$" + itemData.buyPrice.ToString();
-                priceText.color = Color.blue; // Ubah warna jadi kuning agar seolah-olah itu harga koin
-            }
-
-            // --- Logika Beli saat diklik ---
-            Button slotButton = newSlot.GetComponent<Button>();
-            if (slotButton != null)
-            {
-                slotButton.onClick.AddListener(() => BuyItem(itemData));
-            }
+            this.item = item;
+            this.qty = qty;
         }
     }
 
-    public void BuyItem(ItemData itemToBuy)
-    {
-        // Cek apakah uangnya cukup
-        if (playerInventory.uang >= itemToBuy.buyPrice)
-        {
-            playerInventory.uang -= itemToBuy.buyPrice; // Potong uangnya
-            playerInventory.AddItem(itemToBuy, 1);      // Masukkan barang 1 buah ke tas pemain
-
-            // Munculkan pesan sukses di Console Unity (Bawah)
-            Debug.Log("Berhasil membeli: " + itemToBuy.itemName + " | Sisa Uang: $" + playerInventory.uang);
-            
-            // Beritahu tas pemain untuk refresh jika sedang terbuka di belakang layar
-            InventoryUI inventoryUI = playerInventory.GetComponentInChildren<InventoryUI>();
-            if (inventoryUI != null) inventoryUI.RefreshUI();
-        }
-        else
-        {
-            // Jika uang tidak cukup
-            Debug.LogWarning("Uang tidak cukup! Harga: $" + itemToBuy.buyPrice + " | Uang kamu: $" + playerInventory.uang);
-        }
-    }
-
-    // Dipanggil setiap kali layar toko dibuka
-    private void OnEnable()
-    {
-        RefreshUI();
-    }
-}
-
-*/
-
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
-
-public class ShopUI : MonoBehaviour
-{
     [Header("Referensi Utama")]
     public PlayerInventory playerInventory; 
     public Transform itemGrid; 
@@ -100,13 +30,22 @@ public class ShopUI : MonoBehaviour
     public TextMeshProUGUI judulText; 
     public TextMeshProUGUI qtyText;   
     public TextMeshProUGUI totalText; 
-    public Button btnBeli;            
     
-    // TAMBAHAN: Referensi teks untuk menampilkan info saat hover
+    [Header("Referensi UI Cart")]
+    public TextMeshProUGUI cartSummaryText; 
+    public TextMeshProUGUI cartTotalText; // Teks khusus untuk menampilkan total harga belanjaan di keranjang
+    public Button addToCartButton; 
+    public Button clearCartButton; 
+    public Button checkoutButton; 
+
+    [Header("Referensi UI Detail Hover")]
     public TextMeshProUGUI hoverInfoText; 
 
     private ItemData selectedItem;
     private int currentQty = 1;
+
+    // Menyimpan daftar belanjaan di keranjang
+    private List<CartItem> cartList = new List<CartItem>();
 
     private void Awake()
     {
@@ -116,27 +55,41 @@ public class ShopUI : MonoBehaviour
             playerInventory = FindAnyObjectByType<PlayerInventory>();
         }
 
-        // Pasang event klik tombol beli secara otomatis via script
-        if (btnBeli != null)
+        // Pasang event klik tombol-tombol secara otomatis via script
+        if (addToCartButton != null)
         {
-            // Hapus listener lama untuk mencegah double-click bug
-            btnBeli.onClick.RemoveAllListeners();
-            btnBeli.onClick.AddListener(BuyItemFromPanel);
+            addToCartButton.onClick.RemoveAllListeners();
+            addToCartButton.onClick.AddListener(AddSelectedItemToCart);
+        }
+
+        if (clearCartButton != null)
+        {
+            clearCartButton.onClick.RemoveAllListeners();
+            clearCartButton.onClick.AddListener(ClearCart);
+        }
+
+        if (checkoutButton != null)
+        {
+            checkoutButton.onClick.RemoveAllListeners();
+            checkoutButton.onClick.AddListener(CheckoutCart);
         }
     }
 
     private void Start()
     {
         ClearDetailPanel();
+        UpdateCartDisplay();
     }
 
     public void RefreshUI()
     {
+        // Bersihkan grid jualan sebelumnya
         foreach (Transform child in itemGrid)
         {
             Destroy(child.gameObject);
         }
 
+        // Munculkan daftar barang jualan
         foreach (var itemData in itemsForSale)
         {
             GameObject newSlot = Instantiate(slotPrefab, itemGrid);
@@ -162,12 +115,11 @@ public class ShopUI : MonoBehaviour
                 slotButton.onClick.AddListener(() => SelectItem(itemData));
             }
 
-            // TAMBAHAN: Setup Event Trigger untuk mendeteksi Hover Laser VR
+            // Setup Event Trigger untuk mendeteksi Hover Laser VR
             SetupHoverEvent(newSlot, itemData);
         }
     }
 
-    // Fungsi baru untuk menyambungkan hover laser ke kode C#
     private void SetupHoverEvent(GameObject slotObj, ItemData itemData)
     {
         UnityEngine.EventSystems.EventTrigger trigger = slotObj.GetComponent<UnityEngine.EventSystems.EventTrigger>();
@@ -175,6 +127,8 @@ public class ShopUI : MonoBehaviour
         {
             trigger = slotObj.AddComponent<UnityEngine.EventSystems.EventTrigger>();
         }
+
+        trigger.triggers.Clear();
 
         // 1. Saat Laser Menunjuk (PointerEnter)
         UnityEngine.EventSystems.EventTrigger.Entry entryEnter = new UnityEngine.EventSystems.EventTrigger.Entry();
@@ -189,18 +143,20 @@ public class ShopUI : MonoBehaviour
         trigger.triggers.Add(entryExit);
     }
 
-    // Dipanggil otomatis saat laser VR menunjuk ke kotak pohon
     public void OnLaserHoverEnter(ItemData itemData)
     {
-        // Asumsi di ItemData kamu ada variabel 'itemName' dan 'dayaSerap' (misal tipe float/int/string)
-        // Jika nama variabel daya serapmu berbeda, silakan sesuaikan namanya di bawah ini (misal: itemData.waterAbsorption)
-        hoverInfoText.text = $"{itemData.itemName}\nDaya Serap: {itemData.waterAbsorption} Liter";
+        if (hoverInfoText != null)
+        {
+            hoverInfoText.text = $"{itemData.itemName}\nDaya Serap: {itemData.waterAbsorption} Liter";
+        }
     }
 
-    // Dipanggil otomatis saat laser VR tidak lagi menunjuk kotak tersebut
     public void OnLaserHoverExit()
     {
-        hoverInfoText.text = ""; // Kosongkan kembali teks saat laser pergi
+        if (hoverInfoText != null)
+        {
+            hoverInfoText.text = ""; 
+        }
     }
 
     public void SelectItem(ItemData itemData)
@@ -214,13 +170,16 @@ public class ShopUI : MonoBehaviour
     {
         if (selectedItem == null) return;
 
-        judulText.text = selectedItem.itemName;
-        qtyText.text = currentQty.ToString();
+        if (judulText != null) judulText.text = selectedItem.itemName;
+        if (qtyText != null) qtyText.text = currentQty.ToString();
 
         int totalHarga = selectedItem.buyPrice * currentQty;
-        totalText.text = totalHarga.ToString();
+        if (totalText != null) totalText.text = totalHarga.ToString();
 
-        btnBeli.interactable = true;
+        if (addToCartButton != null)
+        {
+            addToCartButton.interactable = true;
+        }
     }
 
     public void TambahQty()
@@ -237,38 +196,146 @@ public class ShopUI : MonoBehaviour
         UpdateDetailDisplay();
     }
 
-    public void BuyItemFromPanel()
+    // --- LOGIKA UTAMA SISTEM KERANJANG (CART SYSTEM) ---
+
+    public void AddSelectedItemToCart()
     {
         if (selectedItem == null) return;
 
-        int totalHarga = selectedItem.buyPrice * currentQty;
-
-        if (playerInventory.uang >= totalHarga)
+        // Cek apakah barang yang sama sudah ada di keranjang
+        CartItem existingItem = cartList.Find(x => x.item == selectedItem);
+        if (existingItem != null)
         {
-            playerInventory.uang -= totalHarga; 
-            playerInventory.AddItem(selectedItem, currentQty); 
-
-            Debug.Log($"Berhasil membeli: {currentQty} {selectedItem.itemName} | Sisa Uang: {playerInventory.uang}");
-            
-            InventoryUI inventoryUI = FindAnyObjectByType<InventoryUI>(FindObjectsInactive.Include);
-            if (inventoryUI != null) inventoryUI.RefreshUI();
-
-            ClearDetailPanel();
+            existingItem.qty += currentQty;
         }
         else
         {
-            Debug.LogWarning($"Uang tidak cukup! Total: {totalHarga} | Uang kamu: {playerInventory.uang}");
+            cartList.Add(new CartItem(selectedItem, currentQty));
+        }
+
+        Debug.Log($"[ShopUI] Menambahkan {currentQty} {selectedItem.itemName} ke keranjang.");
+        
+        ClearDetailPanel();
+        UpdateCartDisplay();
+    }
+
+    public void ClearCart()
+    {
+        cartList.Clear();
+        Debug.Log("[ShopUI] Keranjang belanja dikosongkan.");
+        UpdateCartDisplay();
+    }
+
+    public void CheckoutCart()
+    {
+        if (cartList.Count == 0)
+        {
+            Debug.LogWarning("[ShopUI] Keranjang kosong, tidak bisa checkout.");
+            return;
+        }
+
+        // Hitung total harga seluruh isi keranjang
+        int totalBayar = GetCartTotal();
+
+        // Cek uang pemain
+        if (playerInventory != null && playerInventory.uang >= totalBayar)
+        {
+            playerInventory.uang -= totalBayar;
+
+            // Masukkan seluruh isi keranjang ke tas pemain
+            foreach (var cartItem in cartList)
+            {
+                playerInventory.AddItem(cartItem.item, cartItem.qty);
+                Debug.Log($"[ShopUI] Checkout: Membeli {cartItem.qty} {cartItem.item.itemName}");
+            }
+
+            // Refresh UI Inventory
+            InventoryUI inventoryUI = FindAnyObjectByType<InventoryUI>(FindObjectsInactive.Include);
+            if (inventoryUI != null)
+            {
+                inventoryUI.RefreshUI();
+            }
+
+            cartList.Clear();
+            ClearDetailPanel();
+            
+            if (cartSummaryText != null)
+            {
+                cartSummaryText.text = "<color=green>Pembelian berhasil!</color>";
+            }
+            if (cartTotalText != null)
+            {
+                cartTotalText.text = "0";
+            }
+
+            Debug.Log($"[ShopUI] Checkout Berhasil! Total Bayar: {totalBayar} | Sisa Uang: {playerInventory.uang}");
+        }
+        else
+        {
+            Debug.LogWarning($"[ShopUI] Uang tidak cukup! Total: {totalBayar} | Uang pemain: {(playerInventory != null ? playerInventory.uang : 0)}");
         }
     }
 
-    private void ClearDetailPanel()
+    private int GetCartTotal()
+    {
+        int total = 0;
+        foreach (var cartItem in cartList)
+        {
+            total += cartItem.item.buyPrice * cartItem.qty;
+        }
+        return total;
+    }
+
+    private void UpdateCartDisplay()
+    {
+        if (cartSummaryText == null) return;
+
+        if (cartList.Count == 0)
+        {
+            cartSummaryText.text = "Keranjang kosong";
+            if (cartTotalText != null) cartTotalText.text = "0";
+            if (checkoutButton != null) checkoutButton.interactable = false;
+            if (clearCartButton != null) clearCartButton.interactable = false;
+        }
+        else
+        {
+            string summary = "";
+            foreach (var cartItem in cartList)
+            {
+                // Format: [NamaBarang] [Jumlah]x [HargaPerUnit]
+                summary += $"{cartItem.item.itemName} {cartItem.qty}x {cartItem.item.buyPrice}\n";
+            }
+            cartSummaryText.text = summary;
+
+            if (cartTotalText != null)
+            {
+                // Menampilkan total murni tanpa simbol Rupiah
+                cartTotalText.text = GetCartTotal().ToString();
+            }
+            
+            if (checkoutButton != null) checkoutButton.interactable = true;
+            if (clearCartButton != null) clearCartButton.interactable = true;
+        }
+    }
+
+    public void ClearDetailPanel()
     {
         selectedItem = null;
-        judulText.text = "Pilih Pohon";
-        qtyText.text = "-";
-        totalText.text = "0";
-        btnBeli.interactable = false;
-        if (hoverInfoText != null) hoverInfoText.text = "";
+        currentQty = 1;
+
+        if (judulText != null) judulText.text = "Pilih Pohon";
+        if (qtyText != null) qtyText.text = "-";
+        if (totalText != null) totalText.text = "0";
+        
+        if (addToCartButton != null)
+        {
+            addToCartButton.interactable = false;
+        }
+
+        if (hoverInfoText != null) 
+        {
+            hoverInfoText.text = "";
+        }
     }
 
     private void OnEnable()
