@@ -76,6 +76,7 @@ MonoBehaviour:
   modelTunas: {fileID: 0}
   modelPohonDewasa: {fileID: 3120140160695269774, guid: 8aa5301018f432a4d8d096392f60161f, type: 3}
   waterAbsorption: 15
+  offsetVisualPermukaan: 0.02
 --- !u!1 &1353747318820040361
 GameObject:
   m_ObjectHideFlags: 0
@@ -673,6 +674,7 @@ MonoBehaviour:
   modelTunas: {fileID: 0}
   modelPohonDewasa: {fileID: 3120140160695269774, guid: 8aa5301018f432a4d8d096392f60161f, type: 3}
   waterAbsorption: 15
+  offsetVisualPermukaan: 0.02
 --- !u!1 &7502233714469118371
 GameObject:
   m_ObjectHideFlags: 0

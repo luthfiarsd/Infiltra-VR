@@ -6,6 +6,7 @@ using UnityEngine.XR.Interaction.Toolkit.Locomotion.Turning;
 
 public class SettingsMenuManager : MonoBehaviour
 {
+    const string AtolSceneName = "Integration3.0 farmland atol";
     const string SoundKey = "settings_sound";
     const string MusicKey = "settings_music";
     const string SensitivityKey = "settings_sensitivity";
@@ -32,6 +33,7 @@ public class SettingsMenuManager : MonoBehaviour
 
     [Header("Locomotion")]
     [SerializeField] ContinuousMoveProvider smoothMoveProvider;
+    [SerializeField] PlayerSprint playerSprint;
     [SerializeField] ContinuousTurnProvider turnProvider;
     [SerializeField] Behaviour[] teleportBehaviours;
     [SerializeField] GameObject[] teleportObjects;
@@ -41,8 +43,10 @@ public class SettingsMenuManager : MonoBehaviour
     [Header("Sensitivity")]
     [SerializeField] float minTurnSpeed = 30f;
     [SerializeField] float maxTurnSpeed = 150f;
-    [SerializeField] float minMoveSpeed = 0.75f;
-    [SerializeField] float maxMoveSpeed = 2.5f;
+    [SerializeField] float minMoveSpeed = 0.5f;
+    [SerializeField] float maxMoveSpeed = 5f;
+    [SerializeField] float minSprintSpeed = 2f;
+    [SerializeField] float maxSprintSpeed = 10f;
 
     [Header("Defaults")]
     [SerializeField, Range(0f, 1f)] float defaultSound = 0.8f;
@@ -54,9 +58,16 @@ public class SettingsMenuManager : MonoBehaviour
 
     void Awake()
     {
+        TerapkanRentangKecepatanSceneAtol();
+        ResolveLocomotionReferences();
         SetupSlider(soundSlider);
         SetupSlider(musicSlider);
         SetupSlider(sensitivitySlider);
+    }
+
+    void OnValidate()
+    {
+        TerapkanRentangKecepatanSceneAtol();
     }
 
     void OnEnable()
@@ -165,12 +176,53 @@ public class SettingsMenuManager : MonoBehaviour
     void ApplySensitivity(float value)
     {
         var clamped = Mathf.Clamp01(value);
+        ResolveLocomotionReferences();
 
         if (turnProvider != null)
             turnProvider.turnSpeed = Mathf.Lerp(minTurnSpeed, maxTurnSpeed, clamped);
 
-        if (smoothMoveProvider != null)
-            smoothMoveProvider.moveSpeed = Mathf.Lerp(minMoveSpeed, maxMoveSpeed, clamped);
+        float walkSpeed = Mathf.Lerp(minMoveSpeed, maxMoveSpeed, clamped);
+        float sprintSpeed = Mathf.Lerp(minSprintSpeed, maxSprintSpeed, clamped);
+
+        if (playerSprint != null)
+        {
+            playerSprint.SetWalkSpeed(walkSpeed);
+            playerSprint.SetRunSpeed(sprintSpeed);
+        }
+        else if (smoothMoveProvider != null)
+        {
+            smoothMoveProvider.moveSpeed = walkSpeed;
+        }
+    }
+
+    void ResolveLocomotionReferences()
+    {
+        if (playerSprint == null && smoothMoveProvider != null)
+            playerSprint = smoothMoveProvider.GetComponent<PlayerSprint>();
+
+        if (playerSprint == null)
+        {
+            PlayerSprint[] sprintComponents = FindObjectsByType<PlayerSprint>(
+                FindObjectsInactive.Include,
+                FindObjectsSortMode.None);
+
+            if (sprintComponents.Length > 0)
+                playerSprint = sprintComponents[0];
+        }
+
+        if (smoothMoveProvider == null && playerSprint != null)
+            smoothMoveProvider = playerSprint.moveProvider;
+    }
+
+    void TerapkanRentangKecepatanSceneAtol()
+    {
+        if (!gameObject.scene.IsValid() || gameObject.scene.name != AtolSceneName)
+            return;
+
+        minMoveSpeed = 0.5f;
+        maxMoveSpeed = 5f;
+        minSprintSpeed = 2f;
+        maxSprintSpeed = 10f;
     }
 
     void SetMovementMode(MovementMode movementMode)

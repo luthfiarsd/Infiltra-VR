@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 7060784610038009055}
   - component: {fileID: 3501213961812093759}
   - component: {fileID: 5339498922265391826}
+  - component: {fileID: 7341986205839017421}
   m_Layer: 0
   m_Name: Cangkul
   m_TagString: cangkul
@@ -289,6 +290,31 @@ MonoBehaviour:
   itemData: {fileID: 11400000, guid: 9d8c56180910b2f4a91dd1bb966fbbff, type: 2}
   storeSound: {fileID: 0}
   storeEffectPrefab: {fileID: 0}
+--- !u!114 &7341986205839017421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 676059075390844799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a480575b0dfb65f41a2bc40c2b5dfa7b, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Assembly-CSharp::CangkulPintar
+  prefabTanah: {fileID: 541405429681802357, guid: 46477fd128082a0428720328eda022d5, type: 3}
+  ukuranGrid: 0.5
+  butuhBerapaPukulan: 1
+  jedaAntarpukulan: 0.2
+  kekuatanGetaran: 0.7
+  durasiGetaran: 0.15
+  partikelBenturan: {fileID: 0}
+  jumlahPartikel: 14
+  warnaDebu: {r: 0.42, g: 0.27, b: 0.12, a: 0.9}
+  sumberSuara: {fileID: 0}
+  suaraBenturan: {fileID: 0}
+  volumeBenturan: 0.8
+  variasiPitch: 0.08
 --- !u!1001 &1221504573150568578
 PrefabInstance:
   m_ObjectHideFlags: 0
