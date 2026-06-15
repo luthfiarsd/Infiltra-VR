@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4815020832256044568
+--- !u!1 &1527355171114229252
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,46 +8,46 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8602129751889804899}
-  - component: {fileID: 4335054602931410498}
-  - component: {fileID: 688441129473537083}
+  - component: {fileID: 3974250709851242135}
+  - component: {fileID: 6248996138904895116}
+  - component: {fileID: 4279421659145252078}
   m_Layer: 0
-  m_Name: Pohon_Beringin
+  m_Name: Beringin & Trembesi (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8602129751889804899
+--- !u!4 &3974250709851242135
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4815020832256044568}
+  m_GameObject: {fileID: 1527355171114229252}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.811268, z: 0, w: 0.5846745}
-  m_LocalPosition: {x: 48.050644, y: 10, z: 94.956055}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalRotation: {x: 0.00090759963, y: 0.0000057264124, z: -0.0063092755, w: 0.9999797}
+  m_LocalPosition: {x: 0.05047322, y: 3.37, z: 0.0072603603}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 108.44, z: 0}
---- !u!33 &4335054602931410498
+  m_Father: {fileID: 1970054049026037877}
+  m_LocalEulerAnglesHint: {x: 0.104, y: 0, z: -0.723}
+--- !u!33 &6248996138904895116
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4815020832256044568}
+  m_GameObject: {fileID: 1527355171114229252}
   m_Mesh: {fileID: -6384976510185405272, guid: 14f223e5960142747838a7563d3cb7a8, type: 3}
---- !u!23 &688441129473537083
+--- !u!23 &4279421659145252078
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4815020832256044568}
+  m_GameObject: {fileID: 1527355171114229252}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -66,9 +66,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -3829787277928047063, guid: 14f223e5960142747838a7563d3cb7a8, type: 3}
-  - {fileID: 5104274173858312257, guid: 14f223e5960142747838a7563d3cb7a8, type: 3}
-  - {fileID: 5054701274805610042, guid: 14f223e5960142747838a7563d3cb7a8, type: 3}
+  - {fileID: 7898189785960609206, guid: 14f223e5960142747838a7563d3cb7a8, type: 3}
+  - {fileID: -4733710586529443156, guid: 14f223e5960142747838a7563d3cb7a8, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -92,3 +91,35 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &8166176749473274045
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1970054049026037877}
+  m_Layer: 0
+  m_Name: Pohon_Beringin
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1970054049026037877
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8166176749473274045}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 4, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 3974250709851242135}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

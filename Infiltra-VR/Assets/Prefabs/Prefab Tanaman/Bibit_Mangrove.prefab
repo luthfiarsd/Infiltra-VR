@@ -136,6 +136,7 @@ GameObject:
   - component: {fileID: 8514249486646819976}
   - component: {fileID: 6888826826604842862}
   - component: {fileID: 4461924479992094053}
+  - component: {fileID: -2189116164835877999}
   m_Layer: 0
   m_Name: Bibit_Mangrove
   m_TagString: bibit
@@ -393,3 +394,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.29254913, y: 0.7620678, z: 0.1648407}
   m_Center: {x: 0.27075577, y: -0.26820374, z: -0.024726868}
+--- !u!114 &-2189116164835877999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4662154372987721550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6992a9f5451cae348b7720df1be6d4d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InventoryItemStorer
+  itemData: {fileID: 11400000, guid: f1698227abad4fd98b10ec077a71711c, type: 2}
+  storeSound: {fileID: 0}
+  storeEffectPrefab: {fileID: 0}

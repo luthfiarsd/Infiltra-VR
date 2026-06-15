@@ -18,13 +18,27 @@ public class TanahBerkebun : MonoBehaviour
     [Header("Pengaturan Ukuran & Posisi Kustom")]
     [Tooltip("Multiplier untuk mengatur ukuran bibit & pohon secara manual")]
     public float scaleMultiplier = 1.0f;
-    [Tooltip("Offset posisi kustom untuk bibit & pohon dewasa di plot ini")]
-    public Vector3 customPositionOffset = Vector3.zero;
+    [Tooltip("Offset posisi kustom untuk bibit/tunas di plot ini")]
+    public Vector3 bibitPositionOffset = Vector3.zero;
+    [Tooltip("Offset posisi kustom untuk pohon dewasa di plot ini")]
+    public Vector3 adultPositionOffset = Vector3.zero;
     [Tooltip("Rotasi kustom (Euler) untuk bibit & pohon dewasa di plot ini (jika Vector3.zero, menggunakan rotasi prefab)")]
     public Vector3 customRotationOffset = Vector3.zero;
+    [Header("Visual Lubang 3D")]
+    [SerializeField] private bool gunakanVisualLubang3D = true;
+    [SerializeField, Min(0.1f)] private float radiusLubang = 0.32f;
+    [SerializeField, Min(0.01f)] private float tinggiBibirLubang = 0.06f;
+    [SerializeField, Min(0.01f)] private float kedalamanVisualLubang = 0.08f;
+    [SerializeField] private Color warnaDalamLubang = new Color(0.055f, 0.025f, 0.01f, 1f);
+    [SerializeField] private Color warnaBibirLubang = new Color(0.28f, 0.13f, 0.045f, 1f);
+
+    private GameObject visualLubang3D;
+    private static Material materialDalamLubang;
+    private static Material materialBibirLubang;
 
     [Header("Data Tanaman yang Ditanam")]
     public ItemData plantedItemData; // Diisi otomatis saat bibit dimasukkan
+
 
     [Header("Dynamic Model Instances")]
     public GameObject activeBibitInstance;
@@ -242,7 +256,7 @@ public class TanahBerkebun : MonoBehaviour
             if (modelBibit != null) modelBibit.SetActive(false);
 
             // Tentukan posisi & rotasi spawn di tingkat dunia (world space) menggunakan plot tanah langsung + offset
-            Vector3 spawnPos = transform.position + customPositionOffset;
+            Vector3 spawnPos = transform.position + bibitPositionOffset;
 
             // Cari prefab bibit yang akan ditampilkan di tanah (utamakan plantedVisualPrefab)
             GameObject bibitVisualPrefab = null;
@@ -385,7 +399,7 @@ public class TanahBerkebun : MonoBehaviour
         }
 
         // Tentukan posisi & rotasi spawn di tingkat dunia (world space) menggunakan plot tanah langsung + offset
-        Vector3 spawnPos = transform.position + new Vector3(0, 1f, 0) + customPositionOffset;
+        Vector3 spawnPos = transform.position + adultPositionOffset;
         
         // Gunakan rotasi kustom jika diisi, jika tidak gunakan rotasi asli prefab
         Quaternion spawnRot = Quaternion.identity;
@@ -574,5 +588,151 @@ public class TanahBerkebun : MonoBehaviour
         UpdateRendererVisualCue(plotRenderer, originalMaterial, originalColor, hasOriginalColor, state);
         UpdateRendererVisualCue(lobaRenderer, originalLobaMaterial, originalLobaColor, hasOriginalLobaColor, state);
         UpdateRendererVisualCue(tutupRenderer, originalTutupMaterial, originalTutupColor, hasOriginalTutupColor, state);
+
+        // Manage procedural 3D hole
+        bool tanahBerlubang = (state == 1 || state == 2);
+        if (gunakanVisualLubang3D)
+        {
+            if (tanahBerlubang && visualLubang3D == null)
+            {
+                SiapkanVisualLubang3D();
+            }
+            if (visualLubang3D != null)
+            {
+                visualLubang3D.SetActive(tanahBerlubang);
+            }
+        }
+        else
+        {
+            if (visualLubang3D != null)
+            {
+                visualLubang3D.SetActive(false);
+            }
+        }
+    }
+
+    private void SiapkanVisualLubang3D()
+    {
+        visualLubang3D = new GameObject("Visual Lubang 3D");
+        visualLubang3D.transform.SetParent(transform, false);
+
+        Vector3 posisiPermukaan = modelTanahBerlubang != null
+            ? modelTanahBerlubang.transform.localPosition
+            : Vector3.zero;
+        visualLubang3D.transform.localPosition = posisiPermukaan + Vector3.up * 0.01f;
+
+        GameObject bagianDalam = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
+        bagianDalam.name = "Bagian Dalam Lubang";
+        bagianDalam.transform.SetParent(visualLubang3D.transform, false);
+        bagianDalam.transform.localPosition = Vector3.up * (-kedalamanVisualLubang * 0.5f + 0.004f);
+        bagianDalam.transform.localScale = new Vector3(
+            radiusLubang * 1.45f,
+            kedalamanVisualLubang * 0.5f,
+            radiusLubang * 1.45f);
+
+        Collider colliderDalam = bagianDalam.GetComponent<Collider>();
+        if (colliderDalam != null)
+        {
+            colliderDalam.enabled = false;
+            Destroy(colliderDalam);
+        }
+
+        MeshRenderer rendererDalam = bagianDalam.GetComponent<MeshRenderer>();
+        rendererDalam.sharedMaterial = DapatkanMaterialLubang(ref materialDalamLubang, warnaDalamLubang);
+        rendererDalam.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
+
+        GameObject bibirLubang = new GameObject("Bibir Lubang");
+        bibirLubang.transform.SetParent(visualLubang3D.transform, false);
+
+        MeshFilter meshFilter = bibirLubang.AddComponent<MeshFilter>();
+        meshFilter.sharedMesh = BuatMeshBibirLubang();
+
+        MeshRenderer rendererBibir = bibirLubang.AddComponent<MeshRenderer>();
+        rendererBibir.sharedMaterial = DapatkanMaterialLubang(ref materialBibirLubang, warnaBibirLubang);
+    }
+
+    private Mesh BuatMeshBibirLubang()
+    {
+        const int jumlahSegmen = 32;
+        const int titikPerSegmen = 3;
+        Vector3[] vertices = new Vector3[jumlahSegmen * titikPerSegmen];
+        Vector2[] uv = new Vector2[vertices.Length];
+        int[] triangles = new int[jumlahSegmen * 12];
+
+        float radiusLuar = radiusLubang * 1.32f;
+        float radiusPuncak = radiusLubang * 1.02f;
+        float radiusDalam = radiusLubang * 0.73f;
+
+        for (int i = 0; i < jumlahSegmen; i++)
+        {
+            float sudut = i * Mathf.PI * 2f / jumlahSegmen;
+            Vector3 arah = new Vector3(Mathf.Cos(sudut), 0f, Mathf.Sin(sudut));
+            int vertexIndex = i * titikPerSegmen;
+
+            vertices[vertexIndex] = arah * radiusLuar;
+            vertices[vertexIndex + 1] = arah * radiusPuncak + Vector3.up * tinggiBibirLubang;
+            vertices[vertexIndex + 2] = arah * radiusDalam + Vector3.up * 0.006f;
+
+            uv[vertexIndex] = new Vector2(0f, i / (float)jumlahSegmen);
+            uv[vertexIndex + 1] = new Vector2(0.5f, i / (float)jumlahSegmen);
+            uv[vertexIndex + 2] = new Vector2(1f, i / (float)jumlahSegmen);
+        }
+
+        int triangleIndex = 0;
+        for (int i = 0; i < jumlahSegmen; i++)
+        {
+            int berikutnya = (i + 1) % jumlahSegmen;
+            int saatIni = i * titikPerSegmen;
+            int sesudah = berikutnya * titikPerSegmen;
+
+            triangles[triangleIndex++] = saatIni;
+            triangles[triangleIndex++] = saatIni + 1;
+            triangles[triangleIndex++] = sesudah;
+            triangles[triangleIndex++] = saatIni + 1;
+            triangles[triangleIndex++] = sesudah + 1;
+            triangles[triangleIndex++] = sesudah;
+
+            triangles[triangleIndex++] = saatIni + 1;
+            triangles[triangleIndex++] = saatIni + 2;
+            triangles[triangleIndex++] = sesudah + 1;
+            triangles[triangleIndex++] = saatIni + 2;
+            triangles[triangleIndex++] = sesudah + 2;
+            triangles[triangleIndex++] = sesudah + 1;
+        }
+
+        Mesh mesh = new Mesh { name = "Mesh Bibir Lubang" };
+        mesh.vertices = vertices;
+        mesh.uv = uv;
+        mesh.triangles = triangles;
+        mesh.RecalculateNormals();
+        mesh.RecalculateBounds();
+        return mesh;
+    }
+
+    private static Material DapatkanMaterialLubang(ref Material material, Color warna)
+    {
+        if (material != null)
+            return material;
+
+        Shader shader = Shader.Find("Universal Render Pipeline/Lit");
+        if (shader == null)
+            shader = Shader.Find("Standard");
+        if (shader == null)
+            shader = Shader.Find("Unlit/Color");
+
+        material = new Material(shader)
+        {
+            name = "Material Lubang Runtime",
+            color = warna,
+            enableInstancing = true,
+            hideFlags = HideFlags.DontSave
+        };
+
+        if (material.HasProperty("_BaseColor"))
+            material.SetColor("_BaseColor", warna);
+        if (material.HasProperty("_Smoothness"))
+            material.SetFloat("_Smoothness", 0.08f);
+
+        return material;
     }
 }

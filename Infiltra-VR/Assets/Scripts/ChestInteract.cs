@@ -23,6 +23,16 @@ public class ChestInteract : MonoBehaviour
     {
         HasOpenedChest = true; // Set status bahwa peti telah dibuka
         
+        // Matikan ObjectiveMarker terdekat jika ada (radius 3 meter)
+        ObjectiveMarker[] markers = FindObjectsByType<ObjectiveMarker>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        foreach (var marker in markers)
+        {
+            if (marker != null && Vector3.Distance(transform.position, marker.transform.position) < 3f)
+            {
+                marker.gameObject.SetActive(false);
+            }
+        }
+
         // 1. Beritahu UI bahwa "Peti ini" yang sedang dibuka
         chestUIManager.currentChest = GetComponent<ChestInventory>();
         

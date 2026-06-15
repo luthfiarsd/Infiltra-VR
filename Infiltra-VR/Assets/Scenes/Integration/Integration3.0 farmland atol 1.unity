@@ -667,7 +667,7 @@ GameObject:
   - component: {fileID: 12892838}
   - component: {fileID: 12892837}
   m_Layer: 0
-  m_Name: SlotTanah (18)
+  m_Name: SlotTanah (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -711,9 +711,26 @@ MonoBehaviour:
   modelTunas: {fileID: 173957474}
   modelPohonDewasa: {fileID: 3120140160695269774, guid: 8aa5301018f432a4d8d096392f60161f, type: 3}
   waterAbsorption: 15
+  scaleMultiplier: 1
+  bibitPositionOffset: {x: -0.09, y: -0.5, z: -0.6}
+  adultPositionOffset: {x: 0, y: 0, z: 0}
+  customRotationOffset: {x: 0, y: 0, z: 0}
+  gunakanVisualLubang3D: 1
+  radiusLubang: 0.32
+  tinggiBibirLubang: 0.06
+  kedalamanVisualLubang: 0.08
+  warnaDalamLubang: {r: 0.055, g: 0.025, b: 0.01, a: 1}
+  warnaBibirLubang: {r: 0.28, g: 0.13, b: 0.045, a: 1}
   plantedItemData: {fileID: 0}
   activeBibitInstance: {fileID: 0}
   activePohonInstance: {fileID: 0}
+  targetPohonScale: {x: 1, y: 1, z: 1}
+  materialTanahGembur: {fileID: 0}
+  warnaTanahGembur: {r: 0.6, g: 0.45, b: 0.3, a: 1}
+  materialTanahPadat: {fileID: 0}
+  warnaTanahPadat: {r: 0.45, g: 0.35, b: 0.25, a: 1}
+  materialTanahDisiram: {fileID: 0}
+  warnaTanahDisiram: {r: 0.25, g: 0.18, b: 0.12, a: 1}
 --- !u!65 &12892838
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1222,7 +1239,7 @@ GameObject:
   - component: {fileID: 30435071}
   - component: {fileID: 30435070}
   m_Layer: 0
-  m_Name: SlotTanah (2)
+  m_Name: SlotTanah (II)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1266,9 +1283,26 @@ MonoBehaviour:
   modelTunas: {fileID: 173957474}
   modelPohonDewasa: {fileID: 3120140160695269774, guid: 8aa5301018f432a4d8d096392f60161f, type: 3}
   waterAbsorption: 15
+  scaleMultiplier: 1
+  bibitPositionOffset: {x: 0, y: 0, z: 0}
+  adultPositionOffset: {x: 0, y: 0, z: 0}
+  customRotationOffset: {x: 0, y: 0, z: 0}
+  gunakanVisualLubang3D: 1
+  radiusLubang: 0.32
+  tinggiBibirLubang: 0.06
+  kedalamanVisualLubang: 0.08
+  warnaDalamLubang: {r: 0.055, g: 0.025, b: 0.01, a: 1}
+  warnaBibirLubang: {r: 0.28, g: 0.13, b: 0.045, a: 1}
   plantedItemData: {fileID: 0}
   activeBibitInstance: {fileID: 0}
   activePohonInstance: {fileID: 0}
+  targetPohonScale: {x: 1, y: 1, z: 1}
+  materialTanahGembur: {fileID: 0}
+  warnaTanahGembur: {r: 0.6, g: 0.45, b: 0.3, a: 1}
+  materialTanahPadat: {fileID: 0}
+  warnaTanahPadat: {r: 0.45, g: 0.35, b: 0.25, a: 1}
+  materialTanahDisiram: {fileID: 0}
+  warnaTanahDisiram: {r: 0.25, g: 0.18, b: 0.12, a: 1}
 --- !u!65 &30435071
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1346,9 +1380,26 @@ MonoBehaviour:
   modelTunas: {fileID: 173957474}
   modelPohonDewasa: {fileID: 3120140160695269774, guid: 8aa5301018f432a4d8d096392f60161f, type: 3}
   waterAbsorption: 15
+  scaleMultiplier: 1
+  bibitPositionOffset: {x: 0, y: 0, z: 0}
+  adultPositionOffset: {x: 0, y: 0, z: 0}
+  customRotationOffset: {x: 0, y: 0, z: 0}
+  gunakanVisualLubang3D: 1
+  radiusLubang: 0.32
+  tinggiBibirLubang: 0.06
+  kedalamanVisualLubang: 0.08
+  warnaDalamLubang: {r: 0.055, g: 0.025, b: 0.01, a: 1}
+  warnaBibirLubang: {r: 0.28, g: 0.13, b: 0.045, a: 1}
   plantedItemData: {fileID: 0}
   activeBibitInstance: {fileID: 0}
   activePohonInstance: {fileID: 0}
+  targetPohonScale: {x: 1, y: 1, z: 1}
+  materialTanahGembur: {fileID: 0}
+  warnaTanahGembur: {r: 0.6, g: 0.45, b: 0.3, a: 1}
+  materialTanahPadat: {fileID: 0}
+  warnaTanahPadat: {r: 0.45, g: 0.35, b: 0.25, a: 1}
+  materialTanahDisiram: {fileID: 0}
+  warnaTanahDisiram: {r: 0.25, g: 0.18, b: 0.12, a: 1}
 --- !u!65 &37514683
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3116,9 +3167,26 @@ MonoBehaviour:
   modelTunas: {fileID: 173957474}
   modelPohonDewasa: {fileID: 3120140160695269774, guid: 8aa5301018f432a4d8d096392f60161f, type: 3}
   waterAbsorption: 15
+  scaleMultiplier: 1
+  bibitPositionOffset: {x: 0, y: 0, z: 0}
+  adultPositionOffset: {x: 0, y: 0, z: 0}
+  customRotationOffset: {x: 0, y: 0, z: 0}
+  gunakanVisualLubang3D: 1
+  radiusLubang: 0.32
+  tinggiBibirLubang: 0.06
+  kedalamanVisualLubang: 0.08
+  warnaDalamLubang: {r: 0.055, g: 0.025, b: 0.01, a: 1}
+  warnaBibirLubang: {r: 0.28, g: 0.13, b: 0.045, a: 1}
   plantedItemData: {fileID: 0}
   activeBibitInstance: {fileID: 0}
   activePohonInstance: {fileID: 0}
+  targetPohonScale: {x: 1, y: 1, z: 1}
+  materialTanahGembur: {fileID: 0}
+  warnaTanahGembur: {r: 0.6, g: 0.45, b: 0.3, a: 1}
+  materialTanahPadat: {fileID: 0}
+  warnaTanahPadat: {r: 0.45, g: 0.35, b: 0.25, a: 1}
+  materialTanahDisiram: {fileID: 0}
+  warnaTanahDisiram: {r: 0.25, g: 0.18, b: 0.12, a: 1}
 --- !u!65 &88540546
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3881,7 +3949,7 @@ GameObject:
   - component: {fileID: 111502666}
   - component: {fileID: 111502665}
   m_Layer: 0
-  m_Name: SlotTanah (20)
+  m_Name: SlotTanah (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3925,9 +3993,26 @@ MonoBehaviour:
   modelTunas: {fileID: 173957474}
   modelPohonDewasa: {fileID: 3120140160695269774, guid: 8aa5301018f432a4d8d096392f60161f, type: 3}
   waterAbsorption: 15
+  scaleMultiplier: 1
+  bibitPositionOffset: {x: -0.09, y: -0.5, z: -0.6}
+  adultPositionOffset: {x: 0, y: 0, z: 0}
+  customRotationOffset: {x: 0, y: 0, z: 0}
+  gunakanVisualLubang3D: 1
+  radiusLubang: 0.32
+  tinggiBibirLubang: 0.06
+  kedalamanVisualLubang: 0.08
+  warnaDalamLubang: {r: 0.055, g: 0.025, b: 0.01, a: 1}
+  warnaBibirLubang: {r: 0.28, g: 0.13, b: 0.045, a: 1}
   plantedItemData: {fileID: 0}
   activeBibitInstance: {fileID: 0}
   activePohonInstance: {fileID: 0}
+  targetPohonScale: {x: 1, y: 1, z: 1}
+  materialTanahGembur: {fileID: 0}
+  warnaTanahGembur: {r: 0.6, g: 0.45, b: 0.3, a: 1}
+  materialTanahPadat: {fileID: 0}
+  warnaTanahPadat: {r: 0.45, g: 0.35, b: 0.25, a: 1}
+  materialTanahDisiram: {fileID: 0}
+  warnaTanahDisiram: {r: 0.25, g: 0.18, b: 0.12, a: 1}
 --- !u!65 &111502666
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4210,6 +4295,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 120653065}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &124783913 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5167925059111895691, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
+  m_PrefabInstance: {fileID: 937212969}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &129683821
 GameObject:
   m_ObjectHideFlags: 0
@@ -5144,9 +5234,26 @@ MonoBehaviour:
   modelTunas: {fileID: 173957474}
   modelPohonDewasa: {fileID: 3120140160695269774, guid: 8aa5301018f432a4d8d096392f60161f, type: 3}
   waterAbsorption: 15
+  scaleMultiplier: 1
+  bibitPositionOffset: {x: 0, y: 0, z: 0}
+  adultPositionOffset: {x: 0, y: 0, z: 0}
+  customRotationOffset: {x: 0, y: 0, z: 0}
+  gunakanVisualLubang3D: 1
+  radiusLubang: 0.32
+  tinggiBibirLubang: 0.06
+  kedalamanVisualLubang: 0.08
+  warnaDalamLubang: {r: 0.055, g: 0.025, b: 0.01, a: 1}
+  warnaBibirLubang: {r: 0.28, g: 0.13, b: 0.045, a: 1}
   plantedItemData: {fileID: 0}
   activeBibitInstance: {fileID: 0}
   activePohonInstance: {fileID: 0}
+  targetPohonScale: {x: 1, y: 1, z: 1}
+  materialTanahGembur: {fileID: 0}
+  warnaTanahGembur: {r: 0.6, g: 0.45, b: 0.3, a: 1}
+  materialTanahPadat: {fileID: 0}
+  warnaTanahPadat: {r: 0.45, g: 0.35, b: 0.25, a: 1}
+  materialTanahDisiram: {fileID: 0}
+  warnaTanahDisiram: {r: 0.25, g: 0.18, b: 0.12, a: 1}
 --- !u!65 &152608919
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5867,7 +5974,7 @@ Transform:
   - {fileID: 240051487}
   - {fileID: 1811157298}
   - {fileID: 1966716059}
-  - {fileID: 1072644238}
+  - {fileID: 1740700253}
   - {fileID: 310565510}
   - {fileID: 1672351037}
   - {fileID: 12892836}
@@ -6146,97 +6253,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 179668665}
   m_CullTransparentMesh: 1
---- !u!1 &179923039
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 179923040}
-  - component: {fileID: 179923042}
-  - component: {fileID: 179923041}
-  m_Layer: 0
-  m_Name: "\u0401\u043B\u043A\u0430"
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &179923040
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 179923039}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0.004420964, y: 0.78923684, z: -0.004586276, w: 0.6140559}
-  m_LocalPosition: {x: 0.02, y: 3.08, z: -0.69}
-  m_LocalScale: {x: 2, y: 1.3335114, z: 2.0001554}
-  m_ConstrainProportionsScale: 1
-  m_Children: []
-  m_Father: {fileID: 1072644238}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &179923041
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 179923039}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_ForceMeshLod: -1
-  m_MeshLodSelectionBias: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 7898189785960609206, guid: 14f223e5960142747838a7563d3cb7a8, type: 3}
-  - {fileID: -4733710586529443156, guid: 14f223e5960142747838a7563d3cb7a8, type: 3}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_MaskInteraction: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &179923042
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 179923039}
-  m_Mesh: {fileID: -6384976510185405272, guid: 14f223e5960142747838a7563d3cb7a8, type: 3}
 --- !u!1001 &181246280
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7057,9 +7073,26 @@ MonoBehaviour:
   modelTunas: {fileID: 173957474}
   modelPohonDewasa: {fileID: 3120140160695269774, guid: 8aa5301018f432a4d8d096392f60161f, type: 3}
   waterAbsorption: 15
+  scaleMultiplier: 1
+  bibitPositionOffset: {x: 0, y: 0, z: 0}
+  adultPositionOffset: {x: 0, y: 0, z: 0}
+  customRotationOffset: {x: 0, y: 0, z: 0}
+  gunakanVisualLubang3D: 1
+  radiusLubang: 0.32
+  tinggiBibirLubang: 0.06
+  kedalamanVisualLubang: 0.08
+  warnaDalamLubang: {r: 0.055, g: 0.025, b: 0.01, a: 1}
+  warnaBibirLubang: {r: 0.28, g: 0.13, b: 0.045, a: 1}
   plantedItemData: {fileID: 0}
   activeBibitInstance: {fileID: 0}
   activePohonInstance: {fileID: 0}
+  targetPohonScale: {x: 1, y: 1, z: 1}
+  materialTanahGembur: {fileID: 0}
+  warnaTanahGembur: {r: 0.6, g: 0.45, b: 0.3, a: 1}
+  materialTanahPadat: {fileID: 0}
+  warnaTanahPadat: {r: 0.45, g: 0.35, b: 0.25, a: 1}
+  materialTanahDisiram: {fileID: 0}
+  warnaTanahDisiram: {r: 0.25, g: 0.18, b: 0.12, a: 1}
 --- !u!65 &235188152
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7137,9 +7170,26 @@ MonoBehaviour:
   modelTunas: {fileID: 173957474}
   modelPohonDewasa: {fileID: 3120140160695269774, guid: 8aa5301018f432a4d8d096392f60161f, type: 3}
   waterAbsorption: 15
+  scaleMultiplier: 1
+  bibitPositionOffset: {x: 0, y: 0, z: 0}
+  adultPositionOffset: {x: 0, y: 0, z: 0}
+  customRotationOffset: {x: 0, y: 0, z: 0}
+  gunakanVisualLubang3D: 1
+  radiusLubang: 0.32
+  tinggiBibirLubang: 0.06
+  kedalamanVisualLubang: 0.08
+  warnaDalamLubang: {r: 0.055, g: 0.025, b: 0.01, a: 1}
+  warnaBibirLubang: {r: 0.28, g: 0.13, b: 0.045, a: 1}
   plantedItemData: {fileID: 0}
   activeBibitInstance: {fileID: 0}
   activePohonInstance: {fileID: 0}
+  targetPohonScale: {x: 1, y: 1, z: 1}
+  materialTanahGembur: {fileID: 0}
+  warnaTanahGembur: {r: 0.6, g: 0.45, b: 0.3, a: 1}
+  materialTanahPadat: {fileID: 0}
+  warnaTanahPadat: {r: 0.45, g: 0.35, b: 0.25, a: 1}
+  materialTanahDisiram: {fileID: 0}
+  warnaTanahDisiram: {r: 0.25, g: 0.18, b: 0.12, a: 1}
 --- !u!65 &240051489
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7252,119 +7302,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 241648394}
   m_Mesh: {fileID: -6384976510185405272, guid: 14f223e5960142747838a7563d3cb7a8, type: 3}
---- !u!1 &241946085
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 241946086}
-  - component: {fileID: 241946089}
-  - component: {fileID: 241946088}
-  - component: {fileID: 241946087}
-  m_Layer: 0
-  m_Name: Quad
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &241946086
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 241946085}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.488, z: -0.592}
-  m_LocalScale: {x: 5, y: 5, z: 5}
-  m_ConstrainProportionsScale: 1
-  m_Children: []
-  m_Father: {fileID: 1072644238}
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!64 &241946087
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 241946085}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &241946088
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 241946085}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_ForceMeshLod: -1
-  m_MeshLodSelectionBias: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: dea57f44d3e29af48b67f81db1b2591a, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_MaskInteraction: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &241946089
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 241946085}
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &241964194
 GameObject:
   m_ObjectHideFlags: 0
@@ -8209,6 +8146,119 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 269490277}
   m_CullTransparentMesh: 1
+--- !u!1 &269665006
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 269665007}
+  - component: {fileID: 269665010}
+  - component: {fileID: 269665009}
+  - component: {fileID: 269665008}
+  m_Layer: 0
+  m_Name: Quad2 (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &269665007
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 269665006}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: -0.49, z: -0.592}
+  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 1740700253}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!64 &269665008
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 269665006}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &269665009
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 269665006}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: dc19dea219ff6af40bd0bc4aaee49329, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &269665010
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 269665006}
+  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &271504599
 GameObject:
   m_ObjectHideFlags: 0
@@ -8443,7 +8493,7 @@ GameObject:
   - component: {fileID: 310565512}
   - component: {fileID: 310565511}
   m_Layer: 0
-  m_Name: SlotTanah (16)
+  m_Name: SlotTanah (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8458,7 +8508,7 @@ Transform:
   m_GameObject: {fileID: 310565509}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 15.42, y: 0, z: -1.0479927}
+  m_LocalPosition: {x: 10.42, y: 0, z: -1.0479927}
   m_LocalScale: {x: 1, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -8487,9 +8537,26 @@ MonoBehaviour:
   modelTunas: {fileID: 173957474}
   modelPohonDewasa: {fileID: 3120140160695269774, guid: 8aa5301018f432a4d8d096392f60161f, type: 3}
   waterAbsorption: 15
+  scaleMultiplier: 1
+  bibitPositionOffset: {x: -0.09, y: -0.5, z: -0.6}
+  adultPositionOffset: {x: 0, y: 0, z: 0}
+  customRotationOffset: {x: 0, y: 0, z: 0}
+  gunakanVisualLubang3D: 1
+  radiusLubang: 0.32
+  tinggiBibirLubang: 0.06
+  kedalamanVisualLubang: 0.08
+  warnaDalamLubang: {r: 0.055, g: 0.025, b: 0.01, a: 1}
+  warnaBibirLubang: {r: 0.28, g: 0.13, b: 0.045, a: 1}
   plantedItemData: {fileID: 0}
   activeBibitInstance: {fileID: 0}
   activePohonInstance: {fileID: 0}
+  targetPohonScale: {x: 1, y: 1, z: 1}
+  materialTanahGembur: {fileID: 0}
+  warnaTanahGembur: {r: 0.6, g: 0.45, b: 0.3, a: 1}
+  materialTanahPadat: {fileID: 0}
+  warnaTanahPadat: {r: 0.45, g: 0.35, b: 0.25, a: 1}
+  materialTanahDisiram: {fileID: 0}
+  warnaTanahDisiram: {r: 0.25, g: 0.18, b: 0.12, a: 1}
 --- !u!65 &310565512
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8633,7 +8700,7 @@ Transform:
   m_GameObject: {fileID: 330942040}
   serializedVersion: 2
   m_LocalRotation: {x: 2.220446e-16, y: -0.999998, z: -0, w: -0.0019956082}
-  m_LocalPosition: {x: 43.918266, y: 6.56, z: 107.24398}
+  m_LocalPosition: {x: 44.86, y: 7.4, z: 106.75}
   m_LocalScale: {x: 2, y: 4, z: 0.2}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8667,7 +8734,7 @@ Transform:
   m_GameObject: {fileID: 342425814}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.488, z: -0.592}
+  m_LocalPosition: {x: 0, y: -0.489, z: -0.592}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -10113,6 +10180,12 @@ MonoBehaviour:
   OnStoryFinished:
     m_PersistentCalls:
       m_Calls: []
+  skipPhase1: 0
+  storyTextsPhase2: []
+  displayDurationPhase2: 4
+  OnPhase2Finished:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &397859417
 GameObject:
   m_ObjectHideFlags: 0
@@ -10306,9 +10379,26 @@ MonoBehaviour:
   modelTunas: {fileID: 173957474}
   modelPohonDewasa: {fileID: 3120140160695269774, guid: 8aa5301018f432a4d8d096392f60161f, type: 3}
   waterAbsorption: 15
+  scaleMultiplier: 1
+  bibitPositionOffset: {x: 0, y: 0, z: 0}
+  adultPositionOffset: {x: 0, y: 0, z: 0}
+  customRotationOffset: {x: 0, y: 0, z: 0}
+  gunakanVisualLubang3D: 1
+  radiusLubang: 0.32
+  tinggiBibirLubang: 0.06
+  kedalamanVisualLubang: 0.08
+  warnaDalamLubang: {r: 0.055, g: 0.025, b: 0.01, a: 1}
+  warnaBibirLubang: {r: 0.28, g: 0.13, b: 0.045, a: 1}
   plantedItemData: {fileID: 0}
   activeBibitInstance: {fileID: 0}
   activePohonInstance: {fileID: 0}
+  targetPohonScale: {x: 1, y: 1, z: 1}
+  materialTanahGembur: {fileID: 0}
+  warnaTanahGembur: {r: 0.6, g: 0.45, b: 0.3, a: 1}
+  materialTanahPadat: {fileID: 0}
+  warnaTanahPadat: {r: 0.45, g: 0.35, b: 0.25, a: 1}
+  materialTanahDisiram: {fileID: 0}
+  warnaTanahDisiram: {r: 0.25, g: 0.18, b: 0.12, a: 1}
 --- !u!65 &398063278
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10401,11 +10491,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameUIManager
   mainMenuPanel: {fileID: 1388816947}
+  profilePanel: {fileID: 0}
+  tutorialPanel: {fileID: 0}
   gameplayHUDPanel: {fileID: 1291168111}
   pauseMenuPanel: {fileID: 67875744}
   winPanel: {fileID: 245926325}
   waveWonPanel: {fileID: 245926325}
   losePanel: {fileID: 1093092065}
+  locomotionSystem: {fileID: 124783913}
   pauseAction: {fileID: 0}
 --- !u!4 &409494785
 Transform:
@@ -16281,7 +16374,7 @@ Transform:
   m_GameObject: {fileID: 461908122}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.488, z: -0.592}
+  m_LocalPosition: {x: 0, y: -0.49, z: -0.592}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -16986,9 +17079,26 @@ MonoBehaviour:
   modelTunas: {fileID: 173957474}
   modelPohonDewasa: {fileID: 3120140160695269774, guid: 8aa5301018f432a4d8d096392f60161f, type: 3}
   waterAbsorption: 15
+  scaleMultiplier: 1
+  bibitPositionOffset: {x: 0, y: 0, z: 0}
+  adultPositionOffset: {x: 0, y: 0, z: 0}
+  customRotationOffset: {x: 0, y: 0, z: 0}
+  gunakanVisualLubang3D: 1
+  radiusLubang: 0.32
+  tinggiBibirLubang: 0.06
+  kedalamanVisualLubang: 0.08
+  warnaDalamLubang: {r: 0.055, g: 0.025, b: 0.01, a: 1}
+  warnaBibirLubang: {r: 0.28, g: 0.13, b: 0.045, a: 1}
   plantedItemData: {fileID: 0}
   activeBibitInstance: {fileID: 0}
   activePohonInstance: {fileID: 0}
+  targetPohonScale: {x: 1, y: 1, z: 1}
+  materialTanahGembur: {fileID: 0}
+  warnaTanahGembur: {r: 0.6, g: 0.45, b: 0.3, a: 1}
+  materialTanahPadat: {fileID: 0}
+  warnaTanahPadat: {r: 0.45, g: 0.35, b: 0.25, a: 1}
+  materialTanahDisiram: {fileID: 0}
+  warnaTanahDisiram: {r: 0.25, g: 0.18, b: 0.12, a: 1}
 --- !u!65 &473312756
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17562,9 +17672,26 @@ MonoBehaviour:
   modelTunas: {fileID: 173957474}
   modelPohonDewasa: {fileID: 3120140160695269774, guid: 8aa5301018f432a4d8d096392f60161f, type: 3}
   waterAbsorption: 15
+  scaleMultiplier: 1
+  bibitPositionOffset: {x: 0, y: 0, z: 0}
+  adultPositionOffset: {x: 0, y: 0, z: 0}
+  customRotationOffset: {x: 0, y: 0, z: 0}
+  gunakanVisualLubang3D: 1
+  radiusLubang: 0.32
+  tinggiBibirLubang: 0.06
+  kedalamanVisualLubang: 0.08
+  warnaDalamLubang: {r: 0.055, g: 0.025, b: 0.01, a: 1}
+  warnaBibirLubang: {r: 0.28, g: 0.13, b: 0.045, a: 1}
   plantedItemData: {fileID: 0}
   activeBibitInstance: {fileID: 0}
   activePohonInstance: {fileID: 0}
+  targetPohonScale: {x: 1, y: 1, z: 1}
+  materialTanahGembur: {fileID: 0}
+  warnaTanahGembur: {r: 0.6, g: 0.45, b: 0.3, a: 1}
+  materialTanahPadat: {fileID: 0}
+  warnaTanahPadat: {r: 0.45, g: 0.35, b: 0.25, a: 1}
+  materialTanahDisiram: {fileID: 0}
+  warnaTanahDisiram: {r: 0.25, g: 0.18, b: 0.12, a: 1}
 --- !u!65 &520725312
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -18185,9 +18312,26 @@ MonoBehaviour:
   modelTunas: {fileID: 173957474}
   modelPohonDewasa: {fileID: 3120140160695269774, guid: 8aa5301018f432a4d8d096392f60161f, type: 3}
   waterAbsorption: 15
+  scaleMultiplier: 1
+  bibitPositionOffset: {x: 0, y: 0, z: 0}
+  adultPositionOffset: {x: 0, y: 0, z: 0}
+  customRotationOffset: {x: 0, y: 0, z: 0}
+  gunakanVisualLubang3D: 1
+  radiusLubang: 0.32
+  tinggiBibirLubang: 0.06
+  kedalamanVisualLubang: 0.08
+  warnaDalamLubang: {r: 0.055, g: 0.025, b: 0.01, a: 1}
+  warnaBibirLubang: {r: 0.28, g: 0.13, b: 0.045, a: 1}
   plantedItemData: {fileID: 0}
   activeBibitInstance: {fileID: 0}
   activePohonInstance: {fileID: 0}
+  targetPohonScale: {x: 1, y: 1, z: 1}
+  materialTanahGembur: {fileID: 0}
+  warnaTanahGembur: {r: 0.6, g: 0.45, b: 0.3, a: 1}
+  materialTanahPadat: {fileID: 0}
+  warnaTanahPadat: {r: 0.45, g: 0.35, b: 0.25, a: 1}
+  materialTanahDisiram: {fileID: 0}
+  warnaTanahDisiram: {r: 0.25, g: 0.18, b: 0.12, a: 1}
 --- !u!65 &539351498
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -19497,6 +19641,12 @@ MonoBehaviour:
   OnStoryFinished:
     m_PersistentCalls:
       m_Calls: []
+  skipPhase1: 0
+  storyTextsPhase2: []
+  displayDurationPhase2: 4
+  OnPhase2Finished:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &572450524
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19679,6 +19829,94 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 573611289}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &578849076
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 578849079}
+  - component: {fileID: 578849078}
+  - component: {fileID: 578849077}
+  m_Layer: 0
+  m_Name: ZonaPanduanMenanam
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &578849077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 578849076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a4c9e01af800774fbcbaf9c43d6a219, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StoryTrigger
+  storyText: Tell the Developer
+  displayDuration: 4
+  triggerOnStart: 0
+  triggerOnEnter: 1
+  showOnlyOnce: 1
+  playerTag: Player
+  OnStoryFinished:
+    m_PersistentCalls:
+      m_Calls: []
+  skipPhase1: 1
+  storyTextsPhase2:
+  - '"Langkah 1: Gunakan cangkul untuk menggemburkan tanah."'
+  - '"Langkah 2: Ambil bibit tanaman lokal dari inventory-mu."'
+  - '"Langkah 3: Masukkan bibit ke dalam tanah gembur."'
+  - '"Langkah 4: Tutup dan padatkan kembali tanah menggunakan cangkul.'
+  - '"Langkah 5: Siram tanaman menggunakan watering can agar subur."'
+  - '"Langkah 6: Berikan pupuk ke tanaman agar tumbuh besar."'
+  - '"Selamat! Tanamanmu akan mulai menyerap air tanah secara alami."'
+  displayDurationPhase2: 4
+  OnPhase2Finished:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!65 &578849078
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 578849076}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 443.22192, y: 52.408585, z: 9.750331}
+  m_Center: {x: 198.38538, y: 12.344591, z: 16.794474}
+--- !u!4 &578849079
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 578849076}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 43.66, y: 2.64, z: 115.57}
+  m_LocalScale: {x: 0.10000001, y: 0.1, z: 0.099999994}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &579112231
 GameObject:
   m_ObjectHideFlags: 0
@@ -20061,7 +20299,6 @@ MonoBehaviour:
   musicVolumeParameter: MusicVolume
   musicSource: {fileID: 0}
   smoothMoveProvider: {fileID: 1566129622}
-  playerSprint: {fileID: 0}
   turnProvider: {fileID: 119949103}
   teleportBehaviours: []
   teleportObjects:
@@ -20073,8 +20310,6 @@ MonoBehaviour:
   maxTurnSpeed: 150
   minMoveSpeed: 0.5
   maxMoveSpeed: 5
-  minSprintSpeed: 2
-  maxSprintSpeed: 10
   defaultSound: 0.1
   defaultMusic: 0.12
   defaultSensitivity: 0.5
@@ -20522,6 +20757,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   playerInventory: {fileID: 1560112799}
+  plantingGuideTrigger: {fileID: 0}
   totalWaterAbsorption: 0
   totalPlantRewardBonus: 0
   currentWave: 1
@@ -20530,6 +20766,7 @@ MonoBehaviour:
   rewardPerWaveLevel: 500
   waveTextUI: {fileID: 397859419}
   progressTextUI: {fileID: 0}
+  uangTextUI: {fileID: 0}
   progressSlider: {fileID: 1378495555}
   sliderFillImage: {fileID: 1391650170}
   warnaNormal: {r: 0, g: 1, b: 0, a: 1}
@@ -20910,9 +21147,26 @@ MonoBehaviour:
   modelTunas: {fileID: 173957474}
   modelPohonDewasa: {fileID: 3120140160695269774, guid: 8aa5301018f432a4d8d096392f60161f, type: 3}
   waterAbsorption: 15
+  scaleMultiplier: 1
+  bibitPositionOffset: {x: 0, y: 0, z: 0}
+  adultPositionOffset: {x: 0, y: 0, z: 0}
+  customRotationOffset: {x: 0, y: 0, z: 0}
+  gunakanVisualLubang3D: 1
+  radiusLubang: 0.32
+  tinggiBibirLubang: 0.06
+  kedalamanVisualLubang: 0.08
+  warnaDalamLubang: {r: 0.055, g: 0.025, b: 0.01, a: 1}
+  warnaBibirLubang: {r: 0.28, g: 0.13, b: 0.045, a: 1}
   plantedItemData: {fileID: 0}
   activeBibitInstance: {fileID: 0}
   activePohonInstance: {fileID: 0}
+  targetPohonScale: {x: 1, y: 1, z: 1}
+  materialTanahGembur: {fileID: 0}
+  warnaTanahGembur: {r: 0.6, g: 0.45, b: 0.3, a: 1}
+  materialTanahPadat: {fileID: 0}
+  warnaTanahPadat: {r: 0.45, g: 0.35, b: 0.25, a: 1}
+  materialTanahDisiram: {fileID: 0}
+  warnaTanahDisiram: {r: 0.25, g: 0.18, b: 0.12, a: 1}
 --- !u!65 &618047454
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -20990,9 +21244,26 @@ MonoBehaviour:
   modelTunas: {fileID: 173957474}
   modelPohonDewasa: {fileID: 3120140160695269774, guid: 8aa5301018f432a4d8d096392f60161f, type: 3}
   waterAbsorption: 15
+  scaleMultiplier: 1
+  bibitPositionOffset: {x: 0, y: 0, z: 0}
+  adultPositionOffset: {x: 0, y: 0, z: 0}
+  customRotationOffset: {x: 0, y: 0, z: 0}
+  gunakanVisualLubang3D: 1
+  radiusLubang: 0.32
+  tinggiBibirLubang: 0.06
+  kedalamanVisualLubang: 0.08
+  warnaDalamLubang: {r: 0.055, g: 0.025, b: 0.01, a: 1}
+  warnaBibirLubang: {r: 0.28, g: 0.13, b: 0.045, a: 1}
   plantedItemData: {fileID: 0}
   activeBibitInstance: {fileID: 0}
   activePohonInstance: {fileID: 0}
+  targetPohonScale: {x: 1, y: 1, z: 1}
+  materialTanahGembur: {fileID: 0}
+  warnaTanahGembur: {r: 0.6, g: 0.45, b: 0.3, a: 1}
+  materialTanahPadat: {fileID: 0}
+  warnaTanahPadat: {r: 0.45, g: 0.35, b: 0.25, a: 1}
+  materialTanahDisiram: {fileID: 0}
+  warnaTanahDisiram: {r: 0.25, g: 0.18, b: 0.12, a: 1}
 --- !u!65 &626789926
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -21224,7 +21495,7 @@ Transform:
   m_GameObject: {fileID: 660425220}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.488, z: -0.592}
+  m_LocalPosition: {x: 0, y: -0.49, z: -0.592}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -21828,7 +22099,7 @@ Transform:
   m_GameObject: {fileID: 673243069}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.488, z: -0.592}
+  m_LocalPosition: {x: 0, y: -0.489, z: -0.592}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -22000,7 +22271,7 @@ GameObject:
   - component: {fileID: 675844746}
   - component: {fileID: 675844745}
   m_Layer: 0
-  m_Name: SlotTanah (5)
+  m_Name: SlotTanah (V)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22044,9 +22315,26 @@ MonoBehaviour:
   modelTunas: {fileID: 173957474}
   modelPohonDewasa: {fileID: 3120140160695269774, guid: 8aa5301018f432a4d8d096392f60161f, type: 3}
   waterAbsorption: 15
+  scaleMultiplier: 1
+  bibitPositionOffset: {x: 0, y: 0, z: 0}
+  adultPositionOffset: {x: 0, y: 0, z: 0}
+  customRotationOffset: {x: 0, y: 0, z: 0}
+  gunakanVisualLubang3D: 1
+  radiusLubang: 0.32
+  tinggiBibirLubang: 0.06
+  kedalamanVisualLubang: 0.08
+  warnaDalamLubang: {r: 0.055, g: 0.025, b: 0.01, a: 1}
+  warnaBibirLubang: {r: 0.28, g: 0.13, b: 0.045, a: 1}
   plantedItemData: {fileID: 0}
   activeBibitInstance: {fileID: 0}
   activePohonInstance: {fileID: 0}
+  targetPohonScale: {x: 1, y: 1, z: 1}
+  materialTanahGembur: {fileID: 0}
+  warnaTanahGembur: {r: 0.6, g: 0.45, b: 0.3, a: 1}
+  materialTanahPadat: {fileID: 0}
+  warnaTanahPadat: {r: 0.45, g: 0.35, b: 0.25, a: 1}
+  materialTanahDisiram: {fileID: 0}
+  warnaTanahDisiram: {r: 0.25, g: 0.18, b: 0.12, a: 1}
 --- !u!65 &675844746
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -22371,16 +22659,12 @@ MonoBehaviour:
   judulText: {fileID: 884427316}
   qtyText: {fileID: 41489800}
   totalText: {fileID: 664016024}
-  btnBeli: {fileID: 0}
-  addToCartButton: {fileID: 979869481}
-  hoverInfoText: {fileID: 716287871}
   cartSummaryText: {fileID: 945892075}
-  checkoutButton: {fileID: 1575590291}
+  cartTotalText: {fileID: 0}
+  addToCartButton: {fileID: 979869481}
   clearCartButton: {fileID: 1736495339}
-  buildPolishedLayout: 1
-  autoWireButtons: 0
-  cartTextColor: {r: 1, g: 0.96, b: 0.78, a: 1}
-  cartQuantityColumnPercent: 68
+  checkoutButton: {fileID: 1575590291}
+  hoverInfoText: {fileID: 716287871}
 --- !u!114 &684981248
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22431,7 +22715,7 @@ GameObject:
   - component: {fileID: 690335602}
   - component: {fileID: 690335601}
   m_Layer: 0
-  m_Name: SlotTanah (4)
+  m_Name: SlotTanah (IV)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22475,9 +22759,26 @@ MonoBehaviour:
   modelTunas: {fileID: 173957474}
   modelPohonDewasa: {fileID: 3120140160695269774, guid: 8aa5301018f432a4d8d096392f60161f, type: 3}
   waterAbsorption: 15
+  scaleMultiplier: 1
+  bibitPositionOffset: {x: 0, y: 0, z: 0}
+  adultPositionOffset: {x: 0, y: 0, z: 0}
+  customRotationOffset: {x: 0, y: 0, z: 0}
+  gunakanVisualLubang3D: 1
+  radiusLubang: 0.32
+  tinggiBibirLubang: 0.06
+  kedalamanVisualLubang: 0.08
+  warnaDalamLubang: {r: 0.055, g: 0.025, b: 0.01, a: 1}
+  warnaBibirLubang: {r: 0.28, g: 0.13, b: 0.045, a: 1}
   plantedItemData: {fileID: 0}
   activeBibitInstance: {fileID: 0}
   activePohonInstance: {fileID: 0}
+  targetPohonScale: {x: 1, y: 1, z: 1}
+  materialTanahGembur: {fileID: 0}
+  warnaTanahGembur: {r: 0.6, g: 0.45, b: 0.3, a: 1}
+  materialTanahPadat: {fileID: 0}
+  warnaTanahPadat: {r: 0.45, g: 0.35, b: 0.25, a: 1}
+  materialTanahDisiram: {fileID: 0}
+  warnaTanahDisiram: {r: 0.25, g: 0.18, b: 0.12, a: 1}
 --- !u!65 &690335602
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -22894,9 +23195,26 @@ MonoBehaviour:
   modelTunas: {fileID: 173957474}
   modelPohonDewasa: {fileID: 3120140160695269774, guid: 8aa5301018f432a4d8d096392f60161f, type: 3}
   waterAbsorption: 15
+  scaleMultiplier: 1
+  bibitPositionOffset: {x: 0, y: 0, z: 0}
+  adultPositionOffset: {x: 0, y: 0, z: 0}
+  customRotationOffset: {x: 0, y: 0, z: 0}
+  gunakanVisualLubang3D: 1
+  radiusLubang: 0.32
+  tinggiBibirLubang: 0.06
+  kedalamanVisualLubang: 0.08
+  warnaDalamLubang: {r: 0.055, g: 0.025, b: 0.01, a: 1}
+  warnaBibirLubang: {r: 0.28, g: 0.13, b: 0.045, a: 1}
   plantedItemData: {fileID: 0}
   activeBibitInstance: {fileID: 0}
   activePohonInstance: {fileID: 0}
+  targetPohonScale: {x: 1, y: 1, z: 1}
+  materialTanahGembur: {fileID: 0}
+  warnaTanahGembur: {r: 0.6, g: 0.45, b: 0.3, a: 1}
+  materialTanahPadat: {fileID: 0}
+  warnaTanahPadat: {r: 0.45, g: 0.35, b: 0.25, a: 1}
+  materialTanahDisiram: {fileID: 0}
+  warnaTanahDisiram: {r: 0.25, g: 0.18, b: 0.12, a: 1}
 --- !u!65 &708177526
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -22946,7 +23264,7 @@ Transform:
   m_GameObject: {fileID: 711998990}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.488, z: -0.592}
+  m_LocalPosition: {x: 0, y: -0.49, z: -0.592}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -23281,153 +23599,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 721235070}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &726359671
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 726359676}
-  - component: {fileID: 726359675}
-  - component: {fileID: 726359674}
-  - component: {fileID: 726359673}
-  - component: {fileID: 726359672}
-  m_Layer: 0
-  m_Name: StoryTrigger1
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &726359672
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 726359671}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a4c9e01af800774fbcbaf9c43d6a219, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::StoryTrigger
-  storyText: Lihatlah, sekarang keadaan Infiland gersang! Instingmu mengatakan bahwa
-    akan terjadi bencana di sini. Ambil peralatanmu di dalam rumah!
-  displayDuration: 10
-  triggerOnStart: 0
-  triggerOnEnter: 1
-  showOnlyOnce: 1
-  playerTag: Player
-  OnStoryFinished:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1902012459}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
---- !u!65 &726359673
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 726359671}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &726359674
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 726359671}
-  m_Enabled: 0
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_ForceMeshLod: -1
-  m_MeshLodSelectionBias: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_MaskInteraction: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &726359675
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 726359671}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &726359676
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 726359671}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0.7071061, y: -0.0008414649, z: 0.00084149756, w: 0.7071065}
-  m_LocalPosition: {x: 51.521206, y: 5.24, z: 125.28}
-  m_LocalScale: {x: 1, y: 5, z: 5}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0.136}
 --- !u!1 &729958564
 GameObject:
   m_ObjectHideFlags: 0
@@ -23860,9 +24031,26 @@ MonoBehaviour:
   modelTunas: {fileID: 173957474}
   modelPohonDewasa: {fileID: 3120140160695269774, guid: 8aa5301018f432a4d8d096392f60161f, type: 3}
   waterAbsorption: 15
+  scaleMultiplier: 1
+  bibitPositionOffset: {x: 0, y: 0, z: 0}
+  adultPositionOffset: {x: 0, y: 0, z: 0}
+  customRotationOffset: {x: 0, y: 0, z: 0}
+  gunakanVisualLubang3D: 1
+  radiusLubang: 0.32
+  tinggiBibirLubang: 0.06
+  kedalamanVisualLubang: 0.08
+  warnaDalamLubang: {r: 0.055, g: 0.025, b: 0.01, a: 1}
+  warnaBibirLubang: {r: 0.28, g: 0.13, b: 0.045, a: 1}
   plantedItemData: {fileID: 0}
   activeBibitInstance: {fileID: 0}
   activePohonInstance: {fileID: 0}
+  targetPohonScale: {x: 1, y: 1, z: 1}
+  materialTanahGembur: {fileID: 0}
+  warnaTanahGembur: {r: 0.6, g: 0.45, b: 0.3, a: 1}
+  materialTanahPadat: {fileID: 0}
+  warnaTanahPadat: {r: 0.45, g: 0.35, b: 0.25, a: 1}
+  materialTanahDisiram: {fileID: 0}
+  warnaTanahDisiram: {r: 0.25, g: 0.18, b: 0.12, a: 1}
 --- !u!65 &756632146
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -25712,9 +25900,26 @@ MonoBehaviour:
   modelTunas: {fileID: 173957474}
   modelPohonDewasa: {fileID: 3120140160695269774, guid: 8aa5301018f432a4d8d096392f60161f, type: 3}
   waterAbsorption: 15
+  scaleMultiplier: 1
+  bibitPositionOffset: {x: 0, y: 0, z: 0}
+  adultPositionOffset: {x: 0, y: 0, z: 0}
+  customRotationOffset: {x: 0, y: 0, z: 0}
+  gunakanVisualLubang3D: 1
+  radiusLubang: 0.32
+  tinggiBibirLubang: 0.06
+  kedalamanVisualLubang: 0.08
+  warnaDalamLubang: {r: 0.055, g: 0.025, b: 0.01, a: 1}
+  warnaBibirLubang: {r: 0.28, g: 0.13, b: 0.045, a: 1}
   plantedItemData: {fileID: 0}
   activeBibitInstance: {fileID: 0}
   activePohonInstance: {fileID: 0}
+  targetPohonScale: {x: 1, y: 1, z: 1}
+  materialTanahGembur: {fileID: 0}
+  warnaTanahGembur: {r: 0.6, g: 0.45, b: 0.3, a: 1}
+  materialTanahPadat: {fileID: 0}
+  warnaTanahPadat: {r: 0.45, g: 0.35, b: 0.25, a: 1}
+  materialTanahDisiram: {fileID: 0}
+  warnaTanahDisiram: {r: 0.25, g: 0.18, b: 0.12, a: 1}
 --- !u!65 &850166169
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -26336,9 +26541,26 @@ MonoBehaviour:
   modelTunas: {fileID: 173957474}
   modelPohonDewasa: {fileID: 3120140160695269774, guid: 8aa5301018f432a4d8d096392f60161f, type: 3}
   waterAbsorption: 15
+  scaleMultiplier: 1
+  bibitPositionOffset: {x: 0, y: 0, z: 0}
+  adultPositionOffset: {x: 0, y: 0, z: 0}
+  customRotationOffset: {x: 0, y: 0, z: 0}
+  gunakanVisualLubang3D: 1
+  radiusLubang: 0.32
+  tinggiBibirLubang: 0.06
+  kedalamanVisualLubang: 0.08
+  warnaDalamLubang: {r: 0.055, g: 0.025, b: 0.01, a: 1}
+  warnaBibirLubang: {r: 0.28, g: 0.13, b: 0.045, a: 1}
   plantedItemData: {fileID: 0}
   activeBibitInstance: {fileID: 0}
   activePohonInstance: {fileID: 0}
+  targetPohonScale: {x: 1, y: 1, z: 1}
+  materialTanahGembur: {fileID: 0}
+  warnaTanahGembur: {r: 0.6, g: 0.45, b: 0.3, a: 1}
+  materialTanahPadat: {fileID: 0}
+  warnaTanahPadat: {r: 0.45, g: 0.35, b: 0.25, a: 1}
+  materialTanahDisiram: {fileID: 0}
+  warnaTanahDisiram: {r: 0.25, g: 0.18, b: 0.12, a: 1}
 --- !u!65 &878565866
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -27053,7 +27275,7 @@ GameObject:
   - component: {fileID: 932495062}
   - component: {fileID: 932495061}
   m_Layer: 0
-  m_Name: SlotTanah (3)
+  m_Name: SlotTanah (III)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27097,9 +27319,26 @@ MonoBehaviour:
   modelTunas: {fileID: 173957474}
   modelPohonDewasa: {fileID: 3120140160695269774, guid: 8aa5301018f432a4d8d096392f60161f, type: 3}
   waterAbsorption: 15
+  scaleMultiplier: 1
+  bibitPositionOffset: {x: 0, y: 0, z: 0}
+  adultPositionOffset: {x: 0, y: 0, z: 0}
+  customRotationOffset: {x: 0, y: 0, z: 0}
+  gunakanVisualLubang3D: 1
+  radiusLubang: 0.32
+  tinggiBibirLubang: 0.06
+  kedalamanVisualLubang: 0.08
+  warnaDalamLubang: {r: 0.055, g: 0.025, b: 0.01, a: 1}
+  warnaBibirLubang: {r: 0.28, g: 0.13, b: 0.045, a: 1}
   plantedItemData: {fileID: 0}
   activeBibitInstance: {fileID: 0}
   activePohonInstance: {fileID: 0}
+  targetPohonScale: {x: 1, y: 1, z: 1}
+  materialTanahGembur: {fileID: 0}
+  warnaTanahGembur: {r: 0.6, g: 0.45, b: 0.3, a: 1}
+  materialTanahPadat: {fileID: 0}
+  warnaTanahPadat: {r: 0.45, g: 0.35, b: 0.25, a: 1}
+  materialTanahDisiram: {fileID: 0}
+  warnaTanahDisiram: {r: 0.25, g: 0.18, b: 0.12, a: 1}
 --- !u!65 &932495062
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -27728,9 +27967,26 @@ MonoBehaviour:
   modelTunas: {fileID: 173957474}
   modelPohonDewasa: {fileID: 3120140160695269774, guid: 8aa5301018f432a4d8d096392f60161f, type: 3}
   waterAbsorption: 15
+  scaleMultiplier: 1
+  bibitPositionOffset: {x: 0, y: 0, z: 0}
+  adultPositionOffset: {x: 0, y: 0, z: 0}
+  customRotationOffset: {x: 0, y: 0, z: 0}
+  gunakanVisualLubang3D: 1
+  radiusLubang: 0.32
+  tinggiBibirLubang: 0.06
+  kedalamanVisualLubang: 0.08
+  warnaDalamLubang: {r: 0.055, g: 0.025, b: 0.01, a: 1}
+  warnaBibirLubang: {r: 0.28, g: 0.13, b: 0.045, a: 1}
   plantedItemData: {fileID: 0}
   activeBibitInstance: {fileID: 0}
   activePohonInstance: {fileID: 0}
+  targetPohonScale: {x: 1, y: 1, z: 1}
+  materialTanahGembur: {fileID: 0}
+  warnaTanahGembur: {r: 0.6, g: 0.45, b: 0.3, a: 1}
+  materialTanahPadat: {fileID: 0}
+  warnaTanahPadat: {r: 0.45, g: 0.35, b: 0.25, a: 1}
+  materialTanahDisiram: {fileID: 0}
+  warnaTanahDisiram: {r: 0.25, g: 0.18, b: 0.12, a: 1}
 --- !u!65 &977700533
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -28136,194 +28392,6 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1019549272}
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1022252816
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1022252819}
-  - component: {fileID: 1022252818}
-  - component: {fileID: 1022252817}
-  m_Layer: 0
-  m_Name: ZonaPanduanMenanam
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1022252817
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1022252816}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a4c9e01af800774fbcbaf9c43d6a219, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::StoryTrigger
-  storyText: Tell the Developer
-  displayDuration: 4
-  triggerOnStart: 0
-  triggerOnEnter: 1
-  showOnlyOnce: 1
-  playerTag: Player
-  OnStoryFinished:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!65 &1022252818
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1022252816}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 103.22193, y: 52.408585, z: 9.750329}
-  m_Center: {x: 28.38537, y: 12.344591, z: 16.794472}
---- !u!4 &1022252819
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1022252816}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 49.66, y: 2.64, z: 127.57}
-  m_LocalScale: {x: 0.10000001, y: 0.1, z: 0.099999994}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
---- !u!1 &1022435935
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1022435936}
-  - component: {fileID: 1022435939}
-  - component: {fileID: 1022435938}
-  - component: {fileID: 1022435937}
-  m_Layer: 0
-  m_Name: Quad2 (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1022435936
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1022435935}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.488, z: -0.592}
-  m_LocalScale: {x: 5, y: 5, z: 5}
-  m_ConstrainProportionsScale: 1
-  m_Children: []
-  m_Father: {fileID: 1072644238}
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!64 &1022435937
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1022435935}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &1022435938
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1022435935}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_ForceMeshLod: -1
-  m_MeshLodSelectionBias: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: dc19dea219ff6af40bd0bc4aaee49329, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_MaskInteraction: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &1022435939
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1022435935}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1028999298
 GameObject:
@@ -28759,86 +28827,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 453b4dce1aaa80b41bff21de6936109d, type: 3}
   m_PrefabInstance: {fileID: 13763326}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1072644237
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1072644238}
-  - component: {fileID: 1072644240}
-  - component: {fileID: 1072644239}
-  m_Layer: 0
-  m_Name: SlotTanah (15)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1072644238
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1072644237}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 10.42, y: 0, z: -1.0479927}
-  m_LocalScale: {x: 1, y: 1.5, z: 1}
-  m_ConstrainProportionsScale: 1
-  m_Children:
-  - {fileID: 179923040}
-  - {fileID: 241946086}
-  - {fileID: 2133616484}
-  - {fileID: 1022435936}
-  m_Father: {fileID: 175426424}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1072644239
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1072644237}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5647e977436cc8a46837a2b3d01c0074, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TanahBerkebun
-  statusTanah: 0
-  modelTanahBerlubang: {fileID: 241946085}
-  modelBibit: {fileID: 179923039}
-  modelTanahTertutup: {fileID: 2133616483}
-  modelTunas: {fileID: 173957474}
-  modelPohonDewasa: {fileID: 3120140160695269774, guid: 8aa5301018f432a4d8d096392f60161f, type: 3}
-  waterAbsorption: 15
-  plantedItemData: {fileID: 0}
-  activeBibitInstance: {fileID: 0}
-  activePohonInstance: {fileID: 0}
---- !u!65 &1072644240
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1072644237}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 0.039547525, z: 0.9987984}
-  m_Center: {x: 0, y: -0.48022634, z: -0.59830284}
 --- !u!1 &1072812026
 GameObject:
   m_ObjectHideFlags: 0
@@ -29472,6 +29460,119 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8e364fc2c9c7ee74fb7adc3ab1cf1261, type: 3}
   m_PrefabInstance: {fileID: 1502664869}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1096529718
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1096529719}
+  - component: {fileID: 1096529722}
+  - component: {fileID: 1096529721}
+  - component: {fileID: 1096529720}
+  m_Layer: 0
+  m_Name: Quad
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1096529719
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1096529718}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: -0.488, z: -0.592}
+  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 1740700253}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!64 &1096529720
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1096529718}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &1096529721
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1096529718}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: dea57f44d3e29af48b67f81db1b2591a, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1096529722
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1096529718}
+  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1099244477
 GameObject:
   m_ObjectHideFlags: 0
@@ -29965,7 +30066,7 @@ GameObject:
   - component: {fileID: 1135027627}
   - component: {fileID: 1135027626}
   m_Layer: 0
-  m_Name: SlotTanah (19)
+  m_Name: SlotTanah (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30009,9 +30110,26 @@ MonoBehaviour:
   modelTunas: {fileID: 173957474}
   modelPohonDewasa: {fileID: 3120140160695269774, guid: 8aa5301018f432a4d8d096392f60161f, type: 3}
   waterAbsorption: 15
+  scaleMultiplier: 1
+  bibitPositionOffset: {x: -0.09, y: -0.5, z: -0.6}
+  adultPositionOffset: {x: 0, y: 0, z: 0}
+  customRotationOffset: {x: 0, y: 0, z: 0}
+  gunakanVisualLubang3D: 1
+  radiusLubang: 0.32
+  tinggiBibirLubang: 0.06
+  kedalamanVisualLubang: 0.08
+  warnaDalamLubang: {r: 0.055, g: 0.025, b: 0.01, a: 1}
+  warnaBibirLubang: {r: 0.28, g: 0.13, b: 0.045, a: 1}
   plantedItemData: {fileID: 0}
   activeBibitInstance: {fileID: 0}
   activePohonInstance: {fileID: 0}
+  targetPohonScale: {x: 1, y: 1, z: 1}
+  materialTanahGembur: {fileID: 0}
+  warnaTanahGembur: {r: 0.6, g: 0.45, b: 0.3, a: 1}
+  materialTanahPadat: {fileID: 0}
+  warnaTanahPadat: {r: 0.45, g: 0.35, b: 0.25, a: 1}
+  materialTanahDisiram: {fileID: 0}
+  warnaTanahDisiram: {r: 0.25, g: 0.18, b: 0.12, a: 1}
 --- !u!65 &1135027627
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -30836,7 +30954,7 @@ Transform:
   m_GameObject: {fileID: 1158409053}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.48799968, z: -0.592}
+  m_LocalPosition: {x: 0, y: -0.49, z: -0.592}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -31090,9 +31208,26 @@ MonoBehaviour:
   modelTunas: {fileID: 173957474}
   modelPohonDewasa: {fileID: 3120140160695269774, guid: 8aa5301018f432a4d8d096392f60161f, type: 3}
   waterAbsorption: 15
+  scaleMultiplier: 1
+  bibitPositionOffset: {x: 0, y: 0, z: 0}
+  adultPositionOffset: {x: 0, y: 0, z: 0}
+  customRotationOffset: {x: 0, y: 0, z: 0}
+  gunakanVisualLubang3D: 1
+  radiusLubang: 0.32
+  tinggiBibirLubang: 0.06
+  kedalamanVisualLubang: 0.08
+  warnaDalamLubang: {r: 0.055, g: 0.025, b: 0.01, a: 1}
+  warnaBibirLubang: {r: 0.28, g: 0.13, b: 0.045, a: 1}
   plantedItemData: {fileID: 0}
   activeBibitInstance: {fileID: 0}
   activePohonInstance: {fileID: 0}
+  targetPohonScale: {x: 1, y: 1, z: 1}
+  materialTanahGembur: {fileID: 0}
+  warnaTanahGembur: {r: 0.6, g: 0.45, b: 0.3, a: 1}
+  materialTanahPadat: {fileID: 0}
+  warnaTanahPadat: {r: 0.45, g: 0.35, b: 0.25, a: 1}
+  materialTanahDisiram: {fileID: 0}
+  warnaTanahDisiram: {r: 0.25, g: 0.18, b: 0.12, a: 1}
 --- !u!65 &1161214127
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -32009,6 +32144,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BedInteract
   sleepConfirmationPanel: {fileID: 1176193150}
+  xrOriginTransform: {fileID: 2082860971}
+  wakeUpAnchor: {fileID: 600623890}
+  sleepTargetAnchor: {fileID: 771679165}
+  overviewAnchor: {fileID: 1600081522}
 --- !u!114 &1179820778
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32300,9 +32439,26 @@ MonoBehaviour:
   modelTunas: {fileID: 173957474}
   modelPohonDewasa: {fileID: 3120140160695269774, guid: 8aa5301018f432a4d8d096392f60161f, type: 3}
   waterAbsorption: 15
+  scaleMultiplier: 1
+  bibitPositionOffset: {x: 0, y: 0, z: 0}
+  adultPositionOffset: {x: 0, y: 0, z: 0}
+  customRotationOffset: {x: 0, y: 0, z: 0}
+  gunakanVisualLubang3D: 1
+  radiusLubang: 0.32
+  tinggiBibirLubang: 0.06
+  kedalamanVisualLubang: 0.08
+  warnaDalamLubang: {r: 0.055, g: 0.025, b: 0.01, a: 1}
+  warnaBibirLubang: {r: 0.28, g: 0.13, b: 0.045, a: 1}
   plantedItemData: {fileID: 0}
   activeBibitInstance: {fileID: 0}
   activePohonInstance: {fileID: 0}
+  targetPohonScale: {x: 1, y: 1, z: 1}
+  materialTanahGembur: {fileID: 0}
+  warnaTanahGembur: {r: 0.6, g: 0.45, b: 0.3, a: 1}
+  materialTanahPadat: {fileID: 0}
+  warnaTanahPadat: {r: 0.45, g: 0.35, b: 0.25, a: 1}
+  materialTanahDisiram: {fileID: 0}
+  warnaTanahDisiram: {r: 0.25, g: 0.18, b: 0.12, a: 1}
 --- !u!65 &1210598136
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -32928,6 +33084,119 @@ MonoBehaviour:
   hoverSound: {fileID: 0}
   clickSound: {fileID: 0}
   volume: 0.5
+--- !u!1 &1243413824
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1243413825}
+  - component: {fileID: 1243413828}
+  - component: {fileID: 1243413827}
+  - component: {fileID: 1243413826}
+  m_Layer: 0
+  m_Name: Quad2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1243413825
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1243413824}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: -0.489, z: -0.592}
+  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 1740700253}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!64 &1243413826
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1243413824}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &1243413827
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1243413824}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: dc19dea219ff6af40bd0bc4aaee49329, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1243413828
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1243413824}
+  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1250315792
 GameObject:
   m_ObjectHideFlags: 0
@@ -34803,7 +35072,7 @@ Transform:
   m_GameObject: {fileID: 1323483812}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.488, z: -0.592}
+  m_LocalPosition: {x: 0, y: -0.489, z: -0.592}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -37201,7 +37470,7 @@ Transform:
   m_GameObject: {fileID: 1445916401}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.488, z: -0.592}
+  m_LocalPosition: {x: 0, y: -0.489, z: -0.592}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -38868,9 +39137,26 @@ MonoBehaviour:
   modelTunas: {fileID: 173957474}
   modelPohonDewasa: {fileID: 3120140160695269774, guid: 8aa5301018f432a4d8d096392f60161f, type: 3}
   waterAbsorption: 15
+  scaleMultiplier: 1
+  bibitPositionOffset: {x: 0, y: 0, z: 0}
+  adultPositionOffset: {x: 0, y: 0, z: 0}
+  customRotationOffset: {x: 0, y: 0, z: 0}
+  gunakanVisualLubang3D: 1
+  radiusLubang: 0.32
+  tinggiBibirLubang: 0.06
+  kedalamanVisualLubang: 0.08
+  warnaDalamLubang: {r: 0.055, g: 0.025, b: 0.01, a: 1}
+  warnaBibirLubang: {r: 0.28, g: 0.13, b: 0.045, a: 1}
   plantedItemData: {fileID: 0}
   activeBibitInstance: {fileID: 0}
   activePohonInstance: {fileID: 0}
+  targetPohonScale: {x: 1, y: 1, z: 1}
+  materialTanahGembur: {fileID: 0}
+  warnaTanahGembur: {r: 0.6, g: 0.45, b: 0.3, a: 1}
+  materialTanahPadat: {fileID: 0}
+  warnaTanahPadat: {r: 0.45, g: 0.35, b: 0.25, a: 1}
+  materialTanahDisiram: {fileID: 0}
+  warnaTanahDisiram: {r: 0.25, g: 0.18, b: 0.12, a: 1}
 --- !u!65 &1498269660
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -39551,9 +39837,26 @@ MonoBehaviour:
   modelTunas: {fileID: 173957474}
   modelPohonDewasa: {fileID: 3120140160695269774, guid: 8aa5301018f432a4d8d096392f60161f, type: 3}
   waterAbsorption: 15
+  scaleMultiplier: 1
+  bibitPositionOffset: {x: 0, y: 0, z: 0}
+  adultPositionOffset: {x: 0, y: 0, z: 0}
+  customRotationOffset: {x: 0, y: 0, z: 0}
+  gunakanVisualLubang3D: 1
+  radiusLubang: 0.32
+  tinggiBibirLubang: 0.06
+  kedalamanVisualLubang: 0.08
+  warnaDalamLubang: {r: 0.055, g: 0.025, b: 0.01, a: 1}
+  warnaBibirLubang: {r: 0.28, g: 0.13, b: 0.045, a: 1}
   plantedItemData: {fileID: 0}
   activeBibitInstance: {fileID: 0}
   activePohonInstance: {fileID: 0}
+  targetPohonScale: {x: 1, y: 1, z: 1}
+  materialTanahGembur: {fileID: 0}
+  warnaTanahGembur: {r: 0.6, g: 0.45, b: 0.3, a: 1}
+  materialTanahPadat: {fileID: 0}
+  warnaTanahPadat: {r: 0.45, g: 0.35, b: 0.25, a: 1}
+  materialTanahDisiram: {fileID: 0}
+  warnaTanahDisiram: {r: 0.25, g: 0.18, b: 0.12, a: 1}
 --- !u!65 &1532321940
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -39631,9 +39934,26 @@ MonoBehaviour:
   modelTunas: {fileID: 173957474}
   modelPohonDewasa: {fileID: 3120140160695269774, guid: 8aa5301018f432a4d8d096392f60161f, type: 3}
   waterAbsorption: 15
+  scaleMultiplier: 1
+  bibitPositionOffset: {x: 0, y: 0, z: 0}
+  adultPositionOffset: {x: 0, y: 0, z: 0}
+  customRotationOffset: {x: 0, y: 0, z: 0}
+  gunakanVisualLubang3D: 1
+  radiusLubang: 0.32
+  tinggiBibirLubang: 0.06
+  kedalamanVisualLubang: 0.08
+  warnaDalamLubang: {r: 0.055, g: 0.025, b: 0.01, a: 1}
+  warnaBibirLubang: {r: 0.28, g: 0.13, b: 0.045, a: 1}
   plantedItemData: {fileID: 0}
   activeBibitInstance: {fileID: 0}
   activePohonInstance: {fileID: 0}
+  targetPohonScale: {x: 1, y: 1, z: 1}
+  materialTanahGembur: {fileID: 0}
+  warnaTanahGembur: {r: 0.6, g: 0.45, b: 0.3, a: 1}
+  materialTanahPadat: {fileID: 0}
+  warnaTanahPadat: {r: 0.45, g: 0.35, b: 0.25, a: 1}
+  materialTanahDisiram: {fileID: 0}
+  warnaTanahDisiram: {r: 0.25, g: 0.18, b: 0.12, a: 1}
 --- !u!65 &1534391823
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -39931,7 +40251,7 @@ Transform:
   m_GameObject: {fileID: 1551328733}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.488, z: -0.592}
+  m_LocalPosition: {x: 0, y: -0.49, z: -0.592}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -41409,6 +41729,97 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1628104346}
   m_CullTransparentMesh: 1
+--- !u!1 &1631797544
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1631797545}
+  - component: {fileID: 1631797547}
+  - component: {fileID: 1631797546}
+  m_Layer: 0
+  m_Name: "\u0401\u043B\u043A\u0430"
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1631797545
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1631797544}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.004420964, y: 0.78923684, z: -0.004586276, w: 0.6140559}
+  m_LocalPosition: {x: 0.02, y: 3.08, z: -0.69}
+  m_LocalScale: {x: 2, y: 1.3335114, z: 2.0001554}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 1740700253}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &1631797546
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1631797544}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 7898189785960609206, guid: 14f223e5960142747838a7563d3cb7a8, type: 3}
+  - {fileID: -4733710586529443156, guid: 14f223e5960142747838a7563d3cb7a8, type: 3}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1631797547
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1631797544}
+  m_Mesh: {fileID: -6384976510185405272, guid: 14f223e5960142747838a7563d3cb7a8, type: 3}
 --- !u!1 &1632326684
 GameObject:
   m_ObjectHideFlags: 0
@@ -42021,9 +42432,26 @@ MonoBehaviour:
   modelTunas: {fileID: 173957474}
   modelPohonDewasa: {fileID: 3120140160695269774, guid: 8aa5301018f432a4d8d096392f60161f, type: 3}
   waterAbsorption: 15
+  scaleMultiplier: 1
+  bibitPositionOffset: {x: 0, y: 0, z: 0}
+  adultPositionOffset: {x: 0, y: 0, z: 0}
+  customRotationOffset: {x: 0, y: 0, z: 0}
+  gunakanVisualLubang3D: 1
+  radiusLubang: 0.32
+  tinggiBibirLubang: 0.06
+  kedalamanVisualLubang: 0.08
+  warnaDalamLubang: {r: 0.055, g: 0.025, b: 0.01, a: 1}
+  warnaBibirLubang: {r: 0.28, g: 0.13, b: 0.045, a: 1}
   plantedItemData: {fileID: 0}
   activeBibitInstance: {fileID: 0}
   activePohonInstance: {fileID: 0}
+  targetPohonScale: {x: 1, y: 1, z: 1}
+  materialTanahGembur: {fileID: 0}
+  warnaTanahGembur: {r: 0.6, g: 0.45, b: 0.3, a: 1}
+  materialTanahPadat: {fileID: 0}
+  warnaTanahPadat: {r: 0.45, g: 0.35, b: 0.25, a: 1}
+  materialTanahDisiram: {fileID: 0}
+  warnaTanahDisiram: {r: 0.25, g: 0.18, b: 0.12, a: 1}
 --- !u!65 &1644946648
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -42326,9 +42754,26 @@ MonoBehaviour:
   modelTunas: {fileID: 173957474}
   modelPohonDewasa: {fileID: 3120140160695269774, guid: 8aa5301018f432a4d8d096392f60161f, type: 3}
   waterAbsorption: 15
+  scaleMultiplier: 1
+  bibitPositionOffset: {x: 0, y: 0, z: 0}
+  adultPositionOffset: {x: 0, y: 0, z: 0}
+  customRotationOffset: {x: 0, y: 0, z: 0}
+  gunakanVisualLubang3D: 1
+  radiusLubang: 0.32
+  tinggiBibirLubang: 0.06
+  kedalamanVisualLubang: 0.08
+  warnaDalamLubang: {r: 0.055, g: 0.025, b: 0.01, a: 1}
+  warnaBibirLubang: {r: 0.28, g: 0.13, b: 0.045, a: 1}
   plantedItemData: {fileID: 0}
   activeBibitInstance: {fileID: 0}
   activePohonInstance: {fileID: 0}
+  targetPohonScale: {x: 1, y: 1, z: 1}
+  materialTanahGembur: {fileID: 0}
+  warnaTanahGembur: {r: 0.6, g: 0.45, b: 0.3, a: 1}
+  materialTanahPadat: {fileID: 0}
+  warnaTanahPadat: {r: 0.45, g: 0.35, b: 0.25, a: 1}
+  materialTanahDisiram: {fileID: 0}
+  warnaTanahDisiram: {r: 0.25, g: 0.18, b: 0.12, a: 1}
 --- !u!65 &1652891026
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -42519,9 +42964,26 @@ MonoBehaviour:
   modelTunas: {fileID: 173957474}
   modelPohonDewasa: {fileID: 3120140160695269774, guid: 8aa5301018f432a4d8d096392f60161f, type: 3}
   waterAbsorption: 15
+  scaleMultiplier: 1
+  bibitPositionOffset: {x: 0, y: 0, z: 0}
+  adultPositionOffset: {x: 0, y: 0, z: 0}
+  customRotationOffset: {x: 0, y: 0, z: 0}
+  gunakanVisualLubang3D: 1
+  radiusLubang: 0.32
+  tinggiBibirLubang: 0.06
+  kedalamanVisualLubang: 0.08
+  warnaDalamLubang: {r: 0.055, g: 0.025, b: 0.01, a: 1}
+  warnaBibirLubang: {r: 0.28, g: 0.13, b: 0.045, a: 1}
   plantedItemData: {fileID: 0}
   activeBibitInstance: {fileID: 0}
   activePohonInstance: {fileID: 0}
+  targetPohonScale: {x: 1, y: 1, z: 1}
+  materialTanahGembur: {fileID: 0}
+  warnaTanahGembur: {r: 0.6, g: 0.45, b: 0.3, a: 1}
+  materialTanahPadat: {fileID: 0}
+  warnaTanahPadat: {r: 0.45, g: 0.35, b: 0.25, a: 1}
+  materialTanahDisiram: {fileID: 0}
+  warnaTanahDisiram: {r: 0.25, g: 0.18, b: 0.12, a: 1}
 --- !u!65 &1665159101
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -42555,7 +43017,7 @@ GameObject:
   - component: {fileID: 1672351039}
   - component: {fileID: 1672351038}
   m_Layer: 0
-  m_Name: SlotTanah (17)
+  m_Name: SlotTanah (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -42599,9 +43061,26 @@ MonoBehaviour:
   modelTunas: {fileID: 173957474}
   modelPohonDewasa: {fileID: 3120140160695269774, guid: 8aa5301018f432a4d8d096392f60161f, type: 3}
   waterAbsorption: 15
+  scaleMultiplier: 1
+  bibitPositionOffset: {x: -0.09, y: -0.5, z: -0.6}
+  adultPositionOffset: {x: 0, y: 0, z: 0}
+  customRotationOffset: {x: 0, y: 0, z: 0}
+  gunakanVisualLubang3D: 1
+  radiusLubang: 0.32
+  tinggiBibirLubang: 0.06
+  kedalamanVisualLubang: 0.08
+  warnaDalamLubang: {r: 0.055, g: 0.025, b: 0.01, a: 1}
+  warnaBibirLubang: {r: 0.28, g: 0.13, b: 0.045, a: 1}
   plantedItemData: {fileID: 0}
   activeBibitInstance: {fileID: 0}
   activePohonInstance: {fileID: 0}
+  targetPohonScale: {x: 1, y: 1, z: 1}
+  materialTanahGembur: {fileID: 0}
+  warnaTanahGembur: {r: 0.6, g: 0.45, b: 0.3, a: 1}
+  materialTanahPadat: {fileID: 0}
+  warnaTanahPadat: {r: 0.45, g: 0.35, b: 0.25, a: 1}
+  materialTanahDisiram: {fileID: 0}
+  warnaTanahDisiram: {r: 0.25, g: 0.18, b: 0.12, a: 1}
 --- !u!65 &1672351039
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -44140,6 +44619,103 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1736495337}
   m_CullTransparentMesh: 1
+--- !u!1 &1740700252
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1740700253}
+  - component: {fileID: 1740700255}
+  - component: {fileID: 1740700254}
+  m_Layer: 0
+  m_Name: SlotTanah (6)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1740700253
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1740700252}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 15.42, y: 0, z: -1.0479927}
+  m_LocalScale: {x: 1, y: 1.5, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children:
+  - {fileID: 1631797545}
+  - {fileID: 1096529719}
+  - {fileID: 1243413825}
+  - {fileID: 269665007}
+  m_Father: {fileID: 175426424}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1740700254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1740700252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5647e977436cc8a46837a2b3d01c0074, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TanahBerkebun
+  statusTanah: 0
+  modelTanahBerlubang: {fileID: 1096529718}
+  modelBibit: {fileID: 1631797544}
+  modelTanahTertutup: {fileID: 1243413824}
+  modelTunas: {fileID: 173957474}
+  modelPohonDewasa: {fileID: 3120140160695269774, guid: 8aa5301018f432a4d8d096392f60161f, type: 3}
+  waterAbsorption: 15
+  scaleMultiplier: 1
+  bibitPositionOffset: {x: -0.09, y: -0.5, z: -0.6}
+  adultPositionOffset: {x: 0, y: 0, z: 0}
+  customRotationOffset: {x: 0, y: 0, z: 0}
+  gunakanVisualLubang3D: 1
+  radiusLubang: 0.32
+  tinggiBibirLubang: 0.06
+  kedalamanVisualLubang: 0.08
+  warnaDalamLubang: {r: 0.055, g: 0.025, b: 0.01, a: 1}
+  warnaBibirLubang: {r: 0.28, g: 0.13, b: 0.045, a: 1}
+  plantedItemData: {fileID: 0}
+  activeBibitInstance: {fileID: 0}
+  activePohonInstance: {fileID: 0}
+  targetPohonScale: {x: 1, y: 1, z: 1}
+  materialTanahGembur: {fileID: 0}
+  warnaTanahGembur: {r: 0.6, g: 0.45, b: 0.3, a: 1}
+  materialTanahPadat: {fileID: 0}
+  warnaTanahPadat: {r: 0.45, g: 0.35, b: 0.25, a: 1}
+  materialTanahDisiram: {fileID: 0}
+  warnaTanahDisiram: {r: 0.25, g: 0.18, b: 0.12, a: 1}
+--- !u!65 &1740700255
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1740700252}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 0.039547525, z: 0.9987984}
+  m_Center: {x: 0, y: -0.48022634, z: -0.59830284}
 --- !u!1 &1747704566
 GameObject:
   m_ObjectHideFlags: 0
@@ -44196,9 +44772,26 @@ MonoBehaviour:
   modelTunas: {fileID: 173957474}
   modelPohonDewasa: {fileID: 3120140160695269774, guid: 8aa5301018f432a4d8d096392f60161f, type: 3}
   waterAbsorption: 15
+  scaleMultiplier: 1
+  bibitPositionOffset: {x: 0, y: 0, z: 0}
+  adultPositionOffset: {x: 0, y: 0, z: 0}
+  customRotationOffset: {x: 0, y: 0, z: 0}
+  gunakanVisualLubang3D: 1
+  radiusLubang: 0.32
+  tinggiBibirLubang: 0.06
+  kedalamanVisualLubang: 0.08
+  warnaDalamLubang: {r: 0.055, g: 0.025, b: 0.01, a: 1}
+  warnaBibirLubang: {r: 0.28, g: 0.13, b: 0.045, a: 1}
   plantedItemData: {fileID: 0}
   activeBibitInstance: {fileID: 0}
   activePohonInstance: {fileID: 0}
+  targetPohonScale: {x: 1, y: 1, z: 1}
+  materialTanahGembur: {fileID: 0}
+  warnaTanahGembur: {r: 0.6, g: 0.45, b: 0.3, a: 1}
+  materialTanahPadat: {fileID: 0}
+  warnaTanahPadat: {r: 0.45, g: 0.35, b: 0.25, a: 1}
+  materialTanahDisiram: {fileID: 0}
+  warnaTanahDisiram: {r: 0.25, g: 0.18, b: 0.12, a: 1}
 --- !u!65 &1747704569
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -45793,9 +46386,26 @@ MonoBehaviour:
   modelTunas: {fileID: 173957474}
   modelPohonDewasa: {fileID: 3120140160695269774, guid: 8aa5301018f432a4d8d096392f60161f, type: 3}
   waterAbsorption: 15
+  scaleMultiplier: 1
+  bibitPositionOffset: {x: 0, y: 0, z: 0}
+  adultPositionOffset: {x: 0, y: 0, z: 0}
+  customRotationOffset: {x: 0, y: 0, z: 0}
+  gunakanVisualLubang3D: 1
+  radiusLubang: 0.32
+  tinggiBibirLubang: 0.06
+  kedalamanVisualLubang: 0.08
+  warnaDalamLubang: {r: 0.055, g: 0.025, b: 0.01, a: 1}
+  warnaBibirLubang: {r: 0.28, g: 0.13, b: 0.045, a: 1}
   plantedItemData: {fileID: 0}
   activeBibitInstance: {fileID: 0}
   activePohonInstance: {fileID: 0}
+  targetPohonScale: {x: 1, y: 1, z: 1}
+  materialTanahGembur: {fileID: 0}
+  warnaTanahGembur: {r: 0.6, g: 0.45, b: 0.3, a: 1}
+  materialTanahPadat: {fileID: 0}
+  warnaTanahPadat: {r: 0.45, g: 0.35, b: 0.25, a: 1}
+  materialTanahDisiram: {fileID: 0}
+  warnaTanahDisiram: {r: 0.25, g: 0.18, b: 0.12, a: 1}
 --- !u!65 &1791687599
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -46166,9 +46776,26 @@ MonoBehaviour:
   modelTunas: {fileID: 173957474}
   modelPohonDewasa: {fileID: 3120140160695269774, guid: 8aa5301018f432a4d8d096392f60161f, type: 3}
   waterAbsorption: 15
+  scaleMultiplier: 1
+  bibitPositionOffset: {x: 0, y: 0, z: 0}
+  adultPositionOffset: {x: 0, y: 0, z: 0}
+  customRotationOffset: {x: 0, y: 0, z: 0}
+  gunakanVisualLubang3D: 1
+  radiusLubang: 0.32
+  tinggiBibirLubang: 0.06
+  kedalamanVisualLubang: 0.08
+  warnaDalamLubang: {r: 0.055, g: 0.025, b: 0.01, a: 1}
+  warnaBibirLubang: {r: 0.28, g: 0.13, b: 0.045, a: 1}
   plantedItemData: {fileID: 0}
   activeBibitInstance: {fileID: 0}
   activePohonInstance: {fileID: 0}
+  targetPohonScale: {x: 1, y: 1, z: 1}
+  materialTanahGembur: {fileID: 0}
+  warnaTanahGembur: {r: 0.6, g: 0.45, b: 0.3, a: 1}
+  materialTanahPadat: {fileID: 0}
+  warnaTanahPadat: {r: 0.45, g: 0.35, b: 0.25, a: 1}
+  materialTanahDisiram: {fileID: 0}
+  warnaTanahDisiram: {r: 0.25, g: 0.18, b: 0.12, a: 1}
 --- !u!65 &1811157300
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -46246,9 +46873,26 @@ MonoBehaviour:
   modelTunas: {fileID: 173957474}
   modelPohonDewasa: {fileID: 3120140160695269774, guid: 8aa5301018f432a4d8d096392f60161f, type: 3}
   waterAbsorption: 15
+  scaleMultiplier: 1
+  bibitPositionOffset: {x: 0, y: 0, z: 0}
+  adultPositionOffset: {x: 0, y: 0, z: 0}
+  customRotationOffset: {x: 0, y: 0, z: 0}
+  gunakanVisualLubang3D: 1
+  radiusLubang: 0.32
+  tinggiBibirLubang: 0.06
+  kedalamanVisualLubang: 0.08
+  warnaDalamLubang: {r: 0.055, g: 0.025, b: 0.01, a: 1}
+  warnaBibirLubang: {r: 0.28, g: 0.13, b: 0.045, a: 1}
   plantedItemData: {fileID: 0}
   activeBibitInstance: {fileID: 0}
   activePohonInstance: {fileID: 0}
+  targetPohonScale: {x: 1, y: 1, z: 1}
+  materialTanahGembur: {fileID: 0}
+  warnaTanahGembur: {r: 0.6, g: 0.45, b: 0.3, a: 1}
+  materialTanahPadat: {fileID: 0}
+  warnaTanahPadat: {r: 0.45, g: 0.35, b: 0.25, a: 1}
+  materialTanahDisiram: {fileID: 0}
+  warnaTanahDisiram: {r: 0.25, g: 0.18, b: 0.12, a: 1}
 --- !u!65 &1812236220
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -46954,6 +47598,30 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2035873260}
+        m_TargetAssemblyTypeName: TimelapseManager, Assembly-CSharp
+        m_MethodName: ResetEnvironment
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2024252773}
+        m_TargetAssemblyTypeName: WeatherEffectController, Assembly-CSharp
+        m_MethodName: ResetWeather
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1848956914
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47383,7 +48051,7 @@ Transform:
   m_GameObject: {fileID: 1863630975}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.488, z: -0.592}
+  m_LocalPosition: {x: 0, y: -0.489, z: -0.592}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -50151,9 +50819,26 @@ MonoBehaviour:
   modelTunas: {fileID: 173957474}
   modelPohonDewasa: {fileID: 3120140160695269774, guid: 8aa5301018f432a4d8d096392f60161f, type: 3}
   waterAbsorption: 15
+  scaleMultiplier: 1
+  bibitPositionOffset: {x: 0, y: 0, z: 0}
+  adultPositionOffset: {x: 0, y: 0, z: 0}
+  customRotationOffset: {x: 0, y: 0, z: 0}
+  gunakanVisualLubang3D: 1
+  radiusLubang: 0.32
+  tinggiBibirLubang: 0.06
+  kedalamanVisualLubang: 0.08
+  warnaDalamLubang: {r: 0.055, g: 0.025, b: 0.01, a: 1}
+  warnaBibirLubang: {r: 0.28, g: 0.13, b: 0.045, a: 1}
   plantedItemData: {fileID: 0}
   activeBibitInstance: {fileID: 0}
   activePohonInstance: {fileID: 0}
+  targetPohonScale: {x: 1, y: 1, z: 1}
+  materialTanahGembur: {fileID: 0}
+  warnaTanahGembur: {r: 0.6, g: 0.45, b: 0.3, a: 1}
+  materialTanahPadat: {fileID: 0}
+  warnaTanahPadat: {r: 0.45, g: 0.35, b: 0.25, a: 1}
+  materialTanahDisiram: {fileID: 0}
+  warnaTanahDisiram: {r: 0.25, g: 0.18, b: 0.12, a: 1}
 --- !u!65 &1966716061
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -50539,9 +51224,26 @@ MonoBehaviour:
   modelTunas: {fileID: 173957474}
   modelPohonDewasa: {fileID: 3120140160695269774, guid: 8aa5301018f432a4d8d096392f60161f, type: 3}
   waterAbsorption: 15
+  scaleMultiplier: 1
+  bibitPositionOffset: {x: 0, y: 0, z: 0}
+  adultPositionOffset: {x: 0, y: 0, z: 0}
+  customRotationOffset: {x: 0, y: 0, z: 0}
+  gunakanVisualLubang3D: 1
+  radiusLubang: 0.32
+  tinggiBibirLubang: 0.06
+  kedalamanVisualLubang: 0.08
+  warnaDalamLubang: {r: 0.055, g: 0.025, b: 0.01, a: 1}
+  warnaBibirLubang: {r: 0.28, g: 0.13, b: 0.045, a: 1}
   plantedItemData: {fileID: 0}
   activeBibitInstance: {fileID: 0}
   activePohonInstance: {fileID: 0}
+  targetPohonScale: {x: 1, y: 1, z: 1}
+  materialTanahGembur: {fileID: 0}
+  warnaTanahGembur: {r: 0.6, g: 0.45, b: 0.3, a: 1}
+  materialTanahPadat: {fileID: 0}
+  warnaTanahPadat: {r: 0.45, g: 0.35, b: 0.25, a: 1}
+  materialTanahDisiram: {fileID: 0}
+  warnaTanahDisiram: {r: 0.25, g: 0.18, b: 0.12, a: 1}
 --- !u!65 &1978273156
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -51890,6 +52592,159 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2025411777}
   m_CullTransparentMesh: 1
+--- !u!1 &2028855651
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2028855656}
+  - component: {fileID: 2028855655}
+  - component: {fileID: 2028855654}
+  - component: {fileID: 2028855653}
+  - component: {fileID: 2028855652}
+  m_Layer: 0
+  m_Name: StoryTrigger1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2028855652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2028855651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a4c9e01af800774fbcbaf9c43d6a219, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StoryTrigger
+  storyText: Lihatlah, sekarang keadaan Infiland gersang! Instingmu mengatakan bahwa
+    akan terjadi bencana di sini. Ambil peralatanmu di dalam rumah!
+  displayDuration: 10
+  triggerOnStart: 0
+  triggerOnEnter: 1
+  showOnlyOnce: 1
+  playerTag: Player
+  OnStoryFinished:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  skipPhase1: 0
+  storyTextsPhase2: []
+  displayDurationPhase2: 4
+  OnPhase2Finished:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!65 &2028855653
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2028855651}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &2028855654
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2028855651}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &2028855655
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2028855651}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &2028855656
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2028855651}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.7071061, y: -0.0008414649, z: 0.00084149756, w: 0.7071065}
+  m_LocalPosition: {x: 51.521206, y: 5.24, z: 125.28}
+  m_LocalScale: {x: 1, y: 5, z: 5}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0.136}
 --- !u!1 &2029171048
 GameObject:
   m_ObjectHideFlags: 0
@@ -52078,6 +52933,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2029742507}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &2035873260 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3442528492277559201, guid: 8da894e81956c3f4fb2103fbd240a1c0, type: 3}
+  m_PrefabInstance: {fileID: 467217307}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f87d21aa190d60438270b8d2a8ea94d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TimelapseManager
 --- !u!1 &2049668594
 GameObject:
   m_ObjectHideFlags: 0
@@ -52694,13 +53560,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2076332689}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
   m_LocalPosition: {x: 0, y: -0.488, z: -0.592}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 111502664}
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 90}
 --- !u!64 &2076332691
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -54589,119 +55455,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.0284404, y: 1.0410463, z: 0.3167299}
   m_Center: {x: -0.49187642, y: 0.0007853429, z: 0.34163326}
---- !u!1 &2133616483
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2133616484}
-  - component: {fileID: 2133616487}
-  - component: {fileID: 2133616486}
-  - component: {fileID: 2133616485}
-  m_Layer: 0
-  m_Name: Quad2
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2133616484
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2133616483}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.488, z: -0.592}
-  m_LocalScale: {x: 5, y: 5, z: 5}
-  m_ConstrainProportionsScale: 1
-  m_Children: []
-  m_Father: {fileID: 1072644238}
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!64 &2133616485
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2133616483}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &2133616486
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2133616483}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_ForceMeshLod: -1
-  m_MeshLodSelectionBias: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: dc19dea219ff6af40bd0bc4aaee49329, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_MaskInteraction: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &2133616487
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2133616483}
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &2139395994
 GameObject:
   m_ObjectHideFlags: 0
@@ -55514,6 +56267,135 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1187481076342484742
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2836240420528432339}
+  - component: {fileID: 9048626897006924578}
+  - component: {fileID: 1463438035375365908}
+  m_Layer: 0
+  m_Name: Beringin & Trembesi
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1001 &1292380394550109497
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 770081926141085050, guid: 93f12a693c8dc58439c642232019f5a8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.00001
+      objectReference: {fileID: 0}
+    - target: {fileID: 770081926141085050, guid: 93f12a693c8dc58439c642232019f5a8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 770081926141085050, guid: 93f12a693c8dc58439c642232019f5a8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 770081926141085050, guid: 93f12a693c8dc58439c642232019f5a8, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 770081926141085050, guid: 93f12a693c8dc58439c642232019f5a8, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 770081926141085050, guid: 93f12a693c8dc58439c642232019f5a8, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 770081926141085050, guid: 93f12a693c8dc58439c642232019f5a8, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 770081926141085050, guid: 93f12a693c8dc58439c642232019f5a8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 770081926141085050, guid: 93f12a693c8dc58439c642232019f5a8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 770081926141085050, guid: 93f12a693c8dc58439c642232019f5a8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7531802204075853713, guid: 93f12a693c8dc58439c642232019f5a8, type: 3}
+      propertyPath: m_Name
+      value: Pohon_Jati
+      objectReference: {fileID: 0}
+    - target: {fileID: 7531802204075853713, guid: 93f12a693c8dc58439c642232019f5a8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 93f12a693c8dc58439c642232019f5a8, type: 3}
+--- !u!23 &1463438035375365908
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1187481076342484742}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 7898189785960609206, guid: 14f223e5960142747838a7563d3cb7a8, type: 3}
+  - {fileID: -4733710586529443156, guid: 14f223e5960142747838a7563d3cb7a8, type: 3}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!23 &1821325466332181905
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -55595,7 +56477,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6902855181821499849, guid: 9cbc4eac6019d084aaa4248edd752ec8, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 104.09
+      value: 111.09
       objectReference: {fileID: 0}
     - target: {fileID: 6902855181821499849, guid: 9cbc4eac6019d084aaa4248edd752ec8, type: 3}
       propertyPath: m_LocalRotation.w
@@ -55630,67 +56512,21 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9cbc4eac6019d084aaa4248edd752ec8, type: 3}
---- !u!1001 &3236392701965242425
-PrefabInstance:
+--- !u!4 &2836240420528432339
+Transform:
   m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1187481076342484742}
   serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4815020832256044568, guid: f9ff221843245184e8fdcd253415e427, type: 3}
-      propertyPath: m_Name
-      value: Pohon_Beringin
-      objectReference: {fileID: 0}
-    - target: {fileID: 4815020832256044568, guid: f9ff221843245184e8fdcd253415e427, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8602129751889804899, guid: f9ff221843245184e8fdcd253415e427, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 48.050648
-      objectReference: {fileID: 0}
-    - target: {fileID: 8602129751889804899, guid: f9ff221843245184e8fdcd253415e427, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 8.02866
-      objectReference: {fileID: 0}
-    - target: {fileID: 8602129751889804899, guid: f9ff221843245184e8fdcd253415e427, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 94.95606
-      objectReference: {fileID: 0}
-    - target: {fileID: 8602129751889804899, guid: f9ff221843245184e8fdcd253415e427, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.5845968
-      objectReference: {fileID: 0}
-    - target: {fileID: 8602129751889804899, guid: f9ff221843245184e8fdcd253415e427, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.002238821
-      objectReference: {fileID: 0}
-    - target: {fileID: 8602129751889804899, guid: f9ff221843245184e8fdcd253415e427, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.8112552
-      objectReference: {fileID: 0}
-    - target: {fileID: 8602129751889804899, guid: f9ff221843245184e8fdcd253415e427, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0.010326112
-      objectReference: {fileID: 0}
-    - target: {fileID: 8602129751889804899, guid: f9ff221843245184e8fdcd253415e427, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0.81
-      objectReference: {fileID: 0}
-    - target: {fileID: 8602129751889804899, guid: f9ff221843245184e8fdcd253415e427, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 108.44
-      objectReference: {fileID: 0}
-    - target: {fileID: 8602129751889804899, guid: f9ff221843245184e8fdcd253415e427, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: -0.9
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: f9ff221843245184e8fdcd253415e427, type: 3}
+  m_LocalRotation: {x: 0.00090759963, y: 0.0000057264124, z: -0.0063092755, w: 0.9999797}
+  m_LocalPosition: {x: -7.060374, y: 4.05, z: -0.79203445}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5335685558254924863}
+  m_LocalEulerAnglesHint: {x: 0.104, y: 0, z: -0.723}
 --- !u!1001 &3635933917605377227
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -55813,7 +56649,82 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8303dbc6cd3d020468be7cd3084b5fe1, type: 3}
---- !u!1001 &4538714551845246285
+--- !u!23 &4082662884401572184
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4854740535977318415}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: -6713536035890245591, guid: 14f223e5960142747838a7563d3cb7a8, type: 3}
+  - {fileID: -4555934531491658794, guid: 14f223e5960142747838a7563d3cb7a8, type: 3}
+  - {fileID: -8529649194134909161, guid: 14f223e5960142747838a7563d3cb7a8, type: 3}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &4317180735417860986
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4854740535977318415}
+  m_Mesh: {fileID: 1568016432510859342, guid: 14f223e5960142747838a7563d3cb7a8, type: 3}
+--- !u!1 &4704002192695570053
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5335685558254924863}
+  m_Layer: 0
+  m_Name: Model
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!1001 &4714087669206437925
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -55821,59 +56732,81 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1218038547799069072, guid: 45fccdd724c528346ac148425618e715, type: 3}
+    - target: {fileID: 1705864843224992607, guid: 45fccdd724c528346ac148425618e715, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2364549205305552188, guid: 45fccdd724c528346ac148425618e715, type: 3}
       propertyPath: m_Name
       value: Pohon_Sawit
       objectReference: {fileID: 0}
-    - target: {fileID: 1218038547799069072, guid: 45fccdd724c528346ac148425618e715, type: 3}
+    - target: {fileID: 2364549205305552188, guid: 45fccdd724c528346ac148425618e715, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5506030699349276354, guid: 45fccdd724c528346ac148425618e715, type: 3}
+    - target: {fileID: 8336647410400904845, guid: 45fccdd724c528346ac148425618e715, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 46.787796
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5506030699349276354, guid: 45fccdd724c528346ac148425618e715, type: 3}
+    - target: {fileID: 8336647410400904845, guid: 45fccdd724c528346ac148425618e715, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.379479
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5506030699349276354, guid: 45fccdd724c528346ac148425618e715, type: 3}
+    - target: {fileID: 8336647410400904845, guid: 45fccdd724c528346ac148425618e715, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 95.074554
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5506030699349276354, guid: 45fccdd724c528346ac148425618e715, type: 3}
+    - target: {fileID: 8336647410400904845, guid: 45fccdd724c528346ac148425618e715, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.700792
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 5506030699349276354, guid: 45fccdd724c528346ac148425618e715, type: 3}
+    - target: {fileID: 8336647410400904845, guid: 45fccdd724c528346ac148425618e715, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.70485824
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5506030699349276354, guid: 45fccdd724c528346ac148425618e715, type: 3}
+    - target: {fileID: 8336647410400904845, guid: 45fccdd724c528346ac148425618e715, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.06562138
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5506030699349276354, guid: 45fccdd724c528346ac148425618e715, type: 3}
+    - target: {fileID: 8336647410400904845, guid: 45fccdd724c528346ac148425618e715, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.08808679
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5506030699349276354, guid: 45fccdd724c528346ac148425618e715, type: 3}
+    - target: {fileID: 8336647410400904845, guid: 45fccdd724c528346ac148425618e715, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 91.85
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5506030699349276354, guid: 45fccdd724c528346ac148425618e715, type: 3}
+    - target: {fileID: 8336647410400904845, guid: 45fccdd724c528346ac148425618e715, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -85.98102
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5506030699349276354, guid: 45fccdd724c528346ac148425618e715, type: 3}
+    - target: {fileID: 8336647410400904845, guid: 45fccdd724c528346ac148425618e715, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -73.5
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45fccdd724c528346ac148425618e715, type: 3}
+--- !u!1 &4854740535977318415
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6368097759026587105}
+  - component: {fileID: 4317180735417860986}
+  - component: {fileID: 4082662884401572184}
+  m_Layer: 0
+  m_Name: Sawit
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &5060062446271848548
 GameObject:
   m_ObjectHideFlags: 0
@@ -55892,6 +56825,24 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
+--- !u!4 &5335685558254924863
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4704002192695570053}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 51.635838, y: 2.4354522, z: 107.99486}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 6368097759026587105}
+  - {fileID: 2836240420528432339}
+  - {fileID: 9163429387968102214}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5679342333890489465
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -55900,6 +56851,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5060062446271848548}
   m_Mesh: {fileID: -7376156840892163780, guid: 14f223e5960142747838a7563d3cb7a8, type: 3}
+--- !u!4 &6368097759026587105
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4854740535977318415}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -0.77263933, y: 2.9105675, z: -0.6435438}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5335685558254924863}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1 &6636980299644407194
 GameObject:
   m_ObjectHideFlags: 0
@@ -56078,6 +57044,93 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
+--- !u!1001 &7301639209689584083
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1970054049026037877, guid: 8b3b60efdaa3b7249970f26747799cb1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1970054049026037877, guid: 8b3b60efdaa3b7249970f26747799cb1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1970054049026037877, guid: 8b3b60efdaa3b7249970f26747799cb1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1970054049026037877, guid: 8b3b60efdaa3b7249970f26747799cb1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1970054049026037877, guid: 8b3b60efdaa3b7249970f26747799cb1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1970054049026037877, guid: 8b3b60efdaa3b7249970f26747799cb1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1970054049026037877, guid: 8b3b60efdaa3b7249970f26747799cb1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1970054049026037877, guid: 8b3b60efdaa3b7249970f26747799cb1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1970054049026037877, guid: 8b3b60efdaa3b7249970f26747799cb1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1970054049026037877, guid: 8b3b60efdaa3b7249970f26747799cb1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8166176749473274045, guid: 8b3b60efdaa3b7249970f26747799cb1, type: 3}
+      propertyPath: m_Name
+      value: Pohon_Beringin
+      objectReference: {fileID: 0}
+    - target: {fileID: 8166176749473274045, guid: 8b3b60efdaa3b7249970f26747799cb1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8b3b60efdaa3b7249970f26747799cb1, type: 3}
+--- !u!1 &7482412351332072621
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9163429387968102214}
+  - component: {fileID: 8016194429588484272}
+  - component: {fileID: 8995303240882009101}
+  m_Layer: 0
+  m_Name: Jati & Mangrove
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!33 &8016194429588484272
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7482412351332072621}
+  m_Mesh: {fileID: -7376156840892163780, guid: 14f223e5960142747838a7563d3cb7a8, type: 3}
 --- !u!33 &8135025083523425572
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -56265,67 +57318,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8aa5301018f432a4d8d096392f60161f, type: 3}
---- !u!1001 &8576469346069559214
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1525030094778537478, guid: 44a631e00ffb2074d91164ae4c478e8b, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 44.71036
-      objectReference: {fileID: 0}
-    - target: {fileID: 1525030094778537478, guid: 44a631e00ffb2074d91164ae4c478e8b, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 2.8129306
-      objectReference: {fileID: 0}
-    - target: {fileID: 1525030094778537478, guid: 44a631e00ffb2074d91164ae4c478e8b, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 95.467476
-      objectReference: {fileID: 0}
-    - target: {fileID: 1525030094778537478, guid: 44a631e00ffb2074d91164ae4c478e8b, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.33733273
-      objectReference: {fileID: 0}
-    - target: {fileID: 1525030094778537478, guid: 44a631e00ffb2074d91164ae4c478e8b, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.49131244
-      objectReference: {fileID: 0}
-    - target: {fileID: 1525030094778537478, guid: 44a631e00ffb2074d91164ae4c478e8b, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.41526508
-      objectReference: {fileID: 0}
-    - target: {fileID: 1525030094778537478, guid: 44a631e00ffb2074d91164ae4c478e8b, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0.6872945
-      objectReference: {fileID: 0}
-    - target: {fileID: 1525030094778537478, guid: 44a631e00ffb2074d91164ae4c478e8b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1525030094778537478, guid: 44a631e00ffb2074d91164ae4c478e8b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1525030094778537478, guid: 44a631e00ffb2074d91164ae4c478e8b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7011102772776785034, guid: 44a631e00ffb2074d91164ae4c478e8b, type: 3}
-      propertyPath: m_Name
-      value: Pohon_Jati
-      objectReference: {fileID: 0}
-    - target: {fileID: 7011102772776785034, guid: 44a631e00ffb2074d91164ae4c478e8b, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 44a631e00ffb2074d91164ae4c478e8b, type: 3}
 --- !u!4 &8758985275831154984
 Transform:
   m_ObjectHideFlags: 0
@@ -56455,6 +57447,80 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!23 &8995303240882009101
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7482412351332072621}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: -3829787277928047063, guid: 14f223e5960142747838a7563d3cb7a8, type: 3}
+  - {fileID: 5104274173858312257, guid: 14f223e5960142747838a7563d3cb7a8, type: 3}
+  - {fileID: 5054701274805610042, guid: 14f223e5960142747838a7563d3cb7a8, type: 3}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &9048626897006924578
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1187481076342484742}
+  m_Mesh: {fileID: -6384976510185405272, guid: 14f223e5960142747838a7563d3cb7a8, type: 3}
+--- !u!4 &9163429387968102214
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7482412351332072621}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.569046, y: 0.17022628, z: -0.67464364, w: -0.43825296}
+  m_LocalPosition: {x: 3.9, y: 1.38, z: -0.80278224}
+  m_LocalScale: {x: 1.25, y: 1.25, z: 1.25}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5335685558254924863}
+  m_LocalEulerAnglesHint: {x: -15.61, y: 287.8, z: 125.4}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -56474,7 +57540,7 @@ SceneRoots:
   - {fileID: 2831887664562352104}
   - {fileID: 175426424}
   - {fileID: 8278730732764301196}
-  - {fileID: 726359676}
+  - {fileID: 2028855656}
   - {fileID: 8758985275831154984}
   - {fileID: 6828908278391628687}
   - {fileID: 2024252774}
@@ -56484,12 +57550,13 @@ SceneRoots:
   - {fileID: 7088779110669142811}
   - {fileID: 8169106889523535098}
   - {fileID: 599272275931096529}
-  - {fileID: 3236392701965242425}
-  - {fileID: 4538714551845246285}
-  - {fileID: 8576469346069559214}
   - {fileID: 3877273018040782286}
   - {fileID: 572290890760472605}
   - {fileID: 656458752617644715}
   - {fileID: 330942045}
   - {fileID: 467217307}
-  - {fileID: 1022252819}
+  - {fileID: 578849079}
+  - {fileID: 5335685558254924863}
+  - {fileID: 7301639209689584083}
+  - {fileID: 1292380394550109497}
+  - {fileID: 4714087669206437925}

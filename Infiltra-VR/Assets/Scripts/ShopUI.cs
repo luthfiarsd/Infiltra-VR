@@ -174,7 +174,7 @@ public class ShopUI : MonoBehaviour
         if (qtyText != null) qtyText.text = currentQty.ToString();
 
         int totalHarga = selectedItem.buyPrice * currentQty;
-        if (totalText != null) totalText.text = totalHarga.ToString();
+        if (cartTotalText != null && totalText != null) totalText.text = totalHarga.ToString();
 
         if (addToCartButton != null)
         {
@@ -268,6 +268,10 @@ public class ShopUI : MonoBehaviour
             {
                 cartTotalText.text = "0";
             }
+            else if (totalText != null)
+            {
+                totalText.text = "0";
+            }
 
             Debug.Log($"[ShopUI] Checkout Berhasil! Total Bayar: {totalBayar} | Sisa Uang: {playerInventory.uang}");
         }
@@ -295,6 +299,7 @@ public class ShopUI : MonoBehaviour
         {
             cartSummaryText.text = "Keranjang kosong";
             if (cartTotalText != null) cartTotalText.text = "0";
+            else if (totalText != null) totalText.text = "0";
             if (checkoutButton != null) checkoutButton.interactable = false;
             if (clearCartButton != null) clearCartButton.interactable = false;
         }
@@ -313,6 +318,10 @@ public class ShopUI : MonoBehaviour
                 // Menampilkan total murni tanpa simbol Rupiah
                 cartTotalText.text = GetCartTotal().ToString();
             }
+            else if (totalText != null)
+            {
+                totalText.text = GetCartTotal().ToString();
+            }
             
             if (checkoutButton != null) checkoutButton.interactable = true;
             if (clearCartButton != null) clearCartButton.interactable = true;
@@ -326,7 +335,7 @@ public class ShopUI : MonoBehaviour
 
         if (judulText != null) judulText.text = "Pilih Pohon";
         if (qtyText != null) qtyText.text = "-";
-        if (totalText != null) totalText.text = "0";
+        if (cartTotalText != null && totalText != null) totalText.text = "0";
         
         if (addToCartButton != null)
         {

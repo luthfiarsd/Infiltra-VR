@@ -217,7 +217,7 @@ public class GameManager : MonoBehaviour
 
         // Auto-assign references if null
         if (playerInventory == null) playerInventory = FindFirstObjectByType<PlayerInventory>();
-        if (plantingGuideTrigger == null) plantingGuideTrigger = FindFirstObjectByType<StoryTrigger>();
+        UpdateStoryTriggerReferences();
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -228,7 +228,7 @@ public class GameManager : MonoBehaviour
 
         // Re-assign references in the newly loaded scene
         playerInventory = FindFirstObjectByType<PlayerInventory>();
-        plantingGuideTrigger = FindFirstObjectByType<StoryTrigger>();
+        UpdateStoryTriggerReferences();
 
         if (isRetrying)
         {
@@ -269,6 +269,10 @@ public class GameManager : MonoBehaviour
                 break;
             case GameState.Playing:
                 Time.timeScale = 1f; 
+                if (currentWave >= 2)
+                {
+                    DeactivateAllObjectiveMarkers();
+                }
                 break;
             case GameState.Paused:
                 Time.timeScale = 0f; 
@@ -286,6 +290,53 @@ public class GameManager : MonoBehaviour
 
         Debug.Log($"[GameManager] Game State berubah menjadi: {newState}");
         OnGameStateChanged?.Invoke(newState);
+    }
+
+    public void DeactivateAllObjectiveMarkers()
+    {
+        ObjectiveMarker[] markers = FindObjectsByType<ObjectiveMarker>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        foreach (var marker in markers)
+        {
+            if (marker != null)
+            {
+                marker.gameObject.SetActive(false);
+            }
+        }
+        Debug.Log("[GameManager] Semua ObjectiveMarker dinonaktifkan untuk Wave >= 2.");
+    }
+
+    private void UpdateStoryTriggerReferences()
+    {
+        if (StoryUIManager.Instance != null && StoryUIManager.Instance.storyTrigger2 != null)
+        {
+            plantingGuideTrigger = StoryUIManager.Instance.storyTrigger2;
+            Debug.Log("[GameManager] plantingGuideTrigger di-assign dari StoryUIManager.storyTrigger2.");
+        }
+        else
+        {
+            plantingGuideTrigger = FindPlantingGuideTrigger();
+        }
+    }
+
+    private StoryTrigger FindPlantingGuideTrigger()
+    {
+        StoryTrigger[] triggers = FindObjectsByType<StoryTrigger>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        foreach (var t in triggers)
+        {
+            if (t.gameObject.name == "ZonaPanduanMenanam" || t.gameObject.name.Contains("Menanam") || t.gameObject.name.Contains("Panduan"))
+            {
+                Debug.Log($"[GameManager] Menemukan plantingGuideTrigger berdasarkan nama GameObject: {t.gameObject.name}");
+                return t;
+            }
+        }
+        
+        // Fallback ke objek StoryTrigger pertama di scene jika tidak ada yang cocok namanya
+        StoryTrigger fallback = FindFirstObjectByType<StoryTrigger>();
+        if (fallback != null)
+        {
+            Debug.Log($"[GameManager] Fallback: plantingGuideTrigger di-assign ke StoryTrigger acak: {fallback.gameObject.name}");
+        }
+        return fallback;
     }
 
     public void ResetGame()

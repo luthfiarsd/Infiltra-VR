@@ -15,6 +15,12 @@ public class StoryUIManager : MonoBehaviour
     [Tooltip("Canvas Group untuk efek Fade In/Out (Otomatis diambil jika kosong)")]
     [SerializeField] private CanvasGroup canvasGroup;
 
+    [Header("Story Triggers (Drag & Drop)")]
+    [Tooltip("Tarik StoryTrigger 1 (Welcome/Awal) ke sini")]
+    public StoryTrigger storyTrigger1;
+    [Tooltip("Tarik StoryTrigger 2 (Panduan Menanam) ke sini")]
+    public StoryTrigger storyTrigger2;
+
     [Header("Settings")]
     [Tooltip("Durasi efek Fade In dan Fade Out (dalam detik)")]
     [SerializeField] private float fadeDuration = 0.5f;
