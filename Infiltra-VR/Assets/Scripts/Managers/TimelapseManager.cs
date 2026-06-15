@@ -202,6 +202,7 @@ public class TimelapseManager : MonoBehaviour
             {
                 int reward = gameManager.baseWaveReward + (gameManager.currentWave - 1) * gameManager.rewardPerWaveLevel + playerRewardBonusForThisWave;
                 gameManager.playerInventory.uang += reward;
+                gameManager.UpdateUI();
                 Debug.Log($"Dapat hadiah {reward} koin! Total uang: {gameManager.playerInventory.uang}");
             }
             

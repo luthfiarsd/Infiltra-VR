@@ -73,6 +73,7 @@ public class WaveManager : MonoBehaviour
             {
                 int reward = GameManager.Instance.CalculateWaveReward();
                 GameManager.Instance.playerInventory.uang += reward;
+                GameManager.Instance.UpdateUI();
                 Debug.Log($"Dapat hadiah {reward} koin! Total uang: {GameManager.Instance.playerInventory.uang}");
             }
 

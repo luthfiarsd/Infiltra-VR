@@ -241,6 +241,7 @@ public class ShopUI : MonoBehaviour
         if (playerInventory != null && playerInventory.uang >= totalBayar)
         {
             playerInventory.uang -= totalBayar;
+            if (GameManager.Instance != null) GameManager.Instance.UpdateUI();
 
             // Masukkan seluruh isi keranjang ke tas pemain
             foreach (var cartItem in cartList)

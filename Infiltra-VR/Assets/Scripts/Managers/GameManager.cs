@@ -168,6 +168,9 @@ public class GameManager : MonoBehaviour
     [Tooltip("Tarik objek Progress_Text (TMP) ke sini")]
     public TextMeshProUGUI progressTextUI;
 
+    [Tooltip("Tarik objek Uang_Text (TMP) ke sini")]
+    public TextMeshProUGUI uangTextUI;
+
     [Tooltip("Tarik objek Slider Progres ke sini")]
     public Slider progressSlider;
 
@@ -369,13 +372,14 @@ public class GameManager : MonoBehaviour
     public void UpdateUI()
     {
         // 1. Cari referensi otomatis jika belum disetup di Inspector
-        if (waveTextUI == null || progressTextUI == null)
+        if (waveTextUI == null || progressTextUI == null || uangTextUI == null)
         {
             TextMeshProUGUI[] allTexts = FindObjectsByType<TextMeshProUGUI>(FindObjectsInactive.Include, FindObjectsSortMode.None);
             foreach (var t in allTexts)
             {
                 if (waveTextUI == null && t.name == "Wave_Text") waveTextUI = t;
                 if (progressTextUI == null && t.name == "Progress_Text") progressTextUI = t;
+                if (uangTextUI == null && t.name == "Uang_Text") uangTextUI = t;
             }
         }
 
@@ -419,6 +423,11 @@ public class GameManager : MonoBehaviour
             {
                 progressTextUI.text = "Penyerapan: " + totalWaterAbsorption + " / " + currentThreshold + " L";
             }
+        }
+
+        if (uangTextUI != null && playerInventory != null)
+        {
+            uangTextUI.text = "Uang: " + playerInventory.uang;
         }
 
         if (progressSlider != null)
