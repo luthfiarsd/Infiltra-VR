@@ -13,8 +13,11 @@ MonoBehaviour:
   m_Name: Cangkul
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemName: Cangkul
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: 4c41d22b23077ad4298a7d203a0517fe, type: 3}
   buyPrice: 0
   sellPrice: 0
   waterAbsorption: 0
+  waveRewardBonus: 0
   itemPrefab: {fileID: 676059075390844799, guid: fceddbc5c32b4f94685997d01a7170d6, type: 3}
+  plantedVisualPrefab: {fileID: 0}
+  grownTreeData: {fileID: 0}
