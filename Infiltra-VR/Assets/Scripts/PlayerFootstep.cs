@@ -23,6 +23,18 @@ public class PlayerFootstep : MonoBehaviour
     private Vector3 lastPosition;
     private float accumulatedDistance = 0f;
 
+    private void Awake()
+    {
+        // Mencegah duplikasi komponen PlayerFootstep pada GameObject yang sama
+        PlayerFootstep[] footsteps = GetComponents<PlayerFootstep>();
+        if (footsteps.Length > 1 && footsteps[0] != this)
+        {
+            Debug.LogWarning("[PlayerFootstep] Menghapus duplikasi komponen pada GameObject: " + gameObject.name);
+            Destroy(this);
+            return;
+        }
+    }
+
     private void Start()
     {
         if (playerTransform == null)

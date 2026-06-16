@@ -16,6 +16,15 @@ public class InventoryToggle : MonoBehaviour
 
     private void Awake()
     {
+        // Mencegah duplikasi komponen InventoryToggle pada GameObject yang sama (menghindari double-toggle bug)
+        InventoryToggle[] toggles = GetComponents<InventoryToggle>();
+        if (toggles.Length > 1 && toggles[0] != this)
+        {
+            Debug.LogWarning("[InventoryToggle] Menghapus duplikasi komponen pada GameObject: " + gameObject.name);
+            Destroy(this);
+            return;
+        }
+
         // Cari otomatis panel inventory jika kosong
         if (inventoryPanel == null)
         {
