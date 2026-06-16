@@ -71,7 +71,14 @@ public class InventoryToggle : MonoBehaviour
         {
             // Membalikkan status aktif/nonaktif dari panel inventory
             bool isActive = inventoryPanel.activeSelf;
-            inventoryPanel.SetActive(!isActive);
+            bool newState = !isActive;
+            inventoryPanel.SetActive(newState);
+
+            // --- TAMBAHAN BARU: Pemosisian UI Melayang di Depan Mata VR ---
+            if (newState) // Jika panel baru saja DIBUKA
+            {
+                PositionPanelInFrontOfPlayer();
+            }
 
             // --- TAMBAHAN BARU: Otomatisasi buka/tutup Peti ---
             if (playerInventory != null && playerInventory.nearbyChest != null)
@@ -86,5 +93,27 @@ public class InventoryToggle : MonoBehaviour
                 }
             }
         }
+    }
+
+    // --- FUNGSI BARU: Menaruh Panel Selalu Mengikuti Arah Pandangan Mata VR ---
+    private void PositionPanelInFrontOfPlayer()
+    {
+        if (Camera.main == null) return;
+
+        Transform camTransform = Camera.main.transform;
+        
+        // 1. Taruh posisi panel sekitar 1.2 meter tepat di depan arah pandang Kamera VR
+        Vector3 targetPosition = camTransform.position + (camTransform.forward * 1.2f);
+        
+        // 2. Setel tingginya sedikit di bawah mata (sejajar dada) agar tidak terlalu mendongak ke atas
+        targetPosition.y = camTransform.position.y - 0.1f; 
+        inventoryPanel.transform.position = targetPosition;
+
+        // 3. Hadapkan panel lurus ke wajah pemain (Efek Billboard)
+        Vector3 lookAtTarget = camTransform.position;
+        lookAtTarget.y = inventoryPanel.transform.position.y; // Kunci sumbu Y agar panel tidak mendongak/nunduk kaku
+        
+        inventoryPanel.transform.LookAt(lookAtTarget);
+        inventoryPanel.transform.Rotate(0, 180, 0); // Balik 180 derajat agar teks Canvas UI-mu tidak tercermin terbalik
     }
 }
